@@ -76,7 +76,22 @@ public class MainActivity extends BaseActivity {
         /**
          * 自定义对话框的使用
          */
+        /*CustomDialog.Builder builder=new CustomDialog.Builder(this);
+        builder.setMessage("确认退出");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                T.showShort(MainActivity.this,"确定");
+            }
 
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                T.showShort(MainActivity.this,"取消");
+            }
+        });
+        builder.create().show();*/
         //调用初始化适配数据方法
         initfragmentlistdata();
         //调用初始化viewpager数据
@@ -106,22 +121,7 @@ public class MainActivity extends BaseActivity {
             case R.id.remy:
                 mySelected();
                 viewpager.setCurrentItem(2);
-                CustomDialog.Builder builder=new CustomDialog.Builder(this);
-                builder.setMessage("确认退出");
-                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        T.showShort(MainActivity.this,"确定");
-                    }
 
-                });
-                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        T.showShort(MainActivity.this,"取消");
-                    }
-                });
-                builder.create().show();
                 break;
 
             default:
