@@ -1,6 +1,7 @@
 package com.example.lovehometown.activity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,10 +15,12 @@ import android.widget.TextView;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.Viewadapter;
+import com.example.lovehometown.customview.CustomDialog;
 import com.example.lovehometown.customview.CustomViewPager;
 import com.example.lovehometown.fragment.HomeFragment;
 import com.example.lovehometown.fragment.MyFragment;
 import com.example.lovehometown.fragment.PublishFragment;
+import com.example.lovehometown.util.T;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -70,7 +73,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        /**
+         * 自定义对话框的使用
+         */
 
         //调用初始化适配数据方法
         initfragmentlistdata();
@@ -91,17 +96,32 @@ public class MainActivity extends BaseActivity {
                 viewpager.setCurrentItem(0);
 
                 break;
-            //搜索
+            //发布
             case R.id.republish:
                 publishSelecteddata();
                 viewpager.setCurrentItem(1);
 
                 break;
-            //分类
+            //我的
             case R.id.remy:
                 mySelected();
                 viewpager.setCurrentItem(2);
+                CustomDialog.Builder builder=new CustomDialog.Builder(this);
+                builder.setMessage("确认退出");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        T.showShort(MainActivity.this,"确定");
+                    }
 
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        T.showShort(MainActivity.this,"取消");
+                    }
+                });
+                builder.create().show();
                 break;
 
             default:

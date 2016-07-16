@@ -3,4 +3,6 @@
     <string name="love_home">爱家乡</string>
     <string name="publish">发布</string>
     <string name="my">我的</string>
+    <string name="negative">取消</string>
+    <string name="poistive">确定</string>
 </resources>
