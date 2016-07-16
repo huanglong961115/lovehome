@@ -3,13 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lovehometown.activity.StartActivity">
-    <ImageView
-        android:id="@+id/startView"
+    tools:context="com.example.lovehometown.activity.GuideActivity">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/guidView"
         android:layout_width="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/start_img"
         android:layout_height="match_parent">
-    </ImageView>
-
+    </android.support.v4.view.ViewPager>
 </LinearLayout>

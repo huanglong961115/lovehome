@@ -5,5 +5,7 @@ package com.example.lovehometown.constant;
  */
 public class Constants {
     //shareprefences文件名称
-     public final static String LOVE_HOME_PREFENCE="lovehome";
+     public final static String LOVE_HOME_SHARE="lovehome";
+    //存储是否第一次启动应用程序
+    public final static String IS_FIRST="isFirst";
 }

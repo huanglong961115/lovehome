@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 @ContentView(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
+    //记录第一次按键时间
+    private long firsttime = 0;
     /**
      *爱家乡导航文本框
      */
@@ -201,5 +203,21 @@ public class MainActivity extends BaseActivity {
         viewpager.setAdapter(adapter);
         viewpager.setScrollble(false);
 
+    }
+
+    /**
+     * 返回键的监听,2次退出应用
+     */
+    @Override
+    public void onBackPressed() {
+        //得到2次按键时间
+        long secondtime=System.currentTimeMillis();
+        if(secondtime-firsttime>2000){
+            T.showShort(this,"再按一次退出程序");
+            firsttime=secondtime;
+        }else{
+
+            this.finish();
+        }
     }
 }
