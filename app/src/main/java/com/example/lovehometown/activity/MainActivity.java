@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.Viewadapter;
 import com.example.lovehometown.customview.CustomViewPager;
 import com.example.lovehometown.fragment.HomeFragment;
