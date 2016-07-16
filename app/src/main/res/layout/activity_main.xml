@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+    <com.example.lovehometown.customview.CustomViewPager
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </com.example.lovehometown.customview.CustomViewPager>
+    <ImageView
+        android:id="@+id/divder"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ccc"
+        />
+
+    <LinearLayout
+        android:id="@+id/tabslayout"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/rehome"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:id="@+id/homeimg"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/home_press" />
+
+            <TextView
+                android:id="@+id/hometext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/homeimg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/navbar_selector_color"
+                android:text="@string/love_home"
+                 />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/republish"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+             >
+
+            <ImageView
+                android:id="@+id/publishimg"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/publish" />
+
+            <TextView
+                android:id="@+id/publishtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/publishimg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="@string/publish" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/remy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+           >
+
+            <ImageView
+                android:id="@+id/myimg"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/wode" />
+
+            <TextView
+                android:id="@+id/mytext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myimg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="@string/my" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
