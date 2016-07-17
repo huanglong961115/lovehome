@@ -21,6 +21,7 @@ import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.GoodsAdapter;
 import com.example.lovehometown.adapter.ImgGridViewAdapter;
 import com.example.lovehometown.adapter.PictureViewAdapter;
+import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.CustomListView;
 import com.example.lovehometown.model.GoodBigType;
@@ -61,7 +62,8 @@ public class HomeFragment extends BaseFragment{
      * 设置ViewPager
      */
     public void setHeadView(){
-        webView.loadUrl("http://192.168.155.1:8080/LoveHome/index.html");
+        //加载地址
+        webView.loadUrl(Constants.IMG_WEB_URL);
         webView.setWebViewClient(new WebViewClient(){
 
             @Override
