@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -44,6 +47,8 @@ public class HomeFragment extends BaseFragment{
    ImageView indexImg1;
     @ViewInject(R.id.index2)
    ImageView indexImg2;
+    @ViewInject(R.id.webView)
+    WebView webView;
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -56,6 +61,23 @@ public class HomeFragment extends BaseFragment{
      * 设置ViewPager
      */
     public void setHeadView(){
+        webView.loadUrl("http://192.168.155.1:8080/LoveHome/index.html");
+        webView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // TODO Auto-generated method stub
+                view.loadUrl(url);
+                return true;
+            }
+
+        });
+
+        WebSettings webSettings = webView.getSettings();
+        //设置支持javascript
+        webSettings.setJavaScriptEnabled(true);
+        //设置无缓存
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         List<View> list=addGridView();
         PictureViewAdapter viewAdapter=new PictureViewAdapter(list);
         //T.showShort(getActivity(),list.size()+"hhh");
