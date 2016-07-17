@@ -21,7 +21,7 @@ import java.util.List;
 public class GuideActivity extends BaseActivity {
   @ViewInject(R.id.guidView)
   ViewPager pictureViewPager;
-    List<ImageView> list=new ArrayList<ImageView>();
+    List<View> list=new ArrayList<View>();
     int imgs[]={R.drawable.guide_one,R.drawable.guide_two,R.drawable.guide_three};
     @Override
     protected void onCreate(Bundle savedInstanceState) {

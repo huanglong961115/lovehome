@@ -2,8 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="发布"/>
+    <include layout="@layout/head"></include>
+     <GridView
+         android:id="@+id/publish_gridView"
+         android:layout_width="match_parent"
+         android:numColumns="4"
+         android:verticalSpacing="15dp"
+         android:paddingTop="15dp"
+         android:listSelector="@color/transparent"
+         android:layout_height="match_parent"></GridView>
 </LinearLayout>

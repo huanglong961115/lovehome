@@ -11,14 +11,18 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/7/16.
  */
+
+/**
+ * viewPager的适配器设置
+ */
 public class PictureViewAdapter extends PagerAdapter{
-    List<ImageView> imgList;
+    List<View> imgList;
     @Override
     public int getCount() {
         return imgList.size();
     }
 
-    public PictureViewAdapter(List<ImageView> imgList) {
+    public PictureViewAdapter(List<View> imgList) {
         this.imgList = imgList;
     }
 
