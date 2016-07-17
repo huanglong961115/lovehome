@@ -6,4 +6,5 @@
     <color name="navbar_selector_color">#50C476</color>
     <color name="gray">#ff999999</color>
     <color name="gray_green">#ff50c577</color>
+    <color name="white">#fff</color>
 </resources>

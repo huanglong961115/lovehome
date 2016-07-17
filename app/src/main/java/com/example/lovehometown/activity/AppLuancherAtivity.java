@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.util.SPUtils;
 
-public class AppLuancherAtivity extends AppCompatActivity {
+public class AppLuancherAtivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

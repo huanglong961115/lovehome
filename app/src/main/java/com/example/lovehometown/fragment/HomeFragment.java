@@ -9,11 +9,16 @@ import android.view.ViewGroup;
 
 import com.example.lovehometown.R;
 
+import org.xutils.view.annotation.ContentView;
+
 /**
  * Created by Administrator on 2016/7/16.
  */
-public class HomeFragment extends Fragment{
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_layout, null);
+@ContentView(R.layout.home_layout)
+public class HomeFragment extends BaseFragment{
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 }
