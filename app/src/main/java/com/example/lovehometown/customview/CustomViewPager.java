@@ -20,12 +20,30 @@ public class CustomViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (!scrollble) {
+        /*if (!scrollble) {
             return true;
         }
         return super.onTouchEvent(ev);
+        */
+        return this.scrollble&&super.onTouchEvent(ev);
     }
 
+    @Override
+    public boolean onInterceptHoverEvent(MotionEvent event) {
+        return this.scrollble&&super.onTouchEvent(event);
+    }
+
+    @Override
+    public void setCurrentItem(int item) {
+        super.setCurrentItem(item);
+    }
+
+    @Override
+    public void scrollTo(int x, int y) {
+
+            super.scrollTo(x, y);
+
+    }
 
     public boolean isScrollble() {
         return scrollble;

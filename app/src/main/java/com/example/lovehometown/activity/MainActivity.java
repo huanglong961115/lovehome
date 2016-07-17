@@ -5,11 +5,13 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -67,14 +69,18 @@ public class MainActivity extends BaseActivity {
      * viewpager
      */
     @ViewInject(R.id.view)
-    CustomViewPager viewpager;
+   // CustomViewPager viewpager;
+    LinearLayout view;
     /**
      * 碎片list,用来给viewpager添加适配器
      */
     List<Fragment> list;
+    FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //得到碎片管理者
+         fragmentManager=getSupportFragmentManager();
         /**
          * 自定义对话框的使用
          */
@@ -97,7 +103,7 @@ public class MainActivity extends BaseActivity {
         //调用初始化适配数据方法
         initfragmentlistdata();
         //调用初始化viewpager数据
-        initviewpagerdata();
+        initView();
 
     }
    @Event(value={R.id.rehome,R.id.remy,R.id.republish})
@@ -110,19 +116,20 @@ public class MainActivity extends BaseActivity {
             // 首页
             case R.id.rehome:
                 homeSelected();
-                viewpager.setCurrentItem(0);
+               // viewpager.setCurrentItem(0);
+               fragmentManager.beginTransaction().replace(R.id.view,list.get(0)).commit();
 
                 break;
             //发布
             case R.id.republish:
                 publishSelecteddata();
-                viewpager.setCurrentItem(1);
+                fragmentManager.beginTransaction().replace(R.id.view,list.get(1)).commit();
 
                 break;
             //我的
             case R.id.remy:
                 mySelected();
-                viewpager.setCurrentItem(2);
+                fragmentManager.beginTransaction().replace(R.id.view,list.get(2)).commit();
 
                 break;
 
@@ -198,10 +205,12 @@ public class MainActivity extends BaseActivity {
     /**
      * 初始化viewpager的数据
      */
-    public void initviewpagerdata() {
-        Viewadapter adapter = new Viewadapter(getSupportFragmentManager(), list);
-        viewpager.setAdapter(adapter);
-        viewpager.setScrollble(false);
+    public void initView() {
+        fragmentManager.beginTransaction().replace(R.id.view,list.get(0)).commit();
+       // Viewadapter adapter = new Viewadapter(getSupportFragmentManager(), list);
+        //viewpager.setScrollble(false);
+        //viewpager.setAdapter(adapter);
+
 
     }
 
