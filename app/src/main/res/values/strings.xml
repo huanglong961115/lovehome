@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoveHomeTown</string>
+    <string name="app_name">爱家乡</string>
     <string name="love_home">爱家乡</string>
     <string name="publish">发布</string>
     <string name="my">我的</string>
@@ -8,4 +8,5 @@
     <string name="input_name">请输入商户名称</string>
     <string name="aojiang">鳌江</string>
     <string name="search_good">查找商户</string>
+    <string name="fellow_recommended">老乡推荐</string>
 </resources>
