@@ -7,7 +7,7 @@
     android:layout_height="45dp">
     <TextView
         android:layout_width="wrap_content"
-        android:text="鳌江"
+        android:text="@string/aojiang"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
         android:textSize="16sp"
@@ -18,7 +18,7 @@
   <TextView
       android:layout_width="wrap_content"
       android:gravity="center_vertical"
-     android:hint="查找商户"
+     android:hint="@string/search_good"
       android:drawableLeft="@drawable/search"
       android:paddingLeft="20dp"
       android:textColor="@color/white"

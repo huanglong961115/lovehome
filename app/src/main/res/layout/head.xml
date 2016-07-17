@@ -1,59 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
     android:background="@color/navbar_selector_color"
-    android:layout_height="45dp">
-     <RelativeLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content">
-           <ImageView
-               android:id="@+id/leftView"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/back_icon"
-               android:layout_alignParentLeft="true"
-               android:layout_centerInParent="true"
-               android:padding="10dp"
-               android:visibility="gone"
-               android:layout_marginLeft="10dp"
-               />
-         <TextView
-             android:id="@+id/title"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="标题"
-             android:visibility="gone"
-             android:textColor="#fff"
-             android:layout_centerVertical="true"
-             android:layout_centerInParent="true"/>
-         <EditText
-             android:id="@+id/search"
-             android:visibility="gone"
-             android:layout_width="200dp"
-             android:background="@drawable/search_bg"
-             android:hint="请输入商户名称"
-             android:layout_centerInParent="true"
-             android:textColor="#fff"
-             android:textColorHint="#fff"
-             android:gravity="center"
-             android:layout_height="45dp" />
-         <ImageView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentRight="true"
-             android:id="@+id/rightView2"
-             android:visibility="gone"
-             android:layout_centerInParent="true"
-             android:layout_marginRight="20dp"
-             android:src="@drawable/search"/>
-         <ImageView
-             android:id="@+id/rightView1"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_toLeftOf="@id/rightView2"
-             android:layout_centerInParent="true"
-             android:visibility="gone"
-             android:layout_marginRight="10dp"
-             android:src="@drawable/love"/>
-     </RelativeLayout>
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/leftView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:src="@drawable/back_icon"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="标题"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/search_bg"
+            android:gravity="center"
+            android:hint="@string/input_name"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/rightView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/search"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/rightView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/rightView2"
+            android:src="@drawable/love"
+            android:visibility="gone" />
+    </RelativeLayout>
 </LinearLayout>
