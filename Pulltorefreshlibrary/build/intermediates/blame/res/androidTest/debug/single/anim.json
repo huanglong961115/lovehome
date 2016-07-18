@@ -1,5 +1,9 @@
 [
     {
+        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
         "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
         "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
     },
@@ -8,43 +12,39 @@
         "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
     },
     {
-        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
-        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
-    },
-    {
-        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
-        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
-    },
-    {
-        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
-        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
-    },
-    {
-        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
-        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
-    },
-    {
-        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
-    },
-    {
-        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
-        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
-    },
-    {
-        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
-        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
-    },
-    {
-        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
+        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
     },
     {
         "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
         "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
     },
     {
-        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
-        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
+        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
+        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
     }
 ]
