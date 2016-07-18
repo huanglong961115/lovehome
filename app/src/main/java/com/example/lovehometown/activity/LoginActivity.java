@@ -1,5 +1,6 @@
 package com.example.lovehometown.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +37,16 @@ public class LoginActivity extends BaseActivity{
     }
     @Event(value = {R.id.loginBtn,R.id.register,R.id.forwordPassword}, type= View.OnClickListener.class)
     private void change(View v){
-
+       switch (v.getId()){
+           case R.id.register:
+               startActivity(new Intent(this,RegisterActivity.class));
+               this.finish();
+               break;
+           case R.id.forwordPassword:
+               startActivity(new Intent(this,ForgetPasswordctivity.class));
+               this.finish();
+               break;
+       }
     }
     private void initView() {
         /*设置可见*/
@@ -44,5 +54,9 @@ public class LoginActivity extends BaseActivity{
         title.setVisibility(View.VISIBLE);
         title.setText("登录");
 
+    }
+    @Event(R.id.leftView)
+    private void back(View view){
+        LoginActivity.this.finish();
     }
 }

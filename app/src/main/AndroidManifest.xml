@@ -15,19 +15,17 @@
         <activity android:name=".activity.BaseActivity" />
         <activity android:name=".activity.StartActivity" />
         <activity android:name=".activity.GuideActivity" />
-<<<<<<< Updated upstream
+
         <activity android:name=".activity.AppLuancherAtivity">
-=======
-        <activity android:name=".activity.DetailsActivity">
->>>>>>> Stashed changes
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activity.DetailsActivity"/>
         <activity android:name=".activity.LoginActivity" />
-<<<<<<< Updated upstream
         <activity android:name=".activity.PlatformStatementActivity" />
         <activity android:name=".activity.AboutLoveHomeActivity" />
         <activity android:name=".activity.ShopListActivity" />
@@ -37,9 +35,8 @@
         <activity android:name=".activity.ForgetPasswordctivity" />
         <activity android:name=".activity.UserInfoActivity" />
         <activity android:name=".activity.UpdateInfoActivity"></activity>
-=======
-        <activity android:name=".activity.AppLuancherAtivity"></activity>
->>>>>>> Stashed changes
+        <activity android:name=".activity.RegisterActivity"></activity>
+
     </application>
 
 </manifest>

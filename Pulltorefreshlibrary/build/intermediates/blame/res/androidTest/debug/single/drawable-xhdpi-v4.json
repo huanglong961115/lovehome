@@ -1,50 +1,50 @@
 [
     {
-        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
-        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_rotate.png"
-    },
-    {
-        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
-        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
-    },
-    {
-        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
-        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
-    },
-    {
-        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
-        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
-    },
-    {
-        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
-        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_rotate.png"
-    },
-    {
-        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
-        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
-    },
-    {
-        "merged": "E:\\AndroidStudioTest\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
-        "source": "E:\\AndroidStudioTest\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
-    },
-    {
         "merged": "E:\\AndroidStudioTest\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
         "source": "E:\\AndroidStudioTest\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
-    },
-    {
-        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
-        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
     },
     {
         "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
         "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_rotate.png"
     },
     {
-        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
-        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
+        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
+        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
+    },
+    {
+        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
+        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
+        "source": "E:\\androidStudio_study\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
+        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_rotate.png"
     },
     {
         "merged": "E:\\AndroidStudioTest\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
         "source": "E:\\AndroidStudioTest\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioTest\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
+        "source": "E:\\AndroidStudioTest\\lovehome\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
+        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
+        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
+        "source": "E:\\androidstudioworkspace\\LoveHomeTown\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
+    },
+    {
+        "merged": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
+        "source": "E:\\androidstudioworkspace\\SurveyApp\\Pulltorefreshlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
     }
 ]
