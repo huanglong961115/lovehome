@@ -1,8 +1,10 @@
 package com.example.lovehometown.fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 import android.webkit.WebSettings;
@@ -22,7 +24,10 @@ import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.CustomListView;
+import com.example.lovehometown.customview.CustomProgressDialog;
 import com.example.lovehometown.model.GoodBigType;
+import com.example.lovehometown.util.L;
+import com.example.lovehometown.util.T;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -52,6 +57,8 @@ public class HomeFragment extends BaseFragment{
     TextView serach;
     @ViewInject(R.id.message)
     ImageView message;
+    //加载动画效果
+    CustomProgressDialog dialog;
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -66,6 +73,27 @@ public class HomeFragment extends BaseFragment{
     public void setHeadView(){
         //加载地址
         webView.loadUrl(Constants.IMG_WEB_URL);
+        //加载webView页面的监听
+        webView.setWebViewClient(new WebViewClient(){
+            //开始加载
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                dialog=new CustomProgressDialog(getActivity(),"加载中...",R.drawable.load_anim);
+                dialog.show();
+                Log.e("TAG","页面加载中");
+                T.showShort(getActivity(),"加载页面");
+
+            }
+            //加载完毕
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                T.showShort(getActivity(),"加载完毕");
+                dialog.dismiss();
+            }
+
+        });
         webView.setWebViewClient(new WebViewClient(){
 
             @Override
@@ -169,6 +197,7 @@ public class HomeFragment extends BaseFragment{
     }
     @Event(R.id.message)
     private void message(View view){
+
         boolean isLogin= Login.getInstance().isLogin(getActivity());
         if(isLogin){
             startActivity(new Intent(getActivity(), MymeaasgeActivity.class));

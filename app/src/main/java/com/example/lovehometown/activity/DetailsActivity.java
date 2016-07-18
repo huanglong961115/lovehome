@@ -37,4 +37,5 @@ public class DetailsActivity extends BaseActivity {
         //设置无缓存
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.lovehometown.activity;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.constant.Constants;
+import com.example.lovehometown.customview.CustomProgressDialog;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -27,6 +29,8 @@ public class AboutLoveHomeActivity extends BaseActivity {
     TextView title;
     @ViewInject(R.id.leftView)
     ImageView backImg;
+    //加载动画效果
+    CustomProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,22 @@ public class AboutLoveHomeActivity extends BaseActivity {
         backImg.setVisibility(View.VISIBLE);
         //加载地址
         aboutLoveHomeWebView.loadUrl(Constants.ABOUT_LOVE_HOME_URL);
+        //加载webView页面的监听
+        aboutLoveHomeWebView.setWebViewClient(new WebViewClient(){
+            //开始加载
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                dialog=new CustomProgressDialog(AboutLoveHomeActivity.this,"加载中...",R.drawable.load_anim);
+                dialog.show();
+            }
+            //加载完毕
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                dialog.dismiss();
+            }
+        });
         aboutLoveHomeWebView.setWebViewClient(new WebViewClient(){
 
             @Override

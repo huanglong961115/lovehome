@@ -1,5 +1,6 @@
 package com.example.lovehometown.activity;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.PictureViewAdapter;
 import com.example.lovehometown.constant.Constants;
+import com.example.lovehometown.customview.CustomDialog;
+import com.example.lovehometown.customview.CustomProgressDialog;
+import com.example.lovehometown.customview.CustomViewPager;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -28,6 +32,8 @@ public class PlatformStatementActivity extends BaseActivity {
     TextView title;
     @ViewInject(R.id.leftView)
     ImageView  backImg;
+    //加载动画效果
+    CustomProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +55,22 @@ public class PlatformStatementActivity extends BaseActivity {
            }
 
        });
-
+       //加载webView页面的监听
+     platformStatementWebView.setWebViewClient(new WebViewClient(){
+         //开始加载
+         @Override
+         public void onPageStarted(WebView view, String url, Bitmap favicon) {
+             super.onPageStarted(view, url, favicon);
+             dialog=new CustomProgressDialog(PlatformStatementActivity.this,"加载中...",R.drawable.load_anim);
+             dialog.show();
+         }
+       //加载完毕
+         @Override
+         public void onPageFinished(WebView view, String url) {
+             super.onPageFinished(view, url);
+             dialog.dismiss();
+         }
+     });
        WebSettings webSettings = platformStatementWebView.getSettings();
        //设置支持javascript
        webSettings.setJavaScriptEnabled(true);
