@@ -43,6 +43,7 @@ public class LoginActivity extends BaseActivity{
         /*设置可见*/
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);
+        title.setText("登录");
 
     }
 }

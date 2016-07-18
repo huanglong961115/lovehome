@@ -3,4 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="padding_vertical">15dp</dimen>
+    <!--new add-->
+    <dimen name="margin_middle">10.0dip</dimen>
 </resources>
