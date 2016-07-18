@@ -164,7 +164,7 @@ public class HomeFragment extends BaseFragment{
         indexView.setAdapter(adapter);
     }
     @Event(R.id.serach_text)
-    private void serach(){
+    private void serach(View view){
         startActivity(new Intent(getActivity(), ShopListActivity.class));
     }
     @Event(R.id.message)

@@ -39,6 +39,7 @@
                 />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/mypublish"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
@@ -75,6 +76,7 @@
             android:layout_height="1dip"
             android:background="@color/personal_line_color"/>
         <RelativeLayout
+            android:id="@+id/myDraft"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
@@ -111,6 +113,7 @@
             android:layout_height="1dip"
             android:background="@color/personal_line_color"/>
         <RelativeLayout
+            android:id="@+id/mycollect"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
@@ -124,6 +127,7 @@
                 android:layout_marginLeft="20dip"
                 />
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/MyCollection"
@@ -147,6 +151,7 @@
             android:layout_height="1dip"
             android:background="@color/personal_line_color"/>
         <RelativeLayout
+            android:id="@+id/mymessage"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
@@ -294,6 +299,7 @@
             android:layout_height="1dip"
             android:background="@color/personal_line_color"/>
         <RelativeLayout
+            android:id="@+id/updatePassword"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
@@ -367,6 +373,7 @@
             android:background="@color/personal_line_color"
             >
             <Button
+                android:id="@+id/logout"
                 android:layout_width="340dip"
                 android:layout_height="50dip"
                 android:background="@drawable/button_frame"
