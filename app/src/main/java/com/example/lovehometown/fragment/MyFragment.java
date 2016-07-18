@@ -14,7 +14,7 @@ import org.xutils.view.annotation.ContentView;
 /**
  * Created by Administrator on 2016/7/16.
  */
-@ContentView(R.layout.goods_list_item)
+@ContentView(R.layout.my_layout)
 public class MyFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
