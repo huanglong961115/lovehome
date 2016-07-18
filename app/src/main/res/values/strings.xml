@@ -28,4 +28,16 @@
     <string name="MyCollection">我的收藏</string>
     <string name="MyDraft">我的草稿</string>
     <string name="MyRelease">我的发布</string>
+    <string name="allshop">全部商户</string>
+    <string name="all_type">全部分类</string>
+    <string name="phonenumber">手机号码:</string>
+    <string name="getcode">获取验证码</string>
+    <string name="phone_number">11位手机号码</string>
+    <string name="phone_code">手机验证码:</string>
+    <string name="code">请输入验证码</string>
+    <string name="getpassword">获取登录密码</string>
+    <string name="update">确认修改</string>
+    <string name="ensurepassword">再次输入密码</string>
+    <string name="confirm_password">确认密码：</string>
+    <string name="forgetpassword">忘记密码</string>
 </resources>

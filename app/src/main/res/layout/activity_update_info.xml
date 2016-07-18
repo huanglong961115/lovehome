@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/person_background"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginTop="10.0dip"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip">
+
+        <TextView
+            android:id="@+id/txt_tips"
+            android:layout_width="100.0dip"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="用户名："
+            android:textColor="@android:color/black"
+            android:textSize="16.0dip" />
+
+        <EditText
+            android:id="@+id/edt_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="请输入要修改的用户名"
+            android:textColor="@android:color/black"
+            android:textSize="16.0dip" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_ensure_edt"
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="30.0dip"
+        android:background="@drawable/btn_large_green"
+        android:text="确认修改"
+        android:textColor="@android:color/white" />
+</LinearLayout>
