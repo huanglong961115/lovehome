@@ -46,4 +46,28 @@
     <!--详情-->
     <string name="phone">电话</string>
     <string name="jubao">举报</string>
+    <string name="phone_register">手机号码:</string>
+    <string name="phone_11_register">11位手机号码</string>
+    <string name="getcode_register">获取验证码</string>
+    <string name="phonecode_register">手机验证码:</string>
+    <string name="edit_code_register">请输入验证码</string>
+    <string name="password_register">密码:</string>
+    <string name="password_6_register">6位密码</string>
+    <string name="sure_password_register">确认密码:</string>
+    <string name="again_password_register">再次输入密码</string>
+    <string name="agreement_register">我已阅读并且同意《注册协议》</string>
+    <string name="register">注册</string>
+    <string name="name_update">用户名：</string>
+    <string name="newname_update">请输入要修改的用户名</string>
+    <string name="sure_update">确认修改</string>
+    <string name="oldpassword_update">旧密码：</string>
+    <string name="edit_oldpassword_update">请输入旧密码</string>
+    <string name="surepassword_update">确认密码：</string>
+    <string name="passwod_6_update">6位密码</string>
+    <string name="delicacy">美食</string>
+    <string name="update_photo_userinfo">点击修改头像</string>
+    <string name="name_userinfo">用户名称</string>
+    <string name="phone_userinfo">联系方式</string>
+    <string name="address_userinfo">联系地址</string>
+
 </resources>

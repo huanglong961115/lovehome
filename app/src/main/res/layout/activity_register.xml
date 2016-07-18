@@ -15,7 +15,7 @@
                 android:gravity="center_vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="手机号码:"
+                android:text="@string/phone_register"
                 android:layout_weight="8.0" />
         <RelativeLayout android:gravity="center_vertical"
             android:layout_width="fill_parent"
@@ -29,7 +29,7 @@
                 android:paddingLeft="10.0dip"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:hint="11位手机号码"
+                android:hint="@string/phone_11_register"
                 android:inputType="number" />
             <LinearLayout android:gravity="center_vertical"
                 android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
                     android:background="@drawable/btn_small_green"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="获取验证码" />
+                    android:text="@string/getcode_register" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
@@ -57,7 +57,7 @@
             android:gravity="center_vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="手机验证码:"
+            android:text="@string/phonecode_register"
             android:layout_weight="8.0" />
         <EditText android:textSize="16.0dip"
             android:gravity="center_vertical"
@@ -66,7 +66,7 @@
             android:paddingLeft="10.0dip"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:hint="请输入验证码"
+            android:hint="@string/edit_code_register"
             android:layout_weight="3.0"
             android:inputType="number" />
     </LinearLayout>
@@ -82,7 +82,7 @@
             android:gravity="center_vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="密码:"
+            android:text="@string/password_register"
             android:layout_weight="8.0" />
 
         <EditText android:textSize="16.0dip"
@@ -92,7 +92,8 @@
             android:paddingLeft="10.0dip"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:hint="6位密码" android:layout_weight="3.0"
+            android:hint="@string/password_6_register"
+            android:layout_weight="3.0"
             android:inputType="textPassword" />
     </LinearLayout>
     <LinearLayout android:orientation="horizontal"
@@ -107,7 +108,7 @@
             android:gravity="center_vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="确认密码:"
+            android:text="@string/sure_password_register"
             android:layout_weight="8.0" />
         <EditText android:gravity="center_vertical"
             android:id="@+id/edt_register_ensure_password"
@@ -115,7 +116,7 @@
             android:paddingLeft="10.0dip"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:hint="再次输入密码"
+            android:hint="@string/again_password_register"
             android:layout_weight="3.0"
             android:inputType="textPassword" />
     </LinearLayout>
@@ -137,7 +138,7 @@
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我已阅读并且同意《注册协议》" />
+            android:text="@string/agreement_register" />
     </LinearLayout>
     <Button android:textSize="16.0dip"
         android:textColor="@android:color/white"
@@ -148,5 +149,5 @@
         android:layout_marginLeft="10.0dip"
         android:layout_marginTop="20.0dip"
         android:layout_marginRight="10.0dip"
-        android:text="注册" />
+        android:text="@string/register" />
 </LinearLayout>
