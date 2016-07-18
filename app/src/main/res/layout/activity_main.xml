@@ -73,6 +73,7 @@
                 android:layout_below="@id/publishimg"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
+                android:textColor="@color/text_black"
                 android:text="@string/publish" />
         </RelativeLayout>
 
@@ -98,6 +99,7 @@
                 android:layout_below="@id/myimg"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
+                android:textColor="@color/text_black"
                 android:text="@string/my" />
         </RelativeLayout>
     </LinearLayout>

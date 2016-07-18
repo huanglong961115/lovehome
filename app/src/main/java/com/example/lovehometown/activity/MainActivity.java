@@ -1,13 +1,8 @@
 package com.example.lovehometown.activity;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,9 +11,6 @@ import android.widget.TextView;
 
 
 import com.example.lovehometown.R;
-import com.example.lovehometown.adapter.Viewadapter;
-import com.example.lovehometown.customview.CustomDialog;
-import com.example.lovehometown.customview.CustomViewPager;
 import com.example.lovehometown.fragment.HomeFragment;
 import com.example.lovehometown.fragment.MyFragment;
 import com.example.lovehometown.fragment.PublishFragment;
@@ -164,9 +156,9 @@ public class MainActivity extends BaseActivity {
      * 在发生改变时全部置为没有选择的状态数据
      */
     public void noSelected(){
-        homeText.setTextColor(Color.parseColor("#cccccc"));
-        publishText.setTextColor(Color.parseColor("#cccccc"));
-        myText.setTextColor(Color.parseColor("#cccccc"));
+        homeText.setTextColor(Color.parseColor("#010000"));
+        publishText.setTextColor(Color.parseColor("#010000"));
+        myText.setTextColor(Color.parseColor("#010000"));
 
 
        homeImg.setImageResource(R.drawable.home);

@@ -1,21 +1,13 @@
 package com.example.lovehometown.fragment;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
 
-import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.AbsListView;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.GoodsAdapter;
@@ -25,7 +17,6 @@ import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.CustomListView;
 import com.example.lovehometown.model.GoodBigType;
-import com.example.lovehometown.util.T;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;

@@ -183,6 +183,7 @@
             android:background="@color/personal_line_color"/>
 
         <RelativeLayout
+            android:id="@+id/platformStatement"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
@@ -219,6 +220,7 @@
             android:layout_height="1dip"
             android:background="@color/personal_line_color"/>
         <RelativeLayout
+            android:id="@+id/aboutLoveHome"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
