@@ -22,10 +22,11 @@ public class LoginActivity extends BaseActivity{
     /*密码*/
     @ViewInject(R.id.password)
     TextView password;
-
-    private TextView title;
+    /*标题栏*/
+    @ViewInject(R.id.leftView)
     private ImageView img;
-
+    @ViewInject(R.id.title)
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,6 @@ public class LoginActivity extends BaseActivity{
 
     }
     private void initView() {
-        img= (ImageView) titleBar.findViewById(R.id.leftView);
-        title= (TextView) titleBar.findViewById(R.id.title);
         /*设置可见*/
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);

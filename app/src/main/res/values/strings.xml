@@ -17,6 +17,9 @@
     <string name="password_hint">密码</string>
     <string name="user_register">用户注册</string>
     <string name="forget_password">忘记密码</string>
+    <string name="use_three_login">第三方登录</string>
+    <string name="weixin_login">微信登录</string>
+    <string name="qq_login">QQ登录</string>
     <!--我的-->
     <string name="loginout">退出登录</string>
     <string name="cleancache">清理缓存</string>
