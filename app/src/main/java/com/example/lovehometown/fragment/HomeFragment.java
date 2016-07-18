@@ -26,6 +26,7 @@ import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.CustomListView;
 import com.example.lovehometown.customview.CustomProgressDialog;
 import com.example.lovehometown.model.GoodBigType;
+import com.example.lovehometown.model.ShopInfo;
 import com.example.lovehometown.util.L;
 import com.example.lovehometown.util.T;
 
@@ -188,7 +189,9 @@ public class HomeFragment extends BaseFragment{
         return  list;
     }
     public void initView(){
-        adapter=new GoodsAdapter();
+        List<ShopInfo> list=new ArrayList<ShopInfo>();
+        list.add(new ShopInfo(1,R.drawable.che,"hhh","50","10:00-12:00","1516346673","xxx","xxx","xx","xxx"));
+        adapter=new GoodsAdapter(list,getActivity());
         indexView.setAdapter(adapter);
     }
     @Event(R.id.serach_text)

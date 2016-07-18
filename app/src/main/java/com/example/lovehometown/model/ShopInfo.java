@@ -15,6 +15,24 @@ public class ShopInfo implements Parcelable {
     private String phone;
     private String info;
     private String linkMan;
+    private String address;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getLinkMan() {
         return linkMan;
@@ -80,9 +98,24 @@ public class ShopInfo implements Parcelable {
         this.id = id;
     }
 
+    public ShopInfo() {
+    }
+
+    public ShopInfo(int id, int shopImage, String name, String price, String time, String phone, String info, String linkMan, String address, String type) {
+        this.id = id;
+        this.shopImage = shopImage;
+        this.name = name;
+        this.price = price;
+        this.time = time;
+        this.phone = phone;
+        this.info = info;
+        this.linkMan = linkMan;
+        this.address = address;
+        this.type = type;
+    }
+
     @Override
     public int describeContents() {
-
         return 0;
     }
 
@@ -96,9 +129,8 @@ public class ShopInfo implements Parcelable {
         dest.writeString(this.phone);
         dest.writeString(this.info);
         dest.writeString(this.linkMan);
-    }
-
-    public ShopInfo() {
+        dest.writeString(this.address);
+        dest.writeString(this.type);
     }
 
     protected ShopInfo(Parcel in) {
@@ -110,9 +142,11 @@ public class ShopInfo implements Parcelable {
         this.phone = in.readString();
         this.info = in.readString();
         this.linkMan = in.readString();
+        this.address = in.readString();
+        this.type = in.readString();
     }
 
-    public static final Parcelable.Creator<ShopInfo> CREATOR = new Parcelable.Creator<ShopInfo>() {
+    public static final Creator<ShopInfo> CREATOR = new Creator<ShopInfo>() {
         @Override
         public ShopInfo createFromParcel(Parcel source) {
             return new ShopInfo(source);
@@ -123,15 +157,4 @@ public class ShopInfo implements Parcelable {
             return new ShopInfo[size];
         }
     };
-
-    public ShopInfo(int id, int shopImage, String name, String price, String time, String phone, String info, String linkMan) {
-        this.id = id;
-        this.shopImage = shopImage;
-        this.name = name;
-        this.price = price;
-        this.time = time;
-        this.phone = phone;
-        this.info = info;
-        this.linkMan = linkMan;
-    }
 }
