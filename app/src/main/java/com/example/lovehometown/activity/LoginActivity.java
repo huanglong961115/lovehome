@@ -9,7 +9,7 @@ import com.example.lovehometown.R;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
-/*登录*/
+/*登录页面*/
 @ContentView(R.layout.activity_login)
 public class LoginActivity extends BaseActivity{
     /*用户名*/
