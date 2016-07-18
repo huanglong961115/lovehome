@@ -15,4 +15,6 @@ public class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
     }
+
+
 }
