@@ -43,6 +43,7 @@
     <string name="ensurepassword">再次输入密码</string>
     <string name="confirm_password">确认密码：</string>
     <string name="forgetpassword">忘记密码</string>
+    <!--详情-->
     <string name="phone">电话</string>
     <string name="jubao">举报</string>
 </resources>
