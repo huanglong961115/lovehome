@@ -43,9 +43,20 @@ public class UpdatePassWordPctivity extends BaseActivity {
     @Event(R.id.leftView)
     private void back(View view){
         UpdatePassWordPctivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
+
+    @Override
+    public void onBackPressed() {
+        UpdatePassWordPctivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
+
     @Event(R.id.btn_update_forget_password)
     private void forgetPassword(View view){
         startActivity(new Intent(this,ForgetPasswordctivity.class));
+        overridePendingTransition(R.anim.right_in,R.anim.right_out);
     }
 }

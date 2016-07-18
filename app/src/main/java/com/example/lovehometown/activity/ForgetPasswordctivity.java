@@ -35,5 +35,14 @@ public class ForgetPasswordctivity extends BaseActivity {
     @Event(R.id.leftView)
     private void back(View view){
         ForgetPasswordctivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+        ForgetPasswordctivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
 }

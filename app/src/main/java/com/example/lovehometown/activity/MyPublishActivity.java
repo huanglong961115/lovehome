@@ -10,6 +10,7 @@ import com.example.lovehometown.R;
 import com.example.lovehometown.constant.Constants;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
 @ContentView(R.layout.activity_my_publish)
@@ -36,5 +37,18 @@ public class MyPublishActivity extends BaseActivity {
         }else if(type.equals(Constants.MY_DRAFT)){
             title.setText("我的草稿");
         }
+    }
+    @Event(R.id.leftView)
+    private void back(View view){
+        MyPublishActivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+        MyPublishActivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
 }

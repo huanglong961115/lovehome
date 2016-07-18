@@ -68,9 +68,19 @@ public class UserInfoActivity extends BaseActivity {
         intent.putExtra(Constants.USER_INFO,bundle);
         intent.setClass(UserInfoActivity.this, clazz);
         startActivity(intent);
+        overridePendingTransition(R.anim.right_in,R.anim.right_out);
     }
     @Event(R.id.leftView)
     private void back(View view){
         UserInfoActivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+        UserInfoActivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
 }

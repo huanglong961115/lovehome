@@ -80,5 +80,14 @@ public class PlatformStatementActivity extends BaseActivity {
     @Event(R.id.leftView)
     private void back(View view){
         PlatformStatementActivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+        PlatformStatementActivity.this.finish();
+        //退出动画效果
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
 }

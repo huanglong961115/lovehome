@@ -3,12 +3,8 @@ package com.example.lovehometown.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.activity.AboutLoveHomeActivity;
@@ -18,7 +14,6 @@ import com.example.lovehometown.activity.PlatformStatementActivity;
 import com.example.lovehometown.activity.UpdatePassWordPctivity;
 import com.example.lovehometown.activity.UserInfoActivity;
 import com.example.lovehometown.constant.Constants;
-import com.example.lovehometown.customview.CustomDialog;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -54,6 +49,7 @@ public class MyFragment extends BaseFragment {
             case R.id.head_my:
                 //我的资料
                 startActivity(new Intent(getActivity(), UserInfoActivity.class));
+                getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
                 break;
             //我的发布
             case R.id.mypublish:
@@ -74,14 +70,17 @@ public class MyFragment extends BaseFragment {
             //平台声明
             case  R.id.platformStatement:
                 startActivity(new Intent(getActivity(), PlatformStatementActivity.class));
+                getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
                 break;
             //关于爱家乡
             case R.id.aboutLoveHome:
                 startActivity(new Intent(getActivity(), AboutLoveHomeActivity.class));
+                getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
                 break;
             //修改密码
             case R.id.updatePassword:
                 startActivity(new Intent(getActivity(), UpdatePassWordPctivity.class));
+                getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
                 break;
 
         }
@@ -99,5 +98,6 @@ public class MyFragment extends BaseFragment {
         intent.putExtra(Constants.TYPE,bundle);
         intent.setClass(getActivity(), clazz);
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
     }
 }
