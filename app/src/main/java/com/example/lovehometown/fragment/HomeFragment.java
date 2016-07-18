@@ -1,5 +1,6 @@
 package com.example.lovehometown.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -8,17 +9,23 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.lovehometown.R;
+import com.example.lovehometown.activity.LoginActivity;
+import com.example.lovehometown.activity.MymeaasgeActivity;
+import com.example.lovehometown.activity.ShopListActivity;
 import com.example.lovehometown.adapter.GoodsAdapter;
 import com.example.lovehometown.adapter.ImgGridViewAdapter;
 import com.example.lovehometown.adapter.PictureViewAdapter;
+import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.CustomListView;
 import com.example.lovehometown.model.GoodBigType;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
@@ -41,6 +48,10 @@ public class HomeFragment extends BaseFragment{
    ImageView indexImg2;
     @ViewInject(R.id.webView)
     WebView webView;
+    @ViewInject(R.id.serach_text)
+    TextView serach;
+    @ViewInject(R.id.message)
+    ImageView message;
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -151,5 +162,18 @@ public class HomeFragment extends BaseFragment{
     public void initView(){
         adapter=new GoodsAdapter();
         indexView.setAdapter(adapter);
+    }
+    @Event(R.id.serach_text)
+    private void serach(){
+        startActivity(new Intent(getActivity(), ShopListActivity.class));
+    }
+    @Event(R.id.message)
+    private void message(View view){
+        boolean isLogin= Login.getInstance().isLogin(getActivity());
+        if(isLogin){
+            startActivity(new Intent(getActivity(), MymeaasgeActivity.class));
+        }else{
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+        }
     }
 }
