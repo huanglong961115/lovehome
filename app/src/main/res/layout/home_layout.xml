@@ -19,8 +19,8 @@
            <WebView
                android:id="@+id/webView"
                android:background="@color/white"
-               android:layout_width="wrap_content"
-               android:layout_height="180dp"></WebView>
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"></WebView>
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:background="@color/white"
