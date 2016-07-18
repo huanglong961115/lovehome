@@ -7,6 +7,9 @@ import com.example.lovehometown.R;
 
 import org.xutils.view.annotation.ContentView;
 
+/**
+ * 关于
+ */
 @ContentView(R.layout.activity_about_love_home)
 public class AboutLoveHomeActivity extends AppCompatActivity {
 
