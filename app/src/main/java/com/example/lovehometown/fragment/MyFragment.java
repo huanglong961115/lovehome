@@ -16,6 +16,7 @@ import com.example.lovehometown.activity.MyPublishActivity;
 import com.example.lovehometown.activity.MymeaasgeActivity;
 import com.example.lovehometown.activity.PlatformStatementActivity;
 import com.example.lovehometown.activity.UpdatePassWordPctivity;
+import com.example.lovehometown.activity.UserInfoActivity;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomDialog;
 
@@ -46,10 +47,14 @@ public class MyFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
-    @Event(value = {R.id.platformStatement,R.id.aboutLoveHome,R.id.updatePassword,R.id.mymessage,R.id.mypublish,R.id.myDraft,R.id.mycollect})
+    @Event(value = {R.id.platformStatement,R.id.aboutLoveHome,R.id.updatePassword,R.id.mymessage,R.id.mypublish,R.id.myDraft,R.id.mycollect,R.id.head_my})
     private void click(View view){
         int id=view.getId();
         switch (id){
+            case R.id.head_my:
+                //我的资料
+                startActivity(new Intent(getActivity(), UserInfoActivity.class));
+                break;
             //我的发布
             case R.id.mypublish:
               myChange(MyPublishActivity.class,Constants.MY_PUBLISH);
