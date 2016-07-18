@@ -25,5 +25,10 @@ public class Constants {
     public final static  String MY_COLLECT="myCollect";
     public final static  String MY_MESSAGE="myMessage";
     public final static  String TYPE="type";
-
+    public final static String USER_INFO="userInfo";
+    //属性
+    public final static String INFO_ATTR="infoAttr";
+    public final static String USERNMAE="userName";
+    public final static String USER_PHONE="userPhone";
+    public final static String USER_ADDRESS="userAddress";
 }

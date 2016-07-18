@@ -37,6 +37,7 @@
                 />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/userNameInfo"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
@@ -73,6 +74,7 @@
             android:layout_height="1dip"
             android:background="@color/personal_line_color"/>
         <RelativeLayout
+            android:id="@+id/userphoneInfo"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
@@ -110,6 +112,7 @@
             android:layout_height="1dip"
             android:background="@color/personal_line_color"/>
         <RelativeLayout
+            android:id="@+id/userAddressInfo"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >
