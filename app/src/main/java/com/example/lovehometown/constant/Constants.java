@@ -10,5 +10,8 @@ public class Constants {
     public final static String IS_FIRST="isFirst";
     //首页图片轮播地址
     public final static String IMG_WEB_URL="http://172.16.46.91:8080/LoveHome/index.html";
+    //平台声明地址
     public final static String  PLATFORM_STATEMENT_URL="http://172.16.46.91:8080/LoveHome/PlatformStatement.html";
+    //关于爱家乡地址
+    public final static String  ABOUT_LOVE_HOME_URL="http://172.16.46.91:8080/LoveHome/PlatformStatement.html";
 }

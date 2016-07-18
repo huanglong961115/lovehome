@@ -156,9 +156,9 @@ public class MainActivity extends BaseActivity {
      * 在发生改变时全部置为没有选择的状态数据
      */
     public void noSelected(){
-        homeText.setTextColor(Color.parseColor("#cccccc"));
-        publishText.setTextColor(Color.parseColor("#cccccc"));
-        myText.setTextColor(Color.parseColor("#cccccc"));
+        homeText.setTextColor(Color.parseColor("#010000"));
+        publishText.setTextColor(Color.parseColor("#010000"));
+        myText.setTextColor(Color.parseColor("#010000"));
 
 
        homeImg.setImageResource(R.drawable.home);
