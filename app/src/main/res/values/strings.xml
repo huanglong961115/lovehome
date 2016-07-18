@@ -9,4 +9,6 @@
     <string name="aojiang">鳌江</string>
     <string name="search_good">查找商户</string>
     <string name="fellow_recommended">老乡推荐</string>
+    <string name="price">￥</string>
+    <string name="one_price">120/人</string>
 </resources>

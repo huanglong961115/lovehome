@@ -10,4 +10,6 @@
     <color name="list_item_click">#ffb5b5b5</color>
     <color name="line_color">#cccccc</color>
     <color name="transparent">#00000000</color>
+    <color name="orange">#ffff8d2a</color>
+    <color name="dark">#ff333333</color>
 </resources>
