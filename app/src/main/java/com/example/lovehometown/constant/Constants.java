@@ -14,4 +14,6 @@ public class Constants {
     public final static String  PLATFORM_STATEMENT_URL="http://172.16.46.91:8080/LoveHome/PlatformStatement.html";
     //关于爱家乡地址
     public final static String  ABOUT_LOVE_HOME_URL="http://172.16.46.91:8080/LoveHome/PlatformStatement.html";
+    //是否登录在share存放的key值
+    public final static String IS_LOGIN="islogin";
 }
