@@ -17,4 +17,15 @@
     <string name="password_hint">密码</string>
     <string name="user_register">用户注册</string>
     <string name="forget_password">忘记密码</string>
+    <!--我的-->
+    <string name="loginout">退出登录</string>
+    <string name="cleancache">清理缓存</string>
+    <string name="updatepassword">修改密码</string>
+    <string name="sharesoft">分享软件</string>
+    <string name="aboutlovehome">关于“爱家乡”</string>
+    <string name="PlatformStatement">平台申明</string>
+    <string name="MyMessage">我的消息</string>
+    <string name="MyCollection">我的收藏</string>
+    <string name="MyDraft">我的草稿</string>
+    <string name="MyRelease">我的发布</string>
 </resources>

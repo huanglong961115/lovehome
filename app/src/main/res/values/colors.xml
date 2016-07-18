@@ -18,4 +18,8 @@
     <color name="color_text_lgin_three">#8BC39C</color>
     <color name="color_divder_login">#EDEDED</color>
     <color name="hintcolor">#C1C1C1</color>
+    <!-- 我的-->
+    <color name="personal_theme_color">#4FC476</color>
+    <color name="personal_line_color">#E0E0E0</color>
+    <color name="black">#000000</color>
 </resources>
