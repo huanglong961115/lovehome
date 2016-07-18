@@ -70,7 +70,7 @@ public class ImgGridViewAdapter extends BaseAdapter{
             x.view().inject(viewHolder,convertView);
             convertView.setTag(viewHolder);
         }else{
-            L.e(list.toString());
+            //L.e(list.toString());
             viewHolder= (ViewHolder) convertView.getTag();
         }
 

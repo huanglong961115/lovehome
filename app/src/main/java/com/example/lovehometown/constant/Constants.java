@@ -9,5 +9,5 @@ public class Constants {
     //存储是否第一次启动应用程序
     public final static String IS_FIRST="isFirst";
     //首页图片轮播地址
-    public final static String IMG_WEB_URL="http://192.168.155.1:8080/LoveHome/index.html";
+    public final static String IMG_WEB_URL="http://192.168.156.1:8080/LoveHome/index.html";
 }
