@@ -17,6 +17,9 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
+/**
+ * 平台声明
+ */
 @ContentView(R.layout.activity_platform_statement)
 public class PlatformStatementActivity extends BaseActivity {
     @ViewInject(R.id.PlatformStatement_webView)
