@@ -32,7 +32,7 @@ public class CustomDialog extends Dialog{
 
     public static class Builder {
         private Context context;
-
+        private int layoutRes;
         private String message;
         private String positiveButtonText;
         private String negativeButtonText;
@@ -40,8 +40,9 @@ public class CustomDialog extends Dialog{
         private DialogInterface.OnClickListener positiveButtonClickListener;
         private DialogInterface.OnClickListener negativeButtonClickListener;
 
-        public Builder(Context context) {
+        public Builder(Context context,int layoutRes) {
             this.context = context;
+            this.layoutRes=layoutRes;
         }
 
         public Builder setMessage(String message) {
@@ -118,7 +119,7 @@ public class CustomDialog extends Dialog{
             final CustomDialog dialog = new CustomDialog(context, R.style.Daliog);
             Window window=dialog.getWindow();
            window.setWindowAnimations(R.style.dialogStyle);
-            View layout = inflater.inflate(R.layout.dialog, null);
+            View layout = inflater.inflate(layoutRes, null);
             dialog.addContentView(layout, new LayoutParams(
                     LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
             // set the dialog title

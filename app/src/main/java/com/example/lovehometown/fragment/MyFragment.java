@@ -1,5 +1,6 @@
 package com.example.lovehometown.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import com.example.lovehometown.activity.PlatformStatementActivity;
 import com.example.lovehometown.activity.UpdatePassWordPctivity;
 import com.example.lovehometown.activity.UserInfoActivity;
 import com.example.lovehometown.constant.Constants;
+import com.example.lovehometown.customview.CustomDialog;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -42,7 +44,7 @@ public class MyFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
-    @Event(value = {R.id.platformStatement,R.id.aboutLoveHome,R.id.updatePassword,R.id.mymessage,R.id.mypublish,R.id.myDraft,R.id.mycollect,R.id.head_my})
+    @Event(value = {R.id.platformStatement,R.id.aboutLoveHome,R.id.updatePassword,R.id.mymessage,R.id.mypublish,R.id.myDraft,R.id.mycollect,R.id.head_my,R.id.cleancache,R.id.logout})
     private void click(View view){
         int id=view.getId();
         switch (id){
@@ -81,6 +83,44 @@ public class MyFragment extends BaseFragment {
             case R.id.updatePassword:
                 startActivity(new Intent(getActivity(), UpdatePassWordPctivity.class));
                 getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
+                break;
+            //清除缓存
+            case R.id.cleancache:
+                CustomDialog.Builder builder=new CustomDialog.Builder(getActivity(),R.layout.dialog_person);
+                builder.setMessage("确定清除缓存？");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                CustomDialog dialog=builder.create();
+                dialog.show();
+                break;
+            //退出登录
+            case R.id.logout:
+                CustomDialog.Builder builder2=new CustomDialog.Builder(getActivity(),R.layout.dialog_person);
+                builder2.setMessage("确定退出登录？");
+                builder2.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder2.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                CustomDialog exitDialog=builder2.create();
+                exitDialog.show();
                 break;
 
         }

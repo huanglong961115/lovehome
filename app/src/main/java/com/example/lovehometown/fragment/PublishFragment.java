@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.ImgGridViewAdapter;
+import com.example.lovehometown.customview.CustomDialog;
 import com.example.lovehometown.model.GoodBigType;
 import com.example.lovehometown.util.T;
 

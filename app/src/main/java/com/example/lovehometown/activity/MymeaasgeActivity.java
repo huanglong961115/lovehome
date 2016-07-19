@@ -43,6 +43,7 @@ public class MymeaasgeActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
+        MymeaasgeActivity.this.finish();
         //退出动画效果
         overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }

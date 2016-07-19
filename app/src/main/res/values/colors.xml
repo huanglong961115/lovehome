@@ -25,4 +25,5 @@
     <color name="personal_theme_color">#4FC476</color>
     <color name="personal_line_color">#E0E0E0</color>
     <color name="black">#000000</color>
+    <color name="divder_gray">#ffe3e5e6</color>
 </resources>
