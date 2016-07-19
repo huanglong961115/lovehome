@@ -19,7 +19,7 @@
         <activity android:name=".activity.BaseActivity" />
         <activity android:name=".activity.StartActivity" />
         <activity android:name=".activity.GuideActivity" />
-        <activity android:name=".activity.MyCollection">
+        <activity android:name=".activity.AppLuancherAtivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +41,6 @@
         <activity
             android:name=".activity.AddPublishActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"></activity>
-        <activity android:name=".activity.AppLuancherAtivity"></activity>
     </application>
 
 </manifest>

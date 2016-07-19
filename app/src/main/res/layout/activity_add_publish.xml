@@ -25,6 +25,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="100dip">
                         <ImageView
+                            android:id="@+id/camera_addpublish"
                             android:layout_width="70dip"
                             android:layout_height="70dip"
                             android:src="@drawable/photo"
@@ -50,6 +51,7 @@
                             android:textColor="@color/black"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/storename_addpublish"
                             android:layout_width="250dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -75,6 +77,7 @@
                             android:textColor="@color/black"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/starttime1_addpublish"
                             android:layout_width="132dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -92,6 +95,7 @@
                             android:layout_gravity="center_vertical"
                             />
                         <EditText
+                            android:id="@+id/endtime1_addpublish"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -118,6 +122,7 @@
                             android:textColor="@color/black"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/money_addpublish"
                             android:layout_width="132dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -154,6 +159,7 @@
                             android:textColor="@color/black"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/countunit_addpublish"
                             android:layout_width="270dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -182,6 +188,7 @@
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/address_addpublish"
                             android:layout_width="300dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -209,6 +216,7 @@
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/contacts_addpublish"
                             android:layout_width="280dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -237,6 +245,7 @@
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/phone_addpublish"
                             android:layout_width="300dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -250,6 +259,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="10dip"
                         android:background="@color/personal_line_color" />
+                    <LinearLayout
+                        android:id="@+id/waimai_addpublish"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
@@ -296,6 +310,7 @@
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/starttime2_addpublish"
                             android:layout_width="100dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -313,6 +328,7 @@
                             android:layout_gravity="center_vertical"
                             />
                         <EditText
+                            android:id="@+id/endtime2_addpublish"
                             android:layout_width="132dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -339,6 +355,7 @@
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/area_addpublish"
                             android:layout_width="250dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -366,6 +383,7 @@
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
                         <EditText
+                            android:id="@+id/howmuch_addpublish"
                             android:layout_width="100dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -393,11 +411,13 @@
                         android:layout_height="10dip"
                         android:background="@color/personal_line_color"
                          />
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="180dip"
                         >
                         <EditText
+                            android:id="@+id/details_addpublish"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="@string/editdetails_addpublish"
@@ -417,6 +437,7 @@
             android:background="@color/personal_line_color"
             android:layout_alignParentBottom="true">
             <Button
+                android:id="@+id/save_addpublish"
                 android:layout_width="160dip"
                 android:layout_height="50dip"
                 android:layout_alignParentLeft="true"
@@ -428,6 +449,7 @@
                 android:layout_centerVertical="true"
                 />
             <Button
+                android:id="@+id/publish_addpublish"
                 android:layout_width="160dip"
                 android:layout_height="50dip"
                 android:layout_alignParentRight="true"

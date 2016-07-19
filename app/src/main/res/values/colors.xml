@@ -26,4 +26,6 @@
     <color name="personal_line_color">#E0E0E0</color>
     <color name="black">#000000</color>
     <color name="divder_gray">#ffe3e5e6</color>
+    <color name="orange_red">#FF4500</color>
+    <color name="red">#FF0000</color>
 </resources>

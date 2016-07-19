@@ -11,6 +11,7 @@
         android:layout_marginTop="10dip"
         android:layout_marginLeft="10dip">
         <ImageView
+            android:id="@+id/img_mycollection"
             android:layout_width="90dip"
             android:layout_height="90dip"
             android:src="@drawable/img_my_fragment_collection_left"
@@ -21,25 +22,47 @@
             android:orientation="vertical"
             android:layout_marginLeft="10dip">
             <TextView
+                android:id="@+id/business_mycollection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="金城酒楼金伯超"
+                android:text=""
                 android:layout_marginTop="2dip"
                 android:textSize="17sp"
                 android:textColor="@color/black"
                 />
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="¥600/桌起"
-                android:textColor="#FF4500"
-                android:layout_marginTop="8dip"
-                android:textSize="16sp"
-                />
+                android:orientation="horizontal"
+                android:layout_marginTop="8dip">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fuhao_mycollection"
+                    android:textColor="@color/orange_red"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/money_mycollection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/orange_red"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit_mycollection"
+                    android:textColor="@color/orange_red"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
             <TextView
+                android:id="@+id/address_mycollection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="东风南巷10号  其他"
+                android:text=""
                 android:layout_marginTop="8dip"
                 android:textSize="15sp"
                 android:textColor="@color/black"
@@ -58,6 +81,7 @@
                 android:layout_gravity="center_vertical"
                 />
             <TextView
+                android:id="@+id/time_mycollection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -79,6 +103,7 @@
         android:layout_height="45dip"
         android:orientation="horizontal">
             <RelativeLayout
+                android:id="@+id/share_mycollection"
             android:layout_width="wrap_content"
             android:layout_height="45dip"
             android:layout_weight="1">
@@ -95,7 +120,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="分享"
+                    android:text="@string/share_mycollection"
                     android:textSize="17dip"
                     android:layout_marginLeft="10dip"
                     />
@@ -108,6 +133,7 @@
             android:layout_gravity="center"
             />
         <RelativeLayout
+            android:id="@+id/delete_mycollection"
             android:layout_width="wrap_content"
             android:layout_height="45dip"
             android:layout_weight="1">
@@ -124,7 +150,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="删除"
+                    android:text="@string/delete_mycollection"
                     android:textSize="17dip"
                     android:layout_marginLeft="10dip"
                     />

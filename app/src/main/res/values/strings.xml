@@ -95,5 +95,12 @@
     <string name="editdetails_addpublish">填写详情</string>
     <string name="savedraft_addpublish">保存草稿</string>
     <string name="publish_addpublish">立即发布</string>
+    <string name="fuhao_mycollection">¥</string>
+    <string name="unit_mycollection">/桌起</string>
+    <string name="share_mycollection">分享</string>
+    <string name="delete_mycollection">删除</string>
+    <string name="publish_mymessage">您发布的[</string>
+    <string name="publish2_mymessage">]未审核...</string>
+    <string name="passnot_mymessage">审核不通过</string>
 
 </resources>
