@@ -45,7 +45,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="商家名称:"
+                            android:text="@string/shopstore_addpublish"
                             android:textSize="16sp"
                             android:textColor="@color/black"
                             android:layout_gravity="center_vertical"/>
@@ -70,7 +70,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="营业时间:"
+                            android:text="@string/businesstime_addpublish"
                             android:textSize="16sp"
                             android:textColor="@color/black"
                             android:layout_gravity="center_vertical"/>
@@ -79,7 +79,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@null"
-                            android:hint="开始时间"
+                            android:hint="@string/starttime_addpublish"
                             android:layout_marginLeft="10dip"
                             android:textSize="15sp"
                             />
@@ -87,7 +87,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
-                            android:text="至"
+                            android:text="@string/to_addpublish"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"
                             />
@@ -96,7 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@null"
-                            android:hint="结束时间"
+                            android:hint="@string/endtime_addpublish"
                             android:layout_marginLeft="10dip"
                             android:textSize="15sp"/>
                     </LinearLayout>
@@ -113,7 +113,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="人均消费:"
+                            android:text="@string/consume_addpublish1"
                             android:textSize="16sp"
                             android:textColor="@color/black"
                             android:layout_gravity="center_vertical"/>
@@ -122,14 +122,14 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@null"
-                            android:hint="人均消费"
+                            android:hint="@string/consume_addpublish2"
                             android:layout_marginLeft="10dip"
                             android:textSize="15sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
-                            android:text="元"
+                            android:text="@string/yuan_addpublish"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"
                             />
@@ -148,7 +148,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="计量单位:"
+                            android:text="@string/count_unit_addpublish"
                             android:textSize="16sp"
                             android:textColor="@color/black"
                             android:layout_gravity="center_vertical"/>
@@ -156,7 +156,7 @@
                             android:layout_width="270dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:hint="请填写计量单位（例如人、小时等）"
+                            android:hint="@string/editcount_unit_addpublish"
                             android:background="@null"
                             android:textSize="15sp"
                             android:layout_marginLeft="10dip"
@@ -176,7 +176,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="地址:"
+                            android:text="@string/address_addpublish"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
@@ -184,7 +184,7 @@
                             android:layout_width="300dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:hint="请填写地址"
+                            android:hint="@string/editaddress_addpublish"
                             android:textSize="15sp"
                             android:background="@null"
                             android:layout_marginLeft="10dip"/>
@@ -203,7 +203,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="联系人:"
+                            android:text="@string/contacts_addpublish"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
@@ -211,7 +211,7 @@
                             android:layout_width="280dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:hint="请填写联系人"
+                            android:hint="@string/editcontacts_addpublish"
                             android:textSize="15sp"
                             android:background="@null"
                             android:layout_marginLeft="10dip"
@@ -231,7 +231,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="电话:"
+                            android:text="@string/phone_addpublish"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
@@ -239,7 +239,7 @@
                             android:layout_width="300dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:hint="请填写正确的联系方式（外地带“区号”）"
+                            android:hint="@string/editphone_addpublish"
                             android:background="@null"
                             android:textSize="15sp"
                             android:layout_marginLeft="10dip"
@@ -269,7 +269,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="支持外卖服务"
+                                android:text="@string/support_addpublish"
                                 android:textSize="18sp"
                                 android:textColor="#6699ff"
                                 android:layout_marginLeft="10dip"
@@ -290,7 +290,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="外卖时间:"
+                            android:text="@string/takeout_tome_addpublish"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
@@ -306,7 +306,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
-                            android:text="至"
+                            android:text="@string/to_addpublish"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"
                             />
@@ -332,7 +332,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="外卖范围:"
+                            android:text="@string/takeout_area_addpublish"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
@@ -359,7 +359,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="外卖收费:"
+                            android:text="@string/takeout_money_addpublish"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"/>
@@ -375,7 +375,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/gray"
-                            android:text="元/次"
+                            android:text="@string/yuan_ci_addpublish"
                             android:textSize="16sp"
                             android:layout_gravity="center_vertical"
                             />
@@ -397,7 +397,7 @@
                         <EditText
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="填写详情"
+                            android:hint="@string/editdetails_addpublish"
                             android:textSize="16sp"
                             android:layout_marginLeft="10dip"
                             android:layout_marginTop="10dip"
@@ -419,7 +419,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dip"
                 android:background="@drawable/kuang_savedraft"
-                android:text="保存草稿"
+                android:text="@string/savedraft_addpublish"
                 android:textColor="@color/theme_color"
                 android:textSize="18sp"
                 android:layout_centerVertical="true"
@@ -430,7 +430,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dip"
                 android:background="@drawable/kuang_publish"
-                android:text="立即发布"
+                android:text="@string/publish_addpublish"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_centerVertical="true"

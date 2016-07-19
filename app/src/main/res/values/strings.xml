@@ -65,9 +65,35 @@
     <string name="surepassword_update">确认密码：</string>
     <string name="passwod_6_update">6位密码</string>
     <string name="delicacy">美食</string>
+    <!--我的资料-->
     <string name="update_photo_userinfo">点击修改头像</string>
     <string name="name_userinfo">用户名称</string>
     <string name="phone_userinfo">联系方式</string>
     <string name="address_userinfo">联系地址</string>
+    <!--添加发布-->
+    <string name="shopstore_addpublish">商家名称:</string>
+    <string name="businesstime_addpublish">营业时间:</string>
+    <string name="starttime_addpublish">开始时间</string>
+    <string name="to_addpublish">至</string>
+    <string name="endtime_addpublish">结束时间</string>
+    <string name="consume_addpublish1">人均消费:</string>
+    <string name="consume_addpublish2">人均消费</string>
+    <string name="yuan_addpublish">元</string>
+    <string name="count_unit_addpublish">计量单位:</string>
+    <string name="editcount_unit_addpublish">请填写计量单位（例如人、小时等）</string>
+    <string name="address_addpublish">地址:</string>
+    <string name="editaddress_addpublish">请填写地址</string>
+    <string name="contacts_addpublish">联系人:</string>
+    <string name="editcontacts_addpublish">请填写联系人</string>
+    <string name="phone_addpublish">电话:</string>
+    <string name="editphone_addpublish">请填写正确的联系方式（外地带“区号”）</string>
+    <string name="support_addpublish">支持外卖服务</string>
+    <string name="takeout_tome_addpublish">外卖时间:</string>
+    <string name="takeout_area_addpublish">外卖范围:</string>
+    <string name="takeout_money_addpublish">外卖收费:</string>
+    <string name="yuan_ci_addpublish">元/次</string>
+    <string name="editdetails_addpublish">填写详情</string>
+    <string name="savedraft_addpublish">保存草稿</string>
+    <string name="publish_addpublish">立即发布</string>
 
 </resources>
