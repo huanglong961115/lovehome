@@ -4,16 +4,23 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.ImgGridViewAdapter;
+import com.example.lovehometown.adapter.PublishCateGrotAdapter;
 import com.example.lovehometown.customview.CustomDialog;
+import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.model.GoodBigType;
 import com.example.lovehometown.util.T;
 
@@ -70,6 +77,35 @@ public class PublishFragment extends BaseFragment{
         publishGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                   List<String> list=new ArrayList<String>();
+                list.add("酒店");
+                list.add("饭店");
+                list.add("西点");
+                list.add("夜宵");
+                list.add("外卖");
+                View view1=LayoutInflater.from(getActivity()).inflate(R.layout.publish_dialog_list,null);
+                ListView lv= (ListView) view1.findViewById(R.id.dialog_list);
+                PublishDialog.Builder builder=new PublishDialog.Builder(getActivity());
+                ImageView imageView=new ImageView(getActivity());
+                imageView.setImageResource(R.drawable.error);
+                imageView.setPadding(0,20,0,20);
+                lv.addFooterView(imageView);
+                lv.setAdapter(new PublishCateGrotAdapter(getActivity(),list));
+
+                builder.setContentView(view1);
+                 PublishDialog dialog=builder.create();
+                final  PublishDialog _dialog=dialog;
+                Window window = dialog.getWindow();
+                dialog.show();
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        _dialog.dismiss();
+                    }
+                });
+                //设置window显示的位置
+                window.setGravity(Gravity.BOTTOM);
+
 
             }
         });

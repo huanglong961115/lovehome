@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.LinearLayout;
 
 import com.example.lovehometown.R;
@@ -28,10 +29,12 @@ public class PublishDialog  extends Dialog{
         super(context, cancelable, cancelListener);
         this.inflater=LayoutInflater.from(context);
     }
-    public static class DialogBuilder{
+    public static class Builder{
         Context context;
         View contentView;//内容布局
-
+        public Builder(Context context){
+            this.context=context;
+        }
 
         public View getContentView() {
             return contentView;
@@ -41,8 +44,10 @@ public class PublishDialog  extends Dialog{
             this.contentView = contentView;
         }
 
-        public PublishDialog onCreate(){
+        public PublishDialog create(){
             final PublishDialog dialog=new PublishDialog(context,R.style.Daliog);
+            Window window=dialog.getWindow();
+            window.setWindowAnimations(R.style.dialogStyle2);
             View view=PublishDialog.inflater.inflate(R.layout.publish_dialog,null);
 
             if(contentView!=null){
