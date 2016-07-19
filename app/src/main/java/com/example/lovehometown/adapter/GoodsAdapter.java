@@ -1,9 +1,12 @@
 package com.example.lovehometown.adapter;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +26,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/7/17.
  */
-public class GoodsAdapter extends BaseAdapter{
+public class GoodsAdapter extends BaseAdapter {
     Context context;
     LayoutInflater layoutInflater;
     List<ShopInfo> list;
@@ -50,19 +53,20 @@ public class GoodsAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
-        ViewHolder viewHolder=null;
-        if(viewHolder==null){
-            viewHolder=new ViewHolder();
-            convertView=layoutInflater.inflate(R.layout.goods_list_item,null);
-            x.view().inject(viewHolder,convertView);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder = null;
+        if (viewHolder == null) {
+            viewHolder = new ViewHolder();
+            convertView = layoutInflater.inflate(R.layout.goods_list_item, null);
+            x.view().inject(viewHolder, convertView);
             convertView.setTag(viewHolder);
-        }else{
-            viewHolder= (ViewHolder) convertView.getTag();
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        initData(position,viewHolder);
+        initData(position, viewHolder);
         return convertView;
     }
+
     class ViewHolder {
         @ViewInject(R.id.shop_image)
         private ImageView shopImage;
@@ -85,9 +89,10 @@ public class GoodsAdapter extends BaseAdapter{
         @ViewInject(R.id.time)
         private TextView time;
     }
-    public void initData(int position,ViewHolder viewHolder){
-        ShopInfo shopInfo=list.get(position);
-       final  ShopInfo _shopInfo=shopInfo;
+
+    public void initData(int position, ViewHolder viewHolder) {
+        ShopInfo shopInfo = list.get(position);
+        final ShopInfo _shopInfo = shopInfo;
         //设置名字
         viewHolder.name.setText(shopInfo.getName());
         //价格
@@ -99,12 +104,27 @@ public class GoodsAdapter extends BaseAdapter{
         viewHolder.listPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomDialog.Builder dialog=new CustomDialog.Builder(context);
-                dialog.setMessage("确定拨打"+_shopInfo.getPhone());
+                //弹出拨打电话确认框
+                CustomDialog.Builder dialog = new CustomDialog.Builder(context);
+                dialog.setMessage("确定拨打" + _shopInfo.getPhone());
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent=new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+_shopInfo.getPhone()));
+                        //调用系统拨打电话
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + _shopInfo.getPhone()));
+                        //权限检查
+                        //sdk23之后
+
+                        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            // TODO: Consider calling
+                            //    ActivityCompat#requestPermissions
+                            // here to request the missing permissions, and then overriding
+                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                            //                                          int[] grantResults)
+                            // to handle the case where the user grants the permission. See the documentation
+                            // for ActivityCompat#requestPermissions for more details.
+                            return;
+                        }
                         context.startActivity(intent);
                         dialog.dismiss();
                     }

@@ -49,9 +49,9 @@ public class HomeFragment extends BaseFragment{
     @ViewInject(R.id.headViewPager)
     ViewPager viewPager;
     @ViewInject(R.id.index1)
-   ImageView indexImg1;
+    ImageView indexImg1;
     @ViewInject(R.id.index2)
-   ImageView indexImg2;
+    ImageView indexImg2;
     @ViewInject(R.id.webView)
     WebView webView;
     @ViewInject(R.id.serach_text)
@@ -76,26 +76,6 @@ public class HomeFragment extends BaseFragment{
         webView.loadUrl(Constants.IMG_WEB_URL);
         //加载webView页面的监听
         webView.setWebViewClient(new WebViewClient(){
-            //开始加载
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                dialog=new CustomProgressDialog(getActivity(),"加载中...",R.drawable.load_anim);
-                dialog.show();
-                Log.e("TAG","页面加载中");
-                T.showShort(getActivity(),"加载页面");
-
-            }
-            //加载完毕
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                T.showShort(getActivity(),"加载完毕");
-                dialog.dismiss();
-            }
-
-        });
-        webView.setWebViewClient(new WebViewClient(){
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -104,6 +84,18 @@ public class HomeFragment extends BaseFragment{
                 return true;
             }
 
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                dialog=new CustomProgressDialog(getActivity(),"加载中...",R.drawable.load_anim);
+                dialog.show();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                dialog.dismiss();
+            }
         });
 
         WebSettings webSettings = webView.getSettings();
@@ -111,6 +103,7 @@ public class HomeFragment extends BaseFragment{
         webSettings.setJavaScriptEnabled(true);
         //设置无缓存
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        //dialog.dismiss();
         List<View> list=addGridView();
         PictureViewAdapter viewAdapter=new PictureViewAdapter(list);
         //T.showShort(getActivity(),list.size()+"hhh");
@@ -121,13 +114,13 @@ public class HomeFragment extends BaseFragment{
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 //滑动到第一页
-                 if(position==0){
-                     indexImg1.setImageResource(R.drawable.green_point);
-                     indexImg2.setImageResource(R.drawable.hen_point);
-                 }else{
-                     indexImg2.setImageResource(R.drawable.green_point);
-                     indexImg1.setImageResource(R.drawable.hen_point);
-                 }
+                if(position==0){
+                    indexImg1.setImageResource(R.drawable.green_point);
+                    indexImg2.setImageResource(R.drawable.hen_point);
+                }else{
+                    indexImg2.setImageResource(R.drawable.green_point);
+                    indexImg1.setImageResource(R.drawable.hen_point);
+                }
             }
 
             @Override
@@ -189,6 +182,7 @@ public class HomeFragment extends BaseFragment{
         return  list;
     }
     public void initView(){
+        //dialog.dismiss();
         List<ShopInfo> list=new ArrayList<ShopInfo>();
         list.add(new ShopInfo(1,R.drawable.che,"hhh","50","10:00-12:00","1516346673","xxx","xxx","xx","xxx"));
         adapter=new GoodsAdapter(list,getActivity());

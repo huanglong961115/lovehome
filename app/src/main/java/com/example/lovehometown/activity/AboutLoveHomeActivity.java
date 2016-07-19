@@ -34,6 +34,7 @@ public class AboutLoveHomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initView();
     }
 
@@ -48,29 +49,27 @@ public class AboutLoveHomeActivity extends BaseActivity {
         aboutLoveHomeWebView.loadUrl(Constants.ABOUT_LOVE_HOME_URL);
         //加载webView页面的监听
         aboutLoveHomeWebView.setWebViewClient(new WebViewClient(){
-            //开始加载
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                dialog=new CustomProgressDialog(AboutLoveHomeActivity.this,"加载中...",R.drawable.load_anim);
-                dialog.show();
-            }
-            //加载完毕
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                dialog.dismiss();
-            }
-        });
-        aboutLoveHomeWebView.setWebViewClient(new WebViewClient(){
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 // TODO Auto-generated method stub
                 view.loadUrl(url);
                 return true;
+
             }
 
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                dialog=new CustomProgressDialog(AboutLoveHomeActivity.this,"加载中...",R.drawable.load_anim);
+                dialog.show();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                dialog.dismiss();
+            }
         });
 
         WebSettings webSettings = aboutLoveHomeWebView.getSettings();
@@ -78,6 +77,7 @@ public class AboutLoveHomeActivity extends BaseActivity {
         webSettings.setJavaScriptEnabled(true);
         //设置无缓存
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+
     }
     @Event(R.id.leftView)
     private void back(View view){

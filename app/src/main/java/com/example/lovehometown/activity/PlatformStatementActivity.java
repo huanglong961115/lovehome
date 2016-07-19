@@ -53,24 +53,21 @@ public class PlatformStatementActivity extends BaseActivity {
                view.loadUrl(url);
                return true;
            }
-
+           //开始加载
+           @Override
+           public void onPageStarted(WebView view, String url, Bitmap favicon) {
+               super.onPageStarted(view, url, favicon);
+               dialog=new CustomProgressDialog(PlatformStatementActivity.this,"加载中...",R.drawable.load_anim);
+               dialog.show();
+           }
+           //加载完毕
+           @Override
+           public void onPageFinished(WebView view, String url) {
+               super.onPageFinished(view, url);
+               dialog.dismiss();
+           }
        });
-       //加载webView页面的监听
-     platformStatementWebView.setWebViewClient(new WebViewClient(){
-         //开始加载
-         @Override
-         public void onPageStarted(WebView view, String url, Bitmap favicon) {
-             super.onPageStarted(view, url, favicon);
-             dialog=new CustomProgressDialog(PlatformStatementActivity.this,"加载中...",R.drawable.load_anim);
-             dialog.show();
-         }
-       //加载完毕
-         @Override
-         public void onPageFinished(WebView view, String url) {
-             super.onPageFinished(view, url);
-             dialog.dismiss();
-         }
-     });
+
        WebSettings webSettings = platformStatementWebView.getSettings();
        //设置支持javascript
        webSettings.setJavaScriptEnabled(true);
