@@ -10,10 +10,13 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
+import com.example.lovehometown.activity.DetailsActivity;
 import com.example.lovehometown.activity.LoginActivity;
 import com.example.lovehometown.activity.MymeaasgeActivity;
 import com.example.lovehometown.activity.ShopListActivity;
@@ -181,12 +184,25 @@ public class HomeFragment extends BaseFragment{
         list.add(new GoodBigType(14,"其他",R.drawable.qita));
         return  list;
     }
+    List<ShopInfo> list=new ArrayList<ShopInfo>();
     public void initView(){
         //dialog.dismiss();
-        List<ShopInfo> list=new ArrayList<ShopInfo>();
-        list.add(new ShopInfo(1,R.drawable.che,"hhh","50","10:00-12:00","1516346673","xxx","xxx","xx","xxx"));
+       list.clear();
+        //int id, int shopImage, String name, String price, String time, String phone, String info, String linkMan, String address, String type
+        list.add(new ShopInfo(1,R.drawable.che,"龙哥大酒店","50元/人","10:00-12:00","15116346673","欢迎光临","黄先生","长沙市望城区","酒店"));
         adapter=new GoodsAdapter(list,getActivity());
         indexView.setAdapter(adapter);
+
+    }
+    @Event(value = R.id.indexListView,type = AdapterView.OnItemClickListener.class)
+    private void detail(AdapterView<?> parent, View view, int position, long id){
+        Intent intent=new Intent();
+        Bundle bundle=new Bundle();
+        String json= JSON.toJSONString(list.get(position));
+        bundle.putString("jsonData",json);
+        intent.putExtras(bundle);
+        intent.setClass(getActivity(), DetailsActivity.class);
+      startActivity(intent);
     }
     @Event(R.id.serach_text)
     private void serach(View view){

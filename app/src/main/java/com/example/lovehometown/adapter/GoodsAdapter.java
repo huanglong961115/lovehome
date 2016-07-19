@@ -106,7 +106,7 @@ public class GoodsAdapter extends BaseAdapter {
             public void onClick(View v) {
                 //弹出拨打电话确认框
                 CustomDialog.Builder dialog = new CustomDialog.Builder(context,R.layout.dialog);
-                dialog.setMessage("确定拨打" + _shopInfo.getPhone());
+                dialog.setMessage("确定拨打:" + _shopInfo.getPhone());
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
