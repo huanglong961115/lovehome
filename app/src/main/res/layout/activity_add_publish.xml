@@ -122,6 +122,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@null"
+                            android:inputType="number"
                             android:hint="@string/consume_addpublish2"
                             android:layout_marginLeft="10dip"
                             android:textSize="15sp"/>
@@ -261,8 +262,8 @@
                             android:layout_centerInParent="true">
                             <CheckBox
                                 android:id="@+id/check_addPublish"
-                                android:layout_width="23dip"
-                                android:layout_height="23dip"
+                                android:layout_width="28dip"
+                                android:layout_height="28dip"
                                 android:checked="true"
                                 android:button="@drawable/checkbox_bg2"
                                 android:layout_gravity="center_vertical"/>
@@ -299,6 +300,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@null"
+
                             android:textSize="15sp"
                             android:layout_marginLeft="10dip"
                             />
@@ -368,6 +370,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@null"
+                            android:inputType="number"
                             android:textSize="15sp"
                             android:layout_marginLeft="10dip"
                             />
