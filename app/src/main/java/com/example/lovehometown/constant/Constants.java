@@ -18,6 +18,8 @@ public class Constants {
     public final static String DETAILS_URL="http://119.29.163.243:8080/LoveHome/WebRoot/details.html";
     //发布分类访问地址
     public final static String PUBLISH_URL="http://119.29.163.243:8080/LoveHome/WebRoot/index.jsp";
+    //登录url;
+    public final static  String LOGIN_URL="http://115.28.137.74:8080/LoveHome/login.do";
     //是否登录在share存放的key值
     public final static String IS_LOGIN="islogin";
     //传递的key值

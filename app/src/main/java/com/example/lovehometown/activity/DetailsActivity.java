@@ -12,7 +12,9 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
@@ -32,6 +34,15 @@ public class DetailsActivity extends BaseActivity {
     WebView webview;
     @ViewInject(R.id.call)
     LinearLayout call;
+    /*标题栏*/
+    @ViewInject(R.id.leftView)
+    private ImageView img;
+    @ViewInject(R.id.title)
+    private TextView title;
+    @ViewInject(R.id.rightView2)
+    ImageView loveView;
+    @ViewInject(R.id.rightView1)
+    ImageView shareView;
     //传过来的数据
     String jsonData;
     @Override
@@ -40,6 +51,13 @@ public class DetailsActivity extends BaseActivity {
         initView();
     }
     private void initView(){
+        img.setVisibility(View.VISIBLE);
+        title.setVisibility(View.VISIBLE);
+        title.setText("详情");
+        loveView.setVisibility(View.VISIBLE);
+        shareView.setVisibility(View.VISIBLE);
+        shareView.setImageResource(R.drawable.fenxiang);
+        loveView.setImageResource(R.drawable.love);
         Bundle bundle=getIntent().getExtras();
          jsonData=bundle.getString("jsonData");
         T.showShort(this,jsonData);

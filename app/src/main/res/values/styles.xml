@@ -19,10 +19,9 @@
         <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
         <item name="android:windowExitAnimation">@anim/dialog_exist</item>
     </style>
-    <!-- 对话框的动画效果样式-->
+    <!-- 发布弹出对话框的动画效果样式-->
     <style name="dialogStyle2" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/publish_dialog_enter</item>
         <item name="android:windowExitAnimation">@anim/publish_dialog_exist</item>
-
     </style>
 </resources>

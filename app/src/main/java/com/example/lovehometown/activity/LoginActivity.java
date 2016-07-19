@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lovehometown.R;
+import com.example.lovehometown.util.T;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -19,10 +21,10 @@ public class LoginActivity extends BaseActivity{
     View titleBar;
     /*用户名*/
     @ViewInject(R.id.userName)
-    TextView userName;
+    EditText userName;
     /*密码*/
     @ViewInject(R.id.password)
-    TextView password;
+    EditText password;
     /*标题栏*/
     @ViewInject(R.id.leftView)
     private ImageView img;
@@ -53,6 +55,19 @@ public class LoginActivity extends BaseActivity{
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);
         title.setText("登录");
+        String username=userName.getText().toString();
+        String pass=password.getText().toString();
+        //判断用户名和密码是否为空
+        //用户名的正则判断
+        String reg="^\\s*$";
+        if(username.matches(reg)){
+            T.showShort(this,"用户名不能为空");
+            return;
+        }
+        if(pass==null||pass.trim().equals("")){
+            T.showShort(this,"密码不能为空");
+            return;
+        }
 
     }
     @Event(R.id.leftView)

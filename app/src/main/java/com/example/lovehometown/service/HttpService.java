@@ -22,11 +22,23 @@ public class HttpService {
         }
         return httpService;
     }
+
+    /**
+     * 得到分类的数据
+     * @param callBack
+     * @param type
+     */
     public void getPublishList(LoveHomeCallBack<String> callBack,int type){
         //地址
         //String url="http://172.16.46.7:8080/LoveHome/index.jsp";
         RequestParams params=new RequestParams(Constants.PUBLISH_URL);
         params.addBodyParameter("type",type+"");
         x.http().post(params,callBack);
+    }
+    public void login(String userName,String password,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams(Constants.LOGIN_URL);
+        params.addQueryStringParameter("userPhone",userName);
+        params.addBodyParameter("password",password);
+        x.http().get(params,callBack);
     }
 }
