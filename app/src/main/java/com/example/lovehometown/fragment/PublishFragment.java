@@ -1,5 +1,6 @@
 package com.example.lovehometown.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,13 +16,20 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
+import com.example.lovehometown.activity.AddPublishActivity;
 import com.example.lovehometown.adapter.ImgGridViewAdapter;
+import com.example.lovehometown.adapter.PictureViewAdapter;
 import com.example.lovehometown.adapter.PublishCateGrotAdapter;
+import com.example.lovehometown.callback.LoveHomeCallBack;
 import com.example.lovehometown.customview.CustomDialog;
 import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.model.GoodBigType;
+import com.example.lovehometown.model.PublishList;
+import com.example.lovehometown.service.HttpService;
 import com.example.lovehometown.util.T;
 
 import org.xutils.view.annotation.ContentView;
@@ -39,6 +47,7 @@ public class PublishFragment extends BaseFragment{
    GridView publishGridView;
     @ViewInject(R.id.title)
     TextView title;
+    List<PublishList.NamesBean> publishList=new ArrayList<PublishList.NamesBean>();
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
        // T.showShort(getActivity(),"进来了");
@@ -63,50 +72,102 @@ public class PublishFragment extends BaseFragment{
         list.add(new GoodBigType(14,"其他",R.drawable.qita));
         return  list;
     }
+    PublishCateGrotAdapter publishCateGrotAdapter;
+    PublishDialog dialog;
     public void initView(){
 
         title.setVisibility(View.VISIBLE);
         title.setText("选择发布类型");
 
-        List<GoodBigType> list=initData();
+       List<GoodBigType> list=initData();
+        final List<GoodBigType> typeList=list;
         ImgGridViewAdapter adapter=new ImgGridViewAdapter(getActivity(),list);
         publishGridView.setAdapter(adapter);
         /**
          * 点击事件
          */
+         //子项点击获取分类
         publishGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //final List<String> _list=list;
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                   List<String> list=new ArrayList<String>();
-                list.add("酒店");
-                list.add("饭店");
-                list.add("西点");
-                list.add("夜宵");
-                list.add("外卖");
+            public void onItemClick(AdapterView<?> parent, View view,  int position, long id) {
+                //
+                 String name=typeList.get(position).getName();
+                final String _name=name;
+               //得到dialog内容的布局
                 View view1=LayoutInflater.from(getActivity()).inflate(R.layout.publish_dialog_list,null);
+                //得到listView
                 ListView lv= (ListView) view1.findViewById(R.id.dialog_list);
-                PublishDialog.Builder builder=new PublishDialog.Builder(getActivity());
+
+                //新建一个图片，用来取消选择
                 ImageView imageView=new ImageView(getActivity());
+                //设置图片
                 imageView.setImageResource(R.drawable.error);
+                //设置图片的距离
                 imageView.setPadding(0,20,0,20);
+               final  ImageView _imageView=imageView;
                 lv.addFooterView(imageView);
-                lv.setAdapter(new PublishCateGrotAdapter(getActivity(),list));
+                //给listview设置适配器
+                publishCateGrotAdapter=new PublishCateGrotAdapter(getActivity(),publishList);
+                lv.setAdapter(publishCateGrotAdapter);
+                final  View _view1=view1;
 
-                builder.setContentView(view1);
-                 PublishDialog dialog=builder.create();
-                final  PublishDialog _dialog=dialog;
-                Window window = dialog.getWindow();
-                dialog.show();
-                imageView.setOnClickListener(new View.OnClickListener() {
+                //网络获取数据，显示分类
+                HttpService.getHttpService().getPublishList(new LoveHomeCallBack<String>() {
+                    //访问网络成功
                     @Override
-                    public void onClick(View v) {
-                        _dialog.dismiss();
+                    public void onSuccess(String result) {
+                        //清除原来的数据
+                       publishList.clear();
+                        //把拿到的json数据转换为一个list
+                        PublishList publish=   JSON.parseObject(result,PublishList.class);
+                        //添加到list里面
+                        publishList.addAll(publish.getNames());
+                        //更显适配器
+                        publishCateGrotAdapter.notifyDataSetChanged();
+                        //dialog的选择
+                        PublishDialog.Builder builder=new PublishDialog.Builder(getActivity());
+                        //设置内容
+                        builder.setContentView(_view1);
+                        //创建
+                         dialog=builder.create();
+                        //final  PublishDialog _dialog=dialog;
+                        //设置dialog的显示位置
+                        Window window = dialog.getWindow();
+                        dialog.show();
+                        //取消按钮的选择
+                        _imageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                        //设置window显示的位置
+                        window.setGravity(Gravity.BOTTOM);
+                 //选择子项
                     }
-                });
-                //设置window显示的位置
-                window.setGravity(Gravity.BOTTOM);
 
-
+                    @Override
+                    public void onError(Throwable ex, boolean isOnCallback) {
+                          T.showShort(getActivity(),"连接网络失败,请检查你的网络设置");
+                    }
+                },position);
+                //选择某一项
+               lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                   @Override
+                   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                       T.showShort(getActivity(),publishList.get(position).toString());
+                      //进入发布页面
+                       Intent intent=new Intent();
+                       Bundle bundle=new Bundle();
+                       bundle.putString("name",_name);
+                       bundle.putString("type",publishList.get(position).getName());
+                       intent.putExtras(bundle);
+                       intent.setClass(getActivity(), AddPublishActivity.class);
+                       startActivity(intent);
+                       dialog.dismiss();
+                   }
+               });
             }
         });
 

@@ -28,6 +28,10 @@ public class AddPublishActivity extends BaseActivity {
         /*设置可见*/
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);
+      Bundle bundle=getIntent().getExtras();
+        String name=bundle.getString("name");
+        String type=bundle.getString("type");
+        title.setText(name+"-"+type);
 
     }
 }

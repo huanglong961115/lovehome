@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.lovehometown.R;
+import com.example.lovehometown.model.PublishList;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -19,10 +20,10 @@ import java.util.List;
  */
 public class PublishCateGrotAdapter extends BaseAdapter{
     Context context;
-    List<String> list;
+    List<PublishList.NamesBean> list;
     LayoutInflater inflater;
 
-    public PublishCateGrotAdapter(Context context, List<String> list) {
+    public PublishCateGrotAdapter(Context context, List<PublishList.NamesBean> list) {
         this.context = context;
         this.list = list;
         this.inflater = LayoutInflater.from(context);
@@ -54,7 +55,7 @@ public class PublishCateGrotAdapter extends BaseAdapter{
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.textView.setText(list.get(position));
+        viewHolder.textView.setText(list.get(position).getName());
         return convertView;
     }
     class ViewHolder{
