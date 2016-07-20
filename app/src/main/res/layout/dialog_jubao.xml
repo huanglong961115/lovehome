@@ -121,7 +121,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:textColor="@color/theme_color"
-                android:id="@+id/positiveButton"
+                android:id="@+id/negitvButton"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:textSize="22sp"
@@ -129,13 +129,13 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:text="@string/poistive"/>
+                android:text="@string/negative"/>
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="@color/gray"/>
             <TextView
-                android:id="@+id/negativeButton"
+                android:id="@+id/confirm"
                 android:layout_width="0dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
@@ -144,7 +144,7 @@
                 android:layout_marginTop="10dp"
                 android:textColor="@color/theme_color"
                 android:layout_height="wrap_content"
-                android:text="@string/negative"/>
+                android:text="@string/confirmjubao"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

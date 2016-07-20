@@ -103,5 +103,6 @@
     <string name="publish2_mymessage">]未审核...</string>
     <string name="passnot_mymessage">审核不通过</string>
     <string name="agreement_register2">《服务条款》</string>
+    <string name="confirmjubao">确认举报</string>
 
 </resources>

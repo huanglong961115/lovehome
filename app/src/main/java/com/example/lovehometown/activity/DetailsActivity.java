@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -21,6 +22,7 @@ import com.example.lovehometown.R;
 import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomDialog;
+import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.javascriptinterface.DetailsJavaScript;
 import com.example.lovehometown.model.ShopInfo;
 import com.example.lovehometown.util.T;
@@ -125,20 +127,27 @@ public class DetailsActivity extends BaseActivity {
                 dialog.create().show();
                 break;
             case R.id.jubao:
-                CustomDialog.Builder dialog2 = new CustomDialog.Builder(DetailsActivity.this,R.layout.dialog_jubao);
-                dialog2.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                PublishDialog.Builder builder = new PublishDialog.Builder(DetailsActivity.this);
+                View contentView= LayoutInflater.from(DetailsActivity.this).inflate(R.layout.dialog_jubao,null);
+                TextView confirm= (TextView) contentView.findViewById(R.id.confirm);
+                TextView negaitv= (TextView) contentView.findViewById(R.id.negitvButton);
+
+               builder.setContentView(contentView);
+                PublishDialog dialog2=builder.create();
+                dialog2.show();
+                final PublishDialog _dialog2=dialog2;
+                confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                    public void onClick(View v) {
+                       _dialog2.dismiss();
                     }
                 });
-                dialog2.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                negaitv.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                    public void onClick(View v) {
+                        _dialog2.dismiss();
                     }
                 });
-                dialog2.create().show();
                 break;
         }
     }
