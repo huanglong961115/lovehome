@@ -20,17 +20,45 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dip"/>
-            <TextView
-                android:id="@+id/phonenumber"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="13332598897"
+                android:orientation="vertical"
                 android:layout_toRightOf="@id/personal_img"
-                android:layout_marginTop="45dip"
-                android:layout_marginLeft="10dip"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                />
+                android:layout_marginTop="22dip"
+                android:layout_marginLeft="10dip">
+                <TextView
+                    android:id="@+id/username_my"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="haha"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="7dip">
+                    <TextView
+                        android:id="@+id/phone_my"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12345678901"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        />
+                    <TextView
+                        android:id="@+id/address_my"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="长沙"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="5dip"
+                        />
+                </LinearLayout>
+            </LinearLayout>
             <ImageView
                 android:layout_width="20dip"
                 android:layout_height="20dip"

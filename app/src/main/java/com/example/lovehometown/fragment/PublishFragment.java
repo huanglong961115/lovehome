@@ -117,7 +117,6 @@ public class PublishFragment extends BaseFragment{
                 publishCateGrotAdapter=new PublishCateGrotAdapter(getActivity(),publishList);
                 lv.setAdapter(publishCateGrotAdapter);
                 final  View _view1=view1;
-
                 //网络获取数据，显示分类
                 HttpService.getHttpService().getPublishList(position+1,new LoveHomeCallBack<String>() {
                     //访问网络成功
