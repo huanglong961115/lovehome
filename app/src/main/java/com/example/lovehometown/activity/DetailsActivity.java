@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
+import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomDialog;
 import com.example.lovehometown.javascriptinterface.DetailsJavaScript;
@@ -139,6 +140,20 @@ public class DetailsActivity extends BaseActivity {
                 });
                 dialog2.create().show();
                 break;
+        }
+    }
+    @Event(R.id.rightView2)
+    private void love(View view){
+        boolean isLogin=Login.getInstance().equals(DetailsActivity.this);
+        if(isLogin){
+
+        }else{
+            Intent intent=new Intent();
+            Bundle bundle=new Bundle();
+            bundle.putString(Constants.NAME,Constants.Love);
+            intent.putExtras(bundle);
+            intent.setClass(DetailsActivity.this,LoginActivity.class);
+            startActivity(intent);
         }
     }
 }

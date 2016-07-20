@@ -124,6 +124,7 @@
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:id="@+id/weixinLogin"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
@@ -142,12 +143,14 @@
                 android:text="@string/weixin_login"/>
         </LinearLayout>
         <LinearLayout
+
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/qqLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/qq"/>

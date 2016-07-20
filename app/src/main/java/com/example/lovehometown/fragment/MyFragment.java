@@ -9,11 +9,13 @@ import android.widget.RelativeLayout;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.activity.AboutLoveHomeActivity;
+import com.example.lovehometown.activity.LoginActivity;
 import com.example.lovehometown.activity.MyPublishActivity;
 import com.example.lovehometown.activity.MymeaasgeActivity;
 import com.example.lovehometown.activity.PlatformStatementActivity;
 import com.example.lovehometown.activity.UpdatePassWordPctivity;
 import com.example.lovehometown.activity.UserInfoActivity;
+import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomDialog;
 
@@ -132,12 +134,23 @@ public class MyFragment extends BaseFragment {
      * @param type 传递过去的参数
      */
     public void myChange(Class clazz,String type){
-        Bundle bundle=new Bundle();
-        bundle.putString(Constants.MY_TYPE,type);
-        Intent intent=new Intent();
-        intent.putExtra(Constants.TYPE,bundle);
-        intent.setClass(getActivity(), clazz);
-        startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
+        //判断是否登录
+        boolean isLogin= Login.getInstance().isLogin(getActivity());
+        if(isLogin) {
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.MY_TYPE, type);
+            Intent intent = new Intent();
+            intent.putExtras(bundle);
+            intent.setClass(getActivity(), clazz);
+            startActivity(intent);
+            getActivity().overridePendingTransition(R.anim.right_in, R.anim.right_out);
+        }else{
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.NAME, type);
+            Intent intent = new Intent();
+            intent.putExtras(bundle);
+            intent.setClass(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }
     }
 }

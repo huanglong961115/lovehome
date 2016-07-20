@@ -65,7 +65,7 @@ public class UserInfoActivity extends BaseActivity {
         Bundle bundle=new Bundle();
         bundle.putString(Constants.INFO_ATTR,attr);
         Intent intent=new Intent();
-        intent.putExtra(Constants.USER_INFO,bundle);
+        intent.putExtras(bundle);
         intent.setClass(UserInfoActivity.this, clazz);
         startActivity(intent);
         overridePendingTransition(R.anim.right_in,R.anim.right_out);

@@ -30,7 +30,10 @@ public class Constants {
     public final static  String MY_DRAFT="myDraft";
     public final static  String MY_COLLECT="myCollect";
     public final static  String MY_MESSAGE="myMessage";
-    public final static  String TYPE="type";
+    public final static String NAME="name";
+    public final static String Love="love";
+    public final static String PUBLISH="publish";
+    public final static String UPDATE_PASS="updatepass";
     public final static String USER_INFO="userInfo";
     //属性
     public final static String INFO_ATTR="infoAttr";

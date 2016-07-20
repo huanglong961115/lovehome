@@ -33,7 +33,7 @@ public class UpdateInfoActivity extends BaseActivity {
     private void initView() {
         title.setVisibility(View.VISIBLE);
         backImg.setVisibility(View.VISIBLE);
-        Bundle bundle=getIntent().getBundleExtra(Constants.USER_INFO);
+        Bundle bundle=getIntent().getExtras();
         String attr=bundle.getString(Constants.INFO_ATTR);
         if(attr.equals(Constants.USERNMAE)){
             title.setText("修改用户名称");

@@ -28,7 +28,7 @@ public class MyPublishActivity extends BaseActivity {
     private void initView() {
         title.setVisibility(View.VISIBLE);
         backImg.setVisibility(View.VISIBLE);
-        Bundle bundle=getIntent().getBundleExtra(Constants.TYPE);
+        Bundle bundle=getIntent().getExtras();
         String type=bundle.getString(Constants.MY_TYPE);
         if(type.equals(Constants.MY_PUBLISH)){
             title.setText("我的发布");
