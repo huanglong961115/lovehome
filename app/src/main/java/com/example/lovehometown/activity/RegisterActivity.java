@@ -31,6 +31,8 @@ public class RegisterActivity extends BaseActivity {
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);
         title.setText("用户注册");
+
+        //hhh1
     }
     @Event(R.id.leftView)
     private void back(View view){
