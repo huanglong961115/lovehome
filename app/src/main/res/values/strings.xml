@@ -55,7 +55,7 @@
     <string name="password_6_register">6位密码</string>
     <string name="sure_password_register">确认密码:</string>
     <string name="again_password_register">再次输入密码</string>
-    <string name="agreement_register">我已阅读并且同意《注册协议》</string>
+    <string name="agreement_register">我已阅读并且同意</string>
     <string name="register">注册</string>
     <string name="name_update">用户名：</string>
     <string name="newname_update">请输入要修改的用户名</string>
@@ -102,5 +102,6 @@
     <string name="publish_mymessage">您发布的[</string>
     <string name="publish2_mymessage">]未审核...</string>
     <string name="passnot_mymessage">审核不通过</string>
+    <string name="agreement_register2">《服务条款》</string>
 
 </resources>

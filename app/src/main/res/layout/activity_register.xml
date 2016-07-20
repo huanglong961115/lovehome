@@ -110,7 +110,8 @@
             android:layout_height="fill_parent"
             android:text="@string/sure_password_register"
             android:layout_weight="8.0" />
-        <EditText android:gravity="center_vertical"
+        <EditText android:textSize="16.0dip"
+            android:gravity="center_vertical"
             android:id="@+id/edt_register_ensure_password"
             android:background="@android:color/transparent"
             android:paddingLeft="10.0dip"
@@ -133,12 +134,19 @@
             android:layout_marginRight="@dimen/margin_middle"
             android:checked="true"
             android:button="@drawable/checkbox_bg" />
-        <Button android:textSize="16.0dip"
+        <TextView android:textSize="16.0dip"
             android:id="@+id/btn_agreement_context"
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/agreement_register" />
+        <TextView android:textSize="16.0dip"
+            android:id="@+id/btn_agreement_context2"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/theme_color"
+            android:text="@string/agreement_register2" />
     </LinearLayout>
     <Button android:textSize="16.0dip"
         android:textColor="@android:color/white"
