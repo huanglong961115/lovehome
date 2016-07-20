@@ -24,4 +24,8 @@
         <item name="android:windowEnterAnimation">@anim/publish_dialog_enter</item>
         <item name="android:windowExitAnimation">@anim/publish_dialog_exist</item>
     </style>
+    <style name="CustomRadioBtn">
+        <item name="android:background">@android:drawable/btn_radio</item>
+        <item name="android:button">@drawable/custom_radio_btn</item>
+    </style>
 </resources>

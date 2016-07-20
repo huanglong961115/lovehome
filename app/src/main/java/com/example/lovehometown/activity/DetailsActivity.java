@@ -34,6 +34,8 @@ public class DetailsActivity extends BaseActivity {
     WebView webview;
     @ViewInject(R.id.call)
     LinearLayout call;
+    @ViewInject(R.id.jubao)
+    LinearLayout jubao;
     /*标题栏*/
     @ViewInject(R.id.leftView)
     private ImageView img;
@@ -82,40 +84,61 @@ public class DetailsActivity extends BaseActivity {
         //和js进行交互
         webview.addJavascriptInterface(new DetailsJavaScript(DetailsActivity.this,jsonData),"android");
     }
-    @Event(R.id.call)
-    private void call(View view){
-        CustomDialog.Builder dialog = new CustomDialog.Builder(DetailsActivity.this,R.layout.dialog);
-        ShopInfo shopInfo= JSON.parseObject(jsonData,ShopInfo.class);
-        final ShopInfo _shopInfo=shopInfo;
-        dialog.setMessage("确定拨打:" + _shopInfo.getPhone());
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //调用系统拨打电话
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + _shopInfo.getPhone()));
-                //权限检查
-                //sdk23之后
+    @Event(value={R.id.call,R.id.jubao})
+    private void click(View view){
+        int id=view.getId();
+        switch (id){
+            case R.id.call:
+                CustomDialog.Builder dialog = new CustomDialog.Builder(DetailsActivity.this,R.layout.dialog);
+                ShopInfo shopInfo= JSON.parseObject(jsonData,ShopInfo.class);
+                final ShopInfo _shopInfo=shopInfo;
+                dialog.setMessage("确定拨打:" + _shopInfo.getPhone());
+                dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //调用系统拨打电话
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + _shopInfo.getPhone()));
+                        //权限检查
+                        //sdk23之后
 
-                if (ActivityCompat.checkSelfPermission(DetailsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
-                startActivity(intent);
-                dialog.dismiss();
-            }
-        });
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.create().show();
+                        if (ActivityCompat.checkSelfPermission(DetailsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            // TODO: Consider calling
+                            //    ActivityCompat#requestPermissions
+                            // here to request the missing permissions, and then overriding
+                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                            //                                          int[] grantResults)
+                            // to handle the case where the user grants the permission. See the documentation
+                            // for ActivityCompat#requestPermissions for more details.
+                            return;
+                        }
+                        startActivity(intent);
+                        dialog.dismiss();
+                    }
+                });
+                dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.create().show();
+                break;
+            case R.id.jubao:
+                CustomDialog.Builder dialog2 = new CustomDialog.Builder(DetailsActivity.this,R.layout.dialog_jubao);
+                dialog2.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog2.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog2.create().show();
+                break;
+        }
     }
 }
