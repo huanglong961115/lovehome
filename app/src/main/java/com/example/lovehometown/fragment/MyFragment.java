@@ -113,14 +113,21 @@ public class MyFragment extends BaseFragment {
     @Event(value = {R.id.platformStatement,R.id.aboutLoveHome,R.id.updatePassword,R.id.mymessage,R.id.mypublish,R.id.myDraft,R.id.mycollect,R.id.head_my,R.id.cleancache,R.id.logout})
     private void click(View view){
         int id=view.getId();
+        boolean isLogin=Login.getInstance().isLogin(getActivity());
         switch (id){
             case R.id.head_my:
                 //我的资料
-                boolean isLogin=Login.getInstance().isLogin(getActivity());
+
                 if(isLogin) {
                     startActivity(new Intent(getActivity(), UserInfoActivity.class));
                 }else{
-                    startActivity(new Intent(getActivity(),LoginActivity.class));
+                    //查看我的资料
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Constants.NAME, "my");
+                    Intent intent2 = new Intent();
+                    intent2.putExtras(bundle);
+                    intent2.setClass(getActivity(), LoginActivity.class);
+                    startActivity(intent2);
                 }
                 getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
                 break;
@@ -154,8 +161,18 @@ public class MyFragment extends BaseFragment {
                 break;
             //修改密码
             case R.id.updatePassword:
-                startActivity(new Intent(getActivity(), UpdatePassWordPctivity.class));
-                getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
+                //判断是否登录
+              if(isLogin) {
+                  startActivity(new Intent(getActivity(), UpdatePassWordPctivity.class));
+                  getActivity().overridePendingTransition(R.anim.right_in, R.anim.right_out);
+              }else{
+                  Bundle bundle = new Bundle();
+                  bundle.putString(Constants.NAME, Constants.UPDATE_PASS);
+                  Intent intent2 = new Intent();
+                  intent2.putExtras(bundle);
+                  intent2.setClass(getActivity(), LoginActivity.class);
+                  startActivity(intent2);
+              }
                 break;
             //清除缓存
             case R.id.cleancache:
@@ -164,7 +181,8 @@ public class MyFragment extends BaseFragment {
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                             //清除缓存操作
+                        dialog.dismiss();
                     }
                 });
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
