@@ -45,5 +45,7 @@ public class Constants {
     public final static String APP_ID="1105545838";
     public final static String PLATFORM_STATEMENT="平台申明";
     public final static String SERVICE="服务条款";
+    public final static String SMS_URL="http://115.28.137.74:8080/LoveHome/sms.do";
+    public final static String REGISTER_URL="http://115.28.137.74:8080/LoveHome/register.do";
 
 }

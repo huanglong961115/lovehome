@@ -131,6 +131,7 @@ public class LoginActivity extends BaseActivity{
         HttpService.getHttpService().login(username, pass, new LoveHomeCallBack<String>() {
                 @Override
                 public void onSuccess(String result) {
+                    //T.showShort(LoginActivity.this,result);
                     //解析从网络拿到的数据
                 UserInfo userInfo= JSON.parseObject(result,UserInfo.class);
                //判断是否为-1 登录失败

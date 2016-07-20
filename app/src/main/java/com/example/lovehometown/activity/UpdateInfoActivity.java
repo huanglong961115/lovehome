@@ -35,10 +35,13 @@ public class UpdateInfoActivity extends BaseActivity {
         backImg.setVisibility(View.VISIBLE);
         Bundle bundle=getIntent().getExtras();
         String attr=bundle.getString(Constants.INFO_ATTR);
+        String content=bundle.getString("content");
+        info.setText(content);
         if(attr.equals(Constants.USERNMAE)){
             title.setText("修改用户名称");
             tips.setText("用户名称：");
             info.setHint("请填写要修改的用户名称");
+
         }else if(attr.equals(Constants.USER_PHONE)){
 
                 title.setText("修改联系方式");

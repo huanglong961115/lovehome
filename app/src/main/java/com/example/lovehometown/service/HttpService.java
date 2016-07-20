@@ -4,6 +4,7 @@ import com.example.lovehometown.R;
 import com.example.lovehometown.callback.LoveHomeCallBack;
 import com.example.lovehometown.constant.Constants;
 
+import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
@@ -55,15 +56,23 @@ public class HttpService {
      * @param callBack
      */
    public void sendCode(String phonenumber,LoveHomeCallBack<String> callBack){
-       RequestParams params=new RequestParams("http://115.28.137.74:8080/LoveHome/sms.do");
+       RequestParams params=new RequestParams(Constants.SMS_URL);
        params.addQueryStringParameter("userPhone",phonenumber);
        x.http().get(params,callBack);
    }
+    //注册
     public void register(String phoneNumber,String code,String password,LoveHomeCallBack<String> callBack){
-        RequestParams params=new RequestParams("http://115.28.137.74:8080/LoveHome/sms.do");
+        RequestParams params=new RequestParams(Constants.REGISTER_URL);
         params.addQueryStringParameter("userPhone",phoneNumber);
         params.addQueryStringParameter("code",code);
         params.addQueryStringParameter("password",password);
         x.http().get(params,callBack);
     }
+    //修改名字
+   public void updateUserName(String name,LoveHomeCallBack<String> callBack) {
+     RequestParams params=new RequestParams();
+       x.http().get(params,callBack);
+   }
+
+
 }
