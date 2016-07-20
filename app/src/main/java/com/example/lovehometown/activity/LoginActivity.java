@@ -169,6 +169,7 @@ public class LoginActivity extends BaseActivity{
         LoginBroadCast reciver=new LoginBroadCast();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.lovehome.forget");
+        intentFilter.addAction("com.lovehome.register");
         registerReceiver(reciver,intentFilter);
 
     }
@@ -292,6 +293,8 @@ public class LoginActivity extends BaseActivity{
        @Override
        public void onReceive(Context context, Intent intent) {
            if(intent.getAction().equals("com.lovehome.forget")){
+               LoginActivity.this.finish();
+           }else if(intent.getAction().equals("com.lovehome.register")){
                LoginActivity.this.finish();
            }
        }
