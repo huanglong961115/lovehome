@@ -20,10 +20,10 @@ import java.util.List;
  */
 public class PublishCateGrotAdapter extends BaseAdapter{
     Context context;
-    List<PublishList.NamesBean> list;
+    List<PublishList.PublistBean> list;
     LayoutInflater inflater;
 
-    public PublishCateGrotAdapter(Context context, List<PublishList.NamesBean> list) {
+    public PublishCateGrotAdapter(Context context, List<PublishList.PublistBean> list) {
         this.context = context;
         this.list = list;
         this.inflater = LayoutInflater.from(context);
@@ -55,7 +55,7 @@ public class PublishCateGrotAdapter extends BaseAdapter{
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.textView.setText(list.get(position).getName());
+        viewHolder.textView.setText(list.get(position).getReleaseList().getPublishName());
         return convertView;
     }
     class ViewHolder{

@@ -35,8 +35,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_alignParentRight="true">
-                <Button android:textSize="16.0dip"
+                <TextView android:textSize="16.0dip"
                     android:textColor="@android:color/white"
+                    android:gravity="center"
                     android:id="@+id/btn_register_send_code"
                     android:background="@drawable/btn_small_green"
                     android:layout_width="wrap_content"

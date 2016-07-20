@@ -9,15 +9,15 @@ public class Constants {
     //存储是否第一次启动应用程序
     public final static String IS_FIRST="isFirst";
     //首页图片轮播地址
-    public final static String IMG_WEB_URL="http://119.29.163.243:8080/LoveHome/WebRoot/index.html";
+    public final static String IMG_WEB_URL="http://115.28.137.74:8080/LoveHome/index.html";
     //平台声明地址
-    public final static String  PLATFORM_STATEMENT_URL="http://119.29.163.243:8080/LoveHome/WebRoot/PlatformStatement.html";
+    public final static String  PLATFORM_STATEMENT_URL="http://115.28.137.74:8080/LoveHome/PlatformStatement.html";
     //关于爱家乡地址
-    public final static String  ABOUT_LOVE_HOME_URL="http://119.29.163.243:8080/LoveHome/WebRoot/PlatformStatement.html";
+    public final static String  ABOUT_LOVE_HOME_URL="http://115.28.137.74:8080/LoveHome/PlatformStatement.html";
     //详情地址
-    public final static String DETAILS_URL="http://119.29.163.243:8080/LoveHome/WebRoot/details.html";
+    public final static String DETAILS_URL="http://115.28.137.74:8080/LoveHome/details.html";
     //发布分类访问地址
-    public final static String PUBLISH_URL="http://119.29.163.243:8080/LoveHome/WebRoot/index.jsp";
+    public final static String PUBLISH_URL="http://115.28.137.74:8080/LoveHome/getpublishlist.do";
     //登录url;
     public final static  String LOGIN_URL="http://115.28.137.74:8080/LoveHome/login.do";
     //发布列表url

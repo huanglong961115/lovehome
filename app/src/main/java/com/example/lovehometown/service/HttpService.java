@@ -28,12 +28,12 @@ public class HttpService {
      * @param callBack
      * @param type
      */
-    public void getPublishList(LoveHomeCallBack<String> callBack,int type){
+    public void getPublishList(int type,LoveHomeCallBack<String> callBack){
         //地址
         //String url="http://172.16.46.7:8080/LoveHome/index.jsp";
         RequestParams params=new RequestParams(Constants.PUBLISH_URL);
-        params.addBodyParameter("type",type+"");
-        x.http().post(params,callBack);
+        params.addQueryStringParameter("pubtype",type+"");
+        x.http().get(params,callBack);
     }
     public void login(String userName,String password,LoveHomeCallBack<String> callBack){
         RequestParams params=new RequestParams(Constants.LOGIN_URL);
@@ -41,9 +41,5 @@ public class HttpService {
         params.addBodyParameter("password",password);
         x.http().get(params,callBack);
     }
-    public void getPublishlist(String pubtype,LoveHomeCallBack<String> callBack){
-        RequestParams params=new RequestParams(Constants.PUBLISH_LIST_URL);
-        params.addQueryStringParameter("pubtype",pubtype);
-        x.http().get(params,callBack);
-    }
+
 }

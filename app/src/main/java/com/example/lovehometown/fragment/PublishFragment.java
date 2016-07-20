@@ -30,6 +30,7 @@ import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.model.GoodBigType;
 import com.example.lovehometown.model.PublishList;
 import com.example.lovehometown.service.HttpService;
+import com.example.lovehometown.util.L;
 import com.example.lovehometown.util.T;
 
 import org.xutils.view.annotation.ContentView;
@@ -47,7 +48,7 @@ public class PublishFragment extends BaseFragment{
    GridView publishGridView;
     @ViewInject(R.id.title)
     TextView title;
-    List<PublishList.NamesBean> publishList=new ArrayList<PublishList.NamesBean>();
+    List<PublishList.PublistBean> publishList=new ArrayList<PublishList.PublistBean>();
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
        // T.showShort(getActivity(),"进来了");
@@ -90,7 +91,12 @@ public class PublishFragment extends BaseFragment{
         publishGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             //final List<String> _list=list;
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,  int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+               // T.showShort(getActivity(),position+"---");
+                //老乡会
+                if(position==12){
+                     return;
+                }
                 //
                  String name=typeList.get(position).getName();
                 final String _name=name;
@@ -113,16 +119,22 @@ public class PublishFragment extends BaseFragment{
                 final  View _view1=view1;
 
                 //网络获取数据，显示分类
-                HttpService.getHttpService().getPublishList(new LoveHomeCallBack<String>() {
+                HttpService.getHttpService().getPublishList(position+1,new LoveHomeCallBack<String>() {
                     //访问网络成功
                     @Override
                     public void onSuccess(String result) {
                         //清除原来的数据
+                       // T.showShort(getActivity(),result);
                        publishList.clear();
                         //把拿到的json数据转换为一个list
-                        PublishList publish=   JSON.parseObject(result,PublishList.class);
+                        PublishList publish=JSON.parseObject(result,PublishList.class);
+                        if(publish.getResults().getCode()!=1){
+                            T.showShort(getActivity(),publish.getResults().getMsg());
+                            return;
+                        }
+                        //T.showShort(getActivity(),publish.getPublist().size()+"hhh");
                         //添加到list里面
-                        publishList.addAll(publish.getNames());
+                        publishList.addAll(publish.getPublist());
                         //更显适配器
                         publishCateGrotAdapter.notifyDataSetChanged();
                         //dialog的选择
@@ -149,19 +161,20 @@ public class PublishFragment extends BaseFragment{
 
                     @Override
                     public void onError(Throwable ex, boolean isOnCallback) {
+//                        L.e("TAG",ex.getMessage());
                           T.showShort(getActivity(),"连接网络失败,请检查你的网络设置");
                     }
-                },position);
+                });
                 //选择某一项
                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                    @Override
                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                       T.showShort(getActivity(),publishList.get(position).toString());
+                       //T.showShort(getActivity(),publishList.get(position).toString());
                       //进入发布页面
                        Intent intent=new Intent();
                        Bundle bundle=new Bundle();
                        bundle.putString("name",_name);
-                       bundle.putString("type",publishList.get(position).getName());
+                       bundle.putString("type",publishList.get(position).getReleaseList().getPublishName());
                        intent.putExtras(bundle);
                        intent.setClass(getActivity(), AddPublishActivity.class);
                        startActivity(intent);

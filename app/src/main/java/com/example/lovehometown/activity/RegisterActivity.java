@@ -30,7 +30,7 @@ public class RegisterActivity extends BaseActivity {
         /*设置可见*/
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);
-        title.setText("注册");
+        title.setText("用户注册");
     }
     @Event(R.id.leftView)
     private void back(View view){

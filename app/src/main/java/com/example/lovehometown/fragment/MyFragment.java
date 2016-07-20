@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.example.lovehometown.R;
@@ -42,10 +43,24 @@ public class MyFragment extends BaseFragment {
     RelativeLayout myCollect;
     @ViewInject(R.id.mymessage)
     RelativeLayout myMessage;
+    @ViewInject(R.id.logout)
+    Button logout;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initView();
     }
+
+    private void initView() {
+        //判断是否登录
+        boolean isLogin=Login.getInstance().isLogin(getActivity());
+        if(isLogin){
+            logout.setVisibility(View.VISIBLE);
+        }else{
+            logout.setVisibility(View.INVISIBLE);
+        }
+    }
+
     @Event(value = {R.id.platformStatement,R.id.aboutLoveHome,R.id.updatePassword,R.id.mymessage,R.id.mypublish,R.id.myDraft,R.id.mycollect,R.id.head_my,R.id.cleancache,R.id.logout})
     private void click(View view){
         int id=view.getId();
@@ -112,7 +127,7 @@ public class MyFragment extends BaseFragment {
                 builder2.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                         dialog.dismiss();
                     }
                 });
                 builder2.setNegativeButton("取消", new DialogInterface.OnClickListener() {
