@@ -23,7 +23,7 @@
                     >
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dip">
+                        android:layout_height="wrap_content">
                         <ImageView
                             android:id="@+id/camera_addpublish"
                             android:layout_width="70dip"
@@ -31,6 +31,15 @@
                             android:src="@drawable/photo"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dip"
+                            />
+                        <GridView
+                            android:id="@+id/photo_gridview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:numColumns="3"
+                            android:layout_marginLeft="20dip"
+                            android:layout_marginTop="10dip"
+                            android:horizontalSpacing="30dip"
                             />
                     </RelativeLayout>
                     <LinearLayout

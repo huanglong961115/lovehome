@@ -20,7 +20,9 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
+import com.example.lovehometown.activity.AboutLoveHomeActivity;
 import com.example.lovehometown.activity.AddPublishActivity;
+import com.example.lovehometown.activity.OldHometownActivity;
 import com.example.lovehometown.adapter.ImgGridViewAdapter;
 import com.example.lovehometown.adapter.PictureViewAdapter;
 import com.example.lovehometown.adapter.PublishCateGrotAdapter;
@@ -95,7 +97,9 @@ public class PublishFragment extends BaseFragment{
                // T.showShort(getActivity(),position+"---");
                 //老乡会
                 if(position==12){
-                     return;
+                    Toast.makeText(getActivity(),"hahhah",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getActivity(), OldHometownActivity.class));
+                    getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
                 }
                 //
                  String name=typeList.get(position).getName();

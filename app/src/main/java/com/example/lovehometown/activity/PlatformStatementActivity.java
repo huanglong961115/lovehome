@@ -1,5 +1,6 @@
 package com.example.lovehometown.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +42,13 @@ public class PlatformStatementActivity extends BaseActivity {
     }
    public void initView(){
        title.setVisibility(View.VISIBLE);
-       title.setText("平台声明");
+       Intent intent=new Intent();
+       String service=intent.getStringExtra("service");
+       if(service.equals(Constants.SERVICE)){
+           title.setText("服务条款");
+       }else{
+           title.setText("平台声明");
+       }
        backImg.setVisibility(View.VISIBLE);
        //加载地址
        platformStatementWebView.loadUrl(Constants.PLATFORM_STATEMENT_URL);

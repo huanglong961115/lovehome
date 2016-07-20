@@ -16,6 +16,8 @@ public class Constants {
     public final static String  ABOUT_LOVE_HOME_URL="http://115.28.137.74:8080/LoveHome/PlatformStatement.html";
     //详情地址
     public final static String DETAILS_URL="http://115.28.137.74:8080/LoveHome/details.html";
+    //老乡会
+    public final static String OLD_HOMETOWN_URL="http://115.28.137.74:8080/LoveHome/laoxianghui.html";
     //发布分类访问地址
     public final static String PUBLISH_URL="http://115.28.137.74:8080/LoveHome/getpublishlist.do";
     //登录url;
@@ -40,6 +42,8 @@ public class Constants {
     public final static String USERNMAE="userName";
     public final static String USER_PHONE="userPhone";
     public final static String USER_ADDRESS="userAddress";
-    //qqqppId;
     public final static String APP_ID="1105545838";
+    public final static String PLATFORM_STATEMENT="平台申明";
+    public final static String SERVICE="服务条款";
+
 }

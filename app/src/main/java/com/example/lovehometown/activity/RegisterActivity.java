@@ -1,5 +1,6 @@
 package com.example.lovehometown.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lovehometown.R;
+import com.example.lovehometown.constant.Constants;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -20,6 +22,8 @@ public class RegisterActivity extends BaseActivity {
     private ImageView img;
     @ViewInject(R.id.title)
     private TextView title;
+    @ViewInject(R.id.btn_agreement_context2)
+    private TextView btn_agreement;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +36,19 @@ public class RegisterActivity extends BaseActivity {
         title.setVisibility(View.VISIBLE);
         title.setText("用户注册");
     }
-    @Event(R.id.leftView)
+    @Event (value={R.id.leftView,R.id.btn_agreement_context2})
     private void back(View view){
-        RegisterActivity.this.finish();
+        int id=view.getId();
+        switch (id){
+            case  R.id.leftView:
+                RegisterActivity.this.finish();
+                break;
+            case R.id.btn_agreement_context2:
+                Intent intent=new Intent(this, PlatformStatementActivity.class);
+                intent.putExtra("service", Constants.SERVICE);
+                startActivity(intent);
+                this.overridePendingTransition(R.anim.right_in,R.anim.right_out);
+                break;
+        }
     }
 }

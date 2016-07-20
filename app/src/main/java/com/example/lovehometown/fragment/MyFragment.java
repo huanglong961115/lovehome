@@ -109,6 +109,7 @@ public class MyFragment extends BaseFragment {
         }
     }
 
+
     @Event(value = {R.id.platformStatement,R.id.aboutLoveHome,R.id.updatePassword,R.id.mymessage,R.id.mypublish,R.id.myDraft,R.id.mycollect,R.id.head_my,R.id.cleancache,R.id.logout})
     private void click(View view){
         int id=view.getId();
@@ -141,7 +142,9 @@ public class MyFragment extends BaseFragment {
                 break;
             //平台声明
             case  R.id.platformStatement:
-                startActivity(new Intent(getActivity(), PlatformStatementActivity.class));
+                Intent intent=new Intent(getActivity(), PlatformStatementActivity.class);
+                intent.putExtra("service",Constants.PLATFORM_STATEMENT);
+                startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
                 break;
             //关于爱家乡
