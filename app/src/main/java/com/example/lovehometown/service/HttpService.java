@@ -41,4 +41,9 @@ public class HttpService {
         params.addBodyParameter("password",password);
         x.http().get(params,callBack);
     }
+    public void getPublishlist(String pubtype,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams(Constants.PUBLISH_LIST_URL);
+        params.addQueryStringParameter("pubtype",pubtype);
+        x.http().get(params,callBack);
+    }
 }
