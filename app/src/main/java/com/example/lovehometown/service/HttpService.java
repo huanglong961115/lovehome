@@ -35,6 +35,13 @@ public class HttpService {
         params.addQueryStringParameter("pubtype",type+"");
         x.http().get(params,callBack);
     }
+
+    /**
+     * 登录
+     * @param userName
+     * @param password
+     * @param callBack
+     */
     public void login(String userName,String password,LoveHomeCallBack<String> callBack){
         RequestParams params=new RequestParams(Constants.LOGIN_URL);
         params.addQueryStringParameter("userPhone",userName);
@@ -42,4 +49,21 @@ public class HttpService {
         x.http().get(params,callBack);
     }
 
+    /**
+     * 发送验证码
+     * @param phonenumber
+     * @param callBack
+     */
+   public void sendCode(String phonenumber,LoveHomeCallBack<String> callBack){
+       RequestParams params=new RequestParams("http://115.28.137.74:8080/LoveHome/sms.do");
+       params.addQueryStringParameter("userPhone",phonenumber);
+       x.http().get(params,callBack);
+   }
+    public void register(String phoneNumber,String code,String password,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams("http://115.28.137.74:8080/LoveHome/sms.do");
+        params.addQueryStringParameter("userPhone",phoneNumber);
+        params.addQueryStringParameter("code",code);
+        params.addQueryStringParameter("password",password);
+        x.http().get(params,callBack);
+    }
 }

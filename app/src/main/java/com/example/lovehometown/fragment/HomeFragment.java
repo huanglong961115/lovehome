@@ -91,6 +91,7 @@ public class HomeFragment extends BaseFragment{
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 dialog=new CustomProgressDialog(getActivity(),"加载中...",R.drawable.load_anim);
+                //dialog.set
                 dialog.show();
             }
 
