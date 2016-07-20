@@ -42,7 +42,7 @@ public class PlatformStatementActivity extends BaseActivity {
     }
    public void initView(){
        title.setVisibility(View.VISIBLE);
-       Intent intent=new Intent();
+       Intent intent=getIntent();
        String service=intent.getStringExtra("service");
        if(service.equals(Constants.SERVICE)){
            title.setText("服务条款");

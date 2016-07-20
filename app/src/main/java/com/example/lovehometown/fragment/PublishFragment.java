@@ -97,9 +97,10 @@ public class PublishFragment extends BaseFragment{
                // T.showShort(getActivity(),position+"---");
                 //老乡会
                 if(position==12){
-                    Toast.makeText(getActivity(),"hahhah",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getActivity(),"hahhah",Toast.LENGTH_LONG).show();
                     startActivity(new Intent(getActivity(), OldHometownActivity.class));
                     getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
+                    return;
                 }
                 //
                  String name=typeList.get(position).getName();

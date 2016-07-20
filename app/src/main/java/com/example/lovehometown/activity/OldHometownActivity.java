@@ -18,7 +18,7 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 
 @ContentView(R.layout.activity_old_hometown)
-public class OldHometownActivity extends AppCompatActivity {
+public class OldHometownActivity extends BaseActivity {
     @ViewInject(R.id.web_oldhometown)
     WebView webView;
     /*标题栏*/
