@@ -7,6 +7,8 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
 import com.example.lovehometown.callback.LoveHomeCallBack;
 import com.example.lovehometown.constant.Constants;
+import com.example.lovehometown.model.RegisterInfo;
 import com.example.lovehometown.model.SMS;
 import com.example.lovehometown.service.HttpService;
 import com.example.lovehometown.util.T;
@@ -42,6 +45,16 @@ public class RegisterActivity extends BaseActivity {
     //手机号码输入框
     @ViewInject(R.id.edt_register_phone)
     EditText phone;
+    @ViewInject(R.id.btn_register)
+    Button registerBtn;
+    @ViewInject(R.id.edt_register_phone_code)
+    EditText code;
+    @ViewInject(R.id.edt_register_password)
+    EditText password;
+    @ViewInject(R.id.edt_register_ensure_password)
+    EditText confirmPass;
+    @ViewInject(R.id.check_agreement)
+    CheckBox agreement;
   Handler handler=new Handler(){
       @Override
       public void handleMessage(Message msg) {
@@ -116,6 +129,62 @@ public class RegisterActivity extends BaseActivity {
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
                 T.showShort(RegisterActivity.this,"网路连接失败,发送失败");
+            }
+        });
+    }
+    //注册
+    @Event(R.id.btn_register)
+    private void register(View view){
+        //手机号码是否合法
+        String phoneNumber=phone.getText().toString();
+        Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
+
+        Matcher m = p.matcher(phoneNumber);
+        if(!m.matches()){
+            T.showShort(RegisterActivity.this,"手机号码不合法,请重新输入");
+            return;
+        }
+        //验证码是否为空
+        final String reg="^\\s*$";
+        String sendCode=code.getText().toString();
+        if(sendCode.matches(reg)){
+            T.showShort(RegisterActivity.this,"请输入验证码");
+            return;
+        }
+        String pass=password.getText().toString();
+        //是否是6位密码
+        if(pass.trim().length()!=6){
+            T.showShort(RegisterActivity.this,"密码不符合要求");
+            return;
+        }
+        //确认密码是否和密码相同
+        String surePass=confirmPass.getText().toString();
+        if(!pass.equals(surePass)){
+            T.showShort(RegisterActivity.this,"2次输入的密码不一致");
+            return;
+        }
+
+        //是否同意服务条款
+       if(!agreement.isChecked()) {
+           T.showShort(RegisterActivity.this,"请同意服务条款");
+           return;
+       }
+        HttpService.getHttpService().register(phoneNumber, sendCode, pass, new LoveHomeCallBack<String>() {
+            @Override
+            public void onSuccess(String result) {
+                RegisterInfo registerInfo=JSON.parseObject(result,RegisterInfo.class);
+                if(registerInfo.getResults().getCode()!=1){
+                    T.showShort(RegisterActivity.this,registerInfo.getResults().getMsg());
+                    return;
+                }
+                Intent intent=new Intent("com.lovehome.register");
+                sendBroadcast(intent);
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                   T.showShort(RegisterActivity.this,"网络连接失败,请检查网络设置");
             }
         });
     }
