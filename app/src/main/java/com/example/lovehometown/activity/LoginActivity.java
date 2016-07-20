@@ -1,6 +1,9 @@
 package com.example.lovehometown.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,14 +55,34 @@ public class LoginActivity extends BaseActivity{
         @Override
         protected void doComplete(JSONObject values) {
 
-            Log.e("TAG",values.toString());
-            loginSuccess();
+           // Log.e("TAG",values.toString());
+            //获取用户信息
+            try {
+                int ret=values.getInt("ret");
+                if(ret!=0){
+                    T.showShort(LoginActivity.this,"获取用户信息失败,请重新登录");
+                    return;
+                }else{
+                    //获得昵称
+                    String nickName=values.getString("nickname");
+                    String imgUrl=values.getString("figureurl_qq_2");
+                    UserInfo.UserBean userBean=new UserInfo.UserBean();
+                    userBean.setHeadImg(imgUrl);
+                    userBean.setUsername(nickName);
+                    String data=JSON.toJSONString(userBean);
+                    saveInfo(data);
+                    loginSuccess();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         }
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mTencent = Tencent.createInstance("1105545838", this.getApplicationContext());
+        mTencent = Tencent.createInstance(Constants.APP_ID, this.getApplicationContext());
         initView();
 
     }
@@ -68,11 +91,12 @@ public class LoginActivity extends BaseActivity{
        switch (v.getId()){
            case R.id.register:
                startActivity(new Intent(this,RegisterActivity.class));
-               this.finish();
+
+               //this.finish();
                break;
            case R.id.forwordPassword:
                startActivity(new Intent(this,ForgetPasswordctivity.class));
-               this.finish();
+               //this.finish();
                break;
 
        }
@@ -111,15 +135,18 @@ public class LoginActivity extends BaseActivity{
                 UserInfo userInfo= JSON.parseObject(result,UserInfo.class);
                //判断是否为-1 登录失败
                 if(userInfo.getResults().getCode()==-1){
+                    dialog.dismiss();
                     T.showShort(LoginActivity.this,"登录失败,用户名或者密码错误");
                     return;
                 }else{
-                    loginSuccess();
+                    dialog.dismiss();
                     //
-                   UserInfo.UserBean user= userInfo.getUser();
+                    UserInfo.UserBean user= userInfo.getUser();
                     //转换为json字符串,存入share
                     String data=JSON.toJSONString(user);
                     saveInfo(data);
+                    loginSuccess();
+
                 }
 
             }
@@ -137,6 +164,11 @@ public class LoginActivity extends BaseActivity{
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);
         title.setText("登录");
+        //广播注册
+        LoginBroadCast reciver=new LoginBroadCast();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.lovehome.forget");
+        registerReceiver(reciver,intentFilter);
 
     }
     @Event(R.id.leftView)
@@ -201,6 +233,8 @@ public class LoginActivity extends BaseActivity{
         //发布界面
         else if(Constants.PUBLISH.equals(name)){
             LoginActivity.this.finish();
+        }else if("my".equals(name)){
+            LoginActivity.this.finish();
         }
 
     }
@@ -217,7 +251,7 @@ public class LoginActivity extends BaseActivity{
             doComplete((JSONObject) response);
         }
         protected void doComplete(JSONObject values) {
-            Log.e("TAG",values.toString());
+            //Log.e("TAG",values.toString());
             try {
                 String openID = values.getString("openid");
                 String accessToken = values.getString("access_token");
@@ -249,7 +283,16 @@ public class LoginActivity extends BaseActivity{
                 requestCode ==com.tencent.connect.common.Constants.REQUEST_APPBAR) {
             Tencent.onActivityResultData(requestCode,resultCode,data,new BaseUiListener());
         }
-
         super.onActivityResult(requestCode, resultCode, data);
     }
+   //广播接收者
+    private class LoginBroadCast extends BroadcastReceiver{
+
+       @Override
+       public void onReceive(Context context, Intent intent) {
+           if(intent.getAction().equals("com.lovehome.forget")){
+               LoginActivity.this.finish();
+           }
+       }
+   }
 }

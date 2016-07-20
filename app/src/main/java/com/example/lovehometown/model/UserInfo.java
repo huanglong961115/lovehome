@@ -8,6 +8,7 @@ import android.os.Parcelable;
  */
 public class UserInfo implements Parcelable {
 
+
     /**
      * code : 1
      * msg : success
@@ -17,8 +18,9 @@ public class UserInfo implements Parcelable {
     /**
      * headImg :
      * phoneNuber : 18074434526
-     * userAddress :
-     * username :
+     * userAddress : 长沙
+     * userContast : 124124
+     * username : hello
      */
 
     private UserBean User;
@@ -95,6 +97,7 @@ public class UserInfo implements Parcelable {
         private String headImg;
         private String phoneNuber;
         private String userAddress;
+        private String userContast;
         private String username;
 
         public String getHeadImg() {
@@ -121,6 +124,14 @@ public class UserInfo implements Parcelable {
             this.userAddress = userAddress;
         }
 
+        public String getUserContast() {
+            return userContast;
+        }
+
+        public void setUserContast(String userContast) {
+            this.userContast = userContast;
+        }
+
         public String getUsername() {
             return username;
         }
@@ -139,6 +150,7 @@ public class UserInfo implements Parcelable {
             dest.writeString(this.headImg);
             dest.writeString(this.phoneNuber);
             dest.writeString(this.userAddress);
+            dest.writeString(this.userContast);
             dest.writeString(this.username);
         }
 
@@ -149,6 +161,7 @@ public class UserInfo implements Parcelable {
             this.headImg = in.readString();
             this.phoneNuber = in.readString();
             this.userAddress = in.readString();
+            this.userContast = in.readString();
             this.username = in.readString();
         }
 

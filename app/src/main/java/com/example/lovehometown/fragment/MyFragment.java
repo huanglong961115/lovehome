@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
 import com.example.lovehometown.activity.AboutLoveHomeActivity;
 import com.example.lovehometown.activity.LoginActivity;
@@ -19,10 +22,16 @@ import com.example.lovehometown.activity.UserInfoActivity;
 import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomDialog;
+import com.example.lovehometown.model.UserInfo;
+import com.example.lovehometown.util.SPUtils;
+import com.example.lovehometown.util.T;
 
+import org.xutils.common.util.DensityUtil;
+import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 /**
  * Created by Administrator on 2016/7/16.
@@ -45,6 +54,16 @@ public class MyFragment extends BaseFragment {
     RelativeLayout myMessage;
     @ViewInject(R.id.logout)
     Button logout;
+    @ViewInject(R.id.lgout_layout)
+    RelativeLayout logoutLayout;
+    @ViewInject(R.id.personal_img)
+    ImageView personImg;
+    @ViewInject(R.id.username_my)
+    TextView personUserName;
+    @ViewInject(R.id.phone_my)
+    TextView personPhone;
+    @ViewInject(R.id.address_my)
+    TextView personAddress;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -52,12 +71,41 @@ public class MyFragment extends BaseFragment {
     }
 
     private void initView() {
+        //获取用户信息
+        String userInfo= (String) SPUtils.get(getActivity(),Constants.USER_INFO,"");
+        if(userInfo.equals("")){
+
+        }else{
+            //设置圆角图片
+            ImageOptions imageOptions=new ImageOptions.Builder()
+                    //.setSize(DensityUtil.dip2px(120), DensityUtil.dip2px(120))
+                     .setRadius(DensityUtil.dip2px(50))
+                    // 如果ImageView的大小不是定义为wrap_content, 不要crop.
+                    //.setCrop(true) // 很多时候设置了合适的scaleType也不需要它.
+                    // 加载中或错误图片的ScaleType
+                    //.setPlaceholderScaleType(ImageView.ScaleType.MATRIX)
+                    //.setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+                    .setLoadingDrawableId(R.drawable.defualt)
+                    .setFailureDrawableId(R.drawable.defualt)
+                    .build();
+            UserInfo.UserBean userBean=JSON.parseObject(userInfo,UserInfo.UserBean.class);
+            //T.showShort(getActivity(),userBean.getHeadImg());
+            x.image().bind(personImg,userBean.getHeadImg(),imageOptions);
+            personAddress.setText(userBean.getUserAddress());
+            personPhone.setText(userBean.getPhoneNuber());
+            personUserName.setText(userBean.getUsername());
+        }
         //判断是否登录
         boolean isLogin=Login.getInstance().isLogin(getActivity());
         if(isLogin){
-            logout.setVisibility(View.VISIBLE);
+            logoutLayout.setVisibility(View.VISIBLE);
         }else{
-            logout.setVisibility(View.INVISIBLE);
+            personImg.setImageResource(R.drawable.defualt);
+            personUserName.setText("");
+            personAddress.setText("");
+            personPhone.setText("请点击登录");
+            //隐藏
+            logoutLayout.setVisibility(View.GONE);
         }
     }
 
@@ -67,7 +115,12 @@ public class MyFragment extends BaseFragment {
         switch (id){
             case R.id.head_my:
                 //我的资料
-                startActivity(new Intent(getActivity(), UserInfoActivity.class));
+                boolean isLogin=Login.getInstance().isLogin(getActivity());
+                if(isLogin) {
+                    startActivity(new Intent(getActivity(), UserInfoActivity.class));
+                }else{
+                    startActivity(new Intent(getActivity(),LoginActivity.class));
+                }
                 getActivity().overridePendingTransition(R.anim.right_in,R.anim.right_out);
                 break;
             //我的发布
@@ -103,7 +156,7 @@ public class MyFragment extends BaseFragment {
                 break;
             //清除缓存
             case R.id.cleancache:
-                CustomDialog.Builder builder=new CustomDialog.Builder(getActivity(),R.layout.dialog_person);
+                final CustomDialog.Builder builder=new CustomDialog.Builder(getActivity(),R.layout.dialog_person);
                 builder.setMessage("确定清除缓存？");
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -127,6 +180,14 @@ public class MyFragment extends BaseFragment {
                 builder2.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        SPUtils.remove(getActivity(),Constants.USER_INFO);
+                        SPUtils.remove(getActivity(),Constants.IS_LOGIN);
+                        Intent intent=new Intent();
+                        Bundle bundle=new Bundle();
+                        bundle.putString(Constants.NAME,"my");
+                        intent.putExtras(bundle);
+                        intent.setClass(getActivity(),LoginActivity.class);
+                        startActivity(intent);
                          dialog.dismiss();
                     }
                 });
@@ -167,5 +228,12 @@ public class MyFragment extends BaseFragment {
             intent.setClass(getActivity(), LoginActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initView();
+       // T.showShort(getActivity(),"哈哈哈哈");
     }
 }

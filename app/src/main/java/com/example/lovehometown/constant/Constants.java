@@ -40,4 +40,6 @@ public class Constants {
     public final static String USERNMAE="userName";
     public final static String USER_PHONE="userPhone";
     public final static String USER_ADDRESS="userAddress";
+    //qqqppId;
+    public final static String APP_ID="1105545838";
 }

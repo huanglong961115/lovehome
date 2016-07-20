@@ -31,7 +31,7 @@
                     android:id="@+id/username_my"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="haha"
+
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     />
@@ -44,7 +44,7 @@
                         android:id="@+id/phone_my"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12345678901"
+                        android:text="请点击登录"
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         />
@@ -52,7 +52,7 @@
                         android:id="@+id/address_my"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="长沙"
+
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_marginLeft="5dip"
@@ -399,6 +399,7 @@
                 />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/lgout_layout"
             android:layout_width="match_parent"
             android:layout_height="90dip"
             android:background="@color/personal_line_color"
