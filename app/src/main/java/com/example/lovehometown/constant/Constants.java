@@ -63,4 +63,6 @@ public class Constants {
     public final static String FORGET_ACTION="com.lovehome.forget";
     //忘记密码的广播接收
     public final static String UPDATE_FORGET_ACTION="com.lovehome.forget";
+    //数据库名字
+    public  final static  String DB_NAME="lovehome.db";
 }

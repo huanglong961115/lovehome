@@ -105,8 +105,15 @@ public class HttpService {
         x.http().get(params,callBack);
     }
      //获取商家列表
-    public void getbusinesslist(int type,int page,int pagesize,int childType){
+    public void getBusinessList(int type,int page,int pagesize,String childType,LoveHomeCallBack<String> callBack){
         RequestParams params=new RequestParams();
+        params.addQueryStringParameter("type",type+"");
+        params.addQueryStringParameter("page",page+"");
+        params.addQueryStringParameter("pagesize",pagesize+"");
+        if (!childType.equals("")){
+            params.addQueryStringParameter("childtype",childType);
+        }
+        x.http().get(params,callBack);
     }
 
 }
