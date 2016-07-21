@@ -47,5 +47,18 @@ public class Constants {
     public final static String SERVICE="服务条款";
     public final static String SMS_URL="http://115.28.137.74:8080/LoveHome/sms.do";
     public final static String REGISTER_URL="http://115.28.137.74:8080/LoveHome/register.do";
-
+    //修改密码
+    public final  static String UPDATE_PASSWORD="http://115.28.137.74:8080/LoveHome/updatepassword.do";
+    //修改用户名
+    public final  static String UPDATE_USERNAME="http://115.28.137.74:8080/LoveHome/updateusername.do";
+    //修改地址
+    public final static String UPDATE_USER_ADDRESS="http://115.28.137.74:8080/LoveHome/updateaddress.do";
+    //修改联系方式
+    public  final  static String UPDATE_USER_CONSTANT="http://115.28.137.74:8080/LoveHome/updatecontast.do";
+    //忘记密码
+    public final static  String FORGET_PASSWORD="http://115.28.137.74:8080/LoveHome/getpassword.do";
+    //注册的广播接收
+    public final static String REGISTER_ACTION="com.lovehome.register";
+    //忘记密码的广播接收
+    public final static String FORGET_ACTION="com.lovehome.forget";
 }

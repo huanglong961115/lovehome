@@ -21,6 +21,7 @@ import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomProgressDialog;
 import com.example.lovehometown.model.UserInfo;
 import com.example.lovehometown.service.HttpService;
+import com.example.lovehometown.util.L;
 import com.example.lovehometown.util.SPUtils;
 import com.example.lovehometown.util.T;
 import com.tencent.tauth.IUiListener;
@@ -145,6 +146,7 @@ public class LoginActivity extends BaseActivity{
                     UserInfo.UserBean user= userInfo.getUser();
                     //转换为json字符串,存入share
                     String data=JSON.toJSONString(user);
+                    T.showShort(LoginActivity.this,data);
                     saveInfo(data);
                     loginSuccess();
 
@@ -166,11 +168,11 @@ public class LoginActivity extends BaseActivity{
         title.setVisibility(View.VISIBLE);
         title.setText("登录");
         //广播注册
-        LoginBroadCast reciver=new LoginBroadCast();
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("com.lovehome.forget");
-        intentFilter.addAction("com.lovehome.register");
-        registerReceiver(reciver,intentFilter);
+    LoginBroadCast reciver=new LoginBroadCast();
+     IntentFilter intentFilter = new IntentFilter();
+     intentFilter.addAction(Constants.FORGET_ACTION);
+     intentFilter.addAction(Constants.REGISTER_ACTION);
+     registerReceiver(reciver,intentFilter);
 
     }
     @Event(R.id.leftView)
@@ -292,9 +294,10 @@ public class LoginActivity extends BaseActivity{
 
        @Override
        public void onReceive(Context context, Intent intent) {
-           if(intent.getAction().equals("com.lovehome.forget")){
+           if(intent.getAction().equals(Constants.FORGET_ACTION)){
                LoginActivity.this.finish();
-           }else if(intent.getAction().equals("com.lovehome.register")){
+           }else if(intent.getAction().equals(Constants.REGISTER_ACTION)){
+               L.e("TAG","接收广播");
                LoginActivity.this.finish();
            }
        }

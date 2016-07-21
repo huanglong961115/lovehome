@@ -20,6 +20,7 @@ import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.model.RegisterInfo;
 import com.example.lovehometown.model.SMS;
 import com.example.lovehometown.service.HttpService;
+import com.example.lovehometown.util.L;
 import com.example.lovehometown.util.T;
 
 import org.xutils.view.annotation.ContentView;
@@ -120,6 +121,7 @@ public class RegisterActivity extends BaseActivity {
         HttpService.getHttpService().sendCode(phoneNumber, new LoveHomeCallBack<String>() {
             @Override
             public void onSuccess(String result) {
+               L.e("TAG",result);
               SMS sms= JSON.parseObject(result, SMS.class);
                 if(sms.getCode()==0){
                     T.showShort(RegisterActivity.this,sms.getMsg());
@@ -177,9 +179,20 @@ public class RegisterActivity extends BaseActivity {
                     T.showShort(RegisterActivity.this,registerInfo.getResults().getMsg());
                     return;
                 }
-                Intent intent=new Intent("com.lovehome.register");
+                //register
+                //发送广播
+
+                Intent intent=new Intent(Constants.REGISTER_ACTION);
                 sendBroadcast(intent);
-                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+               Bundle bundle = new Bundle();
+                bundle.putString(Constants.NAME, "my");
+                Intent intent2 = new Intent();
+                intent2.putExtras(bundle);
+                intent2.setClass(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent2);
+                //startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                //结束掉当前Activity
+                RegisterActivity.this.finish();
             }
 
             @Override

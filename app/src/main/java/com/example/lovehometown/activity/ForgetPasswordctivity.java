@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lovehometown.R;
+import com.example.lovehometown.constant.Constants;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -54,8 +55,7 @@ public class ForgetPasswordctivity extends BaseActivity {
     @Event(R.id.btn_forget_password_get_password)
     private void getPass(View view){
      //发送广播
-        Intent intent=new Intent("com.lovehome.forget");
+        Intent intent=new Intent(Constants.FORGET_ACTION);
         sendBroadcast(intent);
-
     }
 }
