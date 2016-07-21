@@ -1,6 +1,7 @@
 package com.example.lovehometown.activity;
 
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,15 +20,19 @@ import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.PhotoGridViewAdapter;
 import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.util.L;
+
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -36,6 +41,7 @@ import org.xutils.view.annotation.ViewInject;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -54,6 +60,10 @@ public class AddPublishActivity extends BaseActivity {
     private LinearLayout isWaiMai;
     @ViewInject(R.id.check_addPublish)
     private CheckBox waimai;
+    @ViewInject(R.id.starttime1_addpublish)
+    private EditText beginTime;
+    @ViewInject(R.id.endtime1_addpublish)
+    private EditText endTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -88,6 +98,54 @@ public class AddPublishActivity extends BaseActivity {
             }
         });
         title.setText(name + "-" + type);
+        beginTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    Calendar c = Calendar.getInstance();
+                    int hourOfDay = c.get(Calendar.HOUR_OF_DAY);
+                    int minute = c.get(Calendar.MINUTE);
+                    new TimePickerDialog(AddPublishActivity.this, new TimePickerDialog.OnTimeSetListener() {
+
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            // TODO Auto-generated method stub
+                            String min=minute+"";
+                            if(minute<10){
+                               min="0" +minute;
+                            }
+                            beginTime.setText(hourOfDay + ":" + min);
+                           // Toast.makeText(AddPublishActivity.this, hourOfDay + ":" + minute, Toast.LENGTH_LONG).show();
+                        }
+                    }, hourOfDay, minute, true).show();
+                }
+            }
+        });
+        endTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    Calendar c = Calendar.getInstance();
+                    int hourOfDay = c.get(Calendar.HOUR_OF_DAY);
+                    int minute = c.get(Calendar.MINUTE);
+                    new TimePickerDialog(AddPublishActivity.this, new TimePickerDialog.OnTimeSetListener() {
+
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            // TODO Auto-generated method stub
+                            String min=minute+"";
+                            if(minute<10){
+                                min="0" +minute;
+                            }
+                            endTime.setText(hourOfDay + ":" + min);
+                            // Toast.makeText(AddPublishActivity.this, hourOfDay + ":" + minute, Toast.LENGTH_LONG).show();
+                        }
+                    }, hourOfDay, minute, true).show();
+                }
+                }
+
+        });
+
     }
 
     @Event(R.id.camera_addpublish)
