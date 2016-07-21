@@ -3,6 +3,9 @@ package com.example.lovehometown.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,27 +112,47 @@ public class BusinessList implements Parcelable {
             }
         };
     }
-
+   @Table(name="t_love")
     public static class PublistBean implements Parcelable {
+       @Column(name="businessAddress")
         private String businessAddress;
+       @Column(name="businessDetails")
         private String businessDetails;
+       @Column(name="businessId")
         private String businessEndtime;
+       @Column(name="businessAddress")
         private int businessId;
+       @Column(name="businessLinkman")
         private String businessLinkman;
+       @Column(name="businessMement")
         private String businessMement;
+       @Column(name="businessAddress")
         private String businessName;
+       @Column(name="businessPhone")
         private String businessPhone;
+       @Column(name="businessPrice")
         private String businessPrice;
+       @Column(name="businessStarttime")
         private String businessStarttime;
+       @Column(name="childType")
         private String childType;
+       @Column(name="istakeaway")
         private int istakeaway;
+       @Column(name="publishImg")
         private String publishImg;
+       @Column(name="takeawayEnd")
         private String takeawayEnd;
+       @Column(name="takeawayFee")
         private String takeawayFee;
+       @Column(name="takeawayStart")
         private String takeawayStart;
+       @Column(name="xiangxifenlei")
         private String xiangxifenlei;
+       @Column(name="type")
         private String type;
+       @Column(name="workSalary")
         private String workSalary;
+       @Column(name="workTitle")
         private String workTitle;
 
         public String getBusinessAddress() {

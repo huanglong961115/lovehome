@@ -157,7 +157,8 @@ public class HomeFragment extends BaseFragment{
         viewList.add(getGridView(initSecondData()));
         return viewList;
     }
-    public CustomGridView getGridView(List<GoodBigType> list){
+    public CustomGridView getGridView( List<GoodBigType> list){
+        final List<GoodBigType> _list=list;
         ImgGridViewAdapter adapter1=new ImgGridViewAdapter(getActivity(),list);
         CustomGridView gridView1=new CustomGridView(getActivity());
         gridView1.setNumColumns(4);
@@ -169,7 +170,14 @@ public class HomeFragment extends BaseFragment{
         gridView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(),ShopListActivity.class));
+                //传递参数过去
+                Intent intent=new Intent();
+                Bundle bundle=new Bundle();
+                bundle.putString("typename",_list.get(position).getName());
+                bundle.putInt("type",_list.get(position).getId());
+                intent.putExtras(bundle);
+                intent.setClass(getActivity(),ShopListActivity.class);
+                startActivity(intent);
             }
         });
         return  gridView1;
