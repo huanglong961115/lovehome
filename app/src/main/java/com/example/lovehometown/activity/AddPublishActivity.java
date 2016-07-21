@@ -8,12 +8,18 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lovehometown.R;
@@ -73,10 +79,11 @@ public class AddPublishActivity extends BaseActivity {
             case R.id.camera_addpublish:
                 PublishDialog.Builder builder = new PublishDialog.Builder(AddPublishActivity.this);
                 View contentView = LayoutInflater.from(AddPublishActivity.this).inflate(R.layout.dialog_camera, null);
+                contentView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.WRAP_CONTENT));
                 Button takephoto = (Button) contentView.findViewById(R.id.takephoto);
                 Button choosephoto = (Button) contentView.findViewById(R.id.choosephoto);
                 builder.setContentView(contentView);
-                PublishDialog dialog2 = builder.create();
+                PublishDialog dialog2 = builder.create(R.style.dialogStyle);
                 takephoto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -89,7 +96,15 @@ public class AddPublishActivity extends BaseActivity {
 
                     }
                 });
+                Window window=dialog2.getWindow();
                 dialog2.show();
+                WindowManager windowManager = getWindowManager();
+                Display display = windowManager.getDefaultDisplay();
+                WindowManager.LayoutParams lp = dialog2.getWindow().getAttributes();
+                lp.width = (int)(display.getWidth()); //设置宽度
+                dialog2.getWindow().setAttributes(lp);
+                //设置window显示的位置
+                window.setGravity(Gravity.BOTTOM);
                 break;
             default:
                 break;

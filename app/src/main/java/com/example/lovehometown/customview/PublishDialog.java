@@ -44,10 +44,10 @@ public class PublishDialog  extends Dialog{
             this.contentView = contentView;
         }
 
-        public PublishDialog create(){
+        public PublishDialog create(int style){
             final PublishDialog dialog=new PublishDialog(context,R.style.Daliog);
             Window window=dialog.getWindow();
-            window.setWindowAnimations(R.style.dialogStyle2);
+            window.setWindowAnimations(style);
             View view=PublishDialog.inflater.inflate(R.layout.publish_dialog,null);
 
             if(contentView!=null){

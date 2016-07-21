@@ -133,7 +133,7 @@ public class DetailsActivity extends BaseActivity {
                 TextView negaitv= (TextView) contentView.findViewById(R.id.negitvButton);
 
                builder.setContentView(contentView);
-                PublishDialog dialog2=builder.create();
+                PublishDialog dialog2=builder.create(R.style.dialogStyle2);
                 dialog2.show();
                 final PublishDialog _dialog2=dialog2;
                 confirm.setOnClickListener(new View.OnClickListener() {

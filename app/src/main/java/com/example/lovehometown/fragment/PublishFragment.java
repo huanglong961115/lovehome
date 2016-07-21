@@ -146,7 +146,7 @@ public class PublishFragment extends BaseFragment{
                         //设置内容
                         builder.setContentView(_view1);
                         //创建
-                         dialog=builder.create();
+                         dialog=builder.create(R.style.dialogStyle2);
                         //final  PublishDialog _dialog=dialog;
                         //设置dialog的显示位置
                         Window window = dialog.getWindow();
