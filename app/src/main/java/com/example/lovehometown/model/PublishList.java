@@ -1,15 +1,12 @@
 package com.example.lovehometown.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/7/19.
  */
-public class PublishList implements Parcelable {
+public class PublishList {
+
 
     /**
      * code : 1
@@ -18,7 +15,7 @@ public class PublishList implements Parcelable {
 
     private ResultsBean Results;
     /**
-     * ReleaseList : {"publishName":"酒店","publishType":1}
+     * ReleaseList : {"publishName":"酒店","publishType":1,"publishTypename":"1a"}
      */
 
     private List<PublistBean> publist;
@@ -39,7 +36,7 @@ public class PublishList implements Parcelable {
         this.publist = publist;
     }
 
-    public static class ResultsBean implements Parcelable {
+    public static class ResultsBean {
         private int code;
         private String msg;
 
@@ -58,61 +55,16 @@ public class PublishList implements Parcelable {
         public void setMsg(String msg) {
             this.msg = msg;
         }
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeInt(this.code);
-            dest.writeString(this.msg);
-        }
-
-        public ResultsBean() {
-        }
-
-        @Override
-        public String toString() {
-            return "ResultsBean{" +
-                    "code=" + code +
-                    ", msg='" + msg + '\'' +
-                    '}';
-        }
-
-        protected ResultsBean(Parcel in) {
-            this.code = in.readInt();
-            this.msg = in.readString();
-        }
-
-        public static final Creator<ResultsBean> CREATOR = new Creator<ResultsBean>() {
-            @Override
-            public ResultsBean createFromParcel(Parcel source) {
-                return new ResultsBean(source);
-            }
-
-            @Override
-            public ResultsBean[] newArray(int size) {
-                return new ResultsBean[size];
-            }
-        };
     }
 
     public static class PublistBean {
         /**
          * publishName : 酒店
          * publishType : 1
+         * publishTypename : 1a
          */
 
         private ReleaseListBean ReleaseList;
-
-        @Override
-        public String toString() {
-            return "PublistBean{" +
-                    "ReleaseList=" + ReleaseList +
-                    '}';
-        }
 
         public ReleaseListBean getReleaseList() {
             return ReleaseList;
@@ -122,9 +74,10 @@ public class PublishList implements Parcelable {
             this.ReleaseList = ReleaseList;
         }
 
-        public static class ReleaseListBean implements Parcelable {
+        public static class ReleaseListBean {
             private String publishName;
             private int publishType;
+            private String publishTypename;
 
             public String getPublishName() {
                 return publishName;
@@ -142,84 +95,13 @@ public class PublishList implements Parcelable {
                 this.publishType = publishType;
             }
 
-            @Override
-            public int describeContents() {
-                return 0;
+            public String getPublishTypename() {
+                return publishTypename;
             }
 
-            @Override
-            public void writeToParcel(Parcel dest, int flags) {
-                dest.writeString(this.publishName);
-                dest.writeInt(this.publishType);
+            public void setPublishTypename(String publishTypename) {
+                this.publishTypename = publishTypename;
             }
-
-            public ReleaseListBean() {
-            }
-
-            protected ReleaseListBean(Parcel in) {
-                this.publishName = in.readString();
-                this.publishType = in.readInt();
-            }
-
-            @Override
-            public String toString() {
-                return "ReleaseListBean{" +
-                        "publishName='" + publishName + '\'' +
-                        ", publishType=" + publishType +
-                        '}';
-            }
-
-            public static final Creator<ReleaseListBean> CREATOR = new Creator<ReleaseListBean>() {
-                @Override
-                public ReleaseListBean createFromParcel(Parcel source) {
-                    return new ReleaseListBean(source);
-                }
-
-                @Override
-                public ReleaseListBean[] newArray(int size) {
-                    return new ReleaseListBean[size];
-                }
-            };
         }
-    }
-
-    public PublishList() {
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(this.Results, flags);
-        dest.writeList(this.publist);
-    }
-
-    protected PublishList(Parcel in) {
-        this.Results = in.readParcelable(ResultsBean.class.getClassLoader());
-        this.publist = new ArrayList<PublistBean>();
-        in.readList(this.publist, PublistBean.class.getClassLoader());
-    }
-
-    public static final Creator<PublishList> CREATOR = new Creator<PublishList>() {
-        @Override
-        public PublishList createFromParcel(Parcel source) {
-            return new PublishList(source);
-        }
-
-        @Override
-        public PublishList[] newArray(int size) {
-            return new PublishList[size];
-        }
-    };
-
-    @Override
-    public String toString() {
-        return "PublishList{" +
-                "Results=" + Results +
-                ", publist=" + publist +
-                '}';
     }
 }

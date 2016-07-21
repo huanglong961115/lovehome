@@ -104,5 +104,9 @@ public class HttpService {
         params.addQueryStringParameter("code",code);
         x.http().get(params,callBack);
     }
+     //获取商家列表
+    public void getbusinesslist(int type,int page,int pagesize,int childType){
+        RequestParams params=new RequestParams();
+    }
 
 }
