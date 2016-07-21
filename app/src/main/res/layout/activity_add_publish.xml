@@ -303,6 +303,15 @@
                         </LinearLayout>
                     </RelativeLayout>
                     <LinearLayout
+                        android:id="@+id/waimai"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                    <LinearLayout
                         android:layout_width="340dip"
                         android:layout_height="1dip"
                         android:background="@color/personal_line_color"
@@ -417,6 +426,7 @@
                             android:layout_gravity="center_vertical"
                             />
                     </LinearLayout>
+                        </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="10dip"
@@ -438,6 +448,7 @@
                             android:background="@null"
 
                             />
+                    </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
