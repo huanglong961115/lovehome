@@ -55,11 +55,13 @@
                         android:id="@+id/v_image"
                         android:layout_width="15.0dip"
                         android:layout_height="15.0dip"
+                        android:visibility="gone"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/v_icon" />
 
                     <ImageView
                         android:id="@+id/waimai_image"
+                        android:visibility="gone"
                         android:layout_width="15.0dip"
                         android:layout_height="15.0dip"
                         android:src="@drawable/wai" />

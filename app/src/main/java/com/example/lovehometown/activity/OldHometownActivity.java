@@ -1,5 +1,6 @@
 package com.example.lovehometown.activity;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.constant.Constants;
+import com.example.lovehometown.customview.CustomProgressDialog;
 import com.example.lovehometown.javascriptinterface.DetailsJavaScript;
 import com.example.lovehometown.util.T;
 
@@ -27,6 +29,7 @@ public class OldHometownActivity extends BaseActivity {
     private ImageView img;
     @ViewInject(R.id.title)
     private TextView title;
+    CustomProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,19 @@ public class OldHometownActivity extends BaseActivity {
                 view.loadUrl(url);
                 return true;
             }
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                dialog=new CustomProgressDialog(OldHometownActivity.this,"加载中...",R.drawable.load_anim);
+                //dialog.set
+                dialog.show();
+            }
 
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                dialog.dismiss();
+            }
         });
         WebSettings webSettings = webView.getSettings();
         //设置支持javascript

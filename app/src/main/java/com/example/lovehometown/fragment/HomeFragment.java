@@ -23,13 +23,16 @@ import com.example.lovehometown.activity.ShopListActivity;
 import com.example.lovehometown.adapter.GoodsAdapter;
 import com.example.lovehometown.adapter.ImgGridViewAdapter;
 import com.example.lovehometown.adapter.PictureViewAdapter;
+import com.example.lovehometown.callback.LoveHomeCallBack;
 import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.CustomListView;
 import com.example.lovehometown.customview.CustomProgressDialog;
+import com.example.lovehometown.model.BusinessList;
 import com.example.lovehometown.model.GoodBigType;
 import com.example.lovehometown.model.ShopInfo;
+import com.example.lovehometown.service.HttpService;
 import com.example.lovehometown.util.L;
 import com.example.lovehometown.util.T;
 
@@ -69,6 +72,8 @@ public class HomeFragment extends BaseFragment{
         //得到headView
         setHeadView();
         initView();
+        //数据初始化
+        initData();
     }
 
     /**
@@ -160,6 +165,13 @@ public class HomeFragment extends BaseFragment{
         gridView1.setVerticalSpacing(20);
         gridView1.setPadding(0,20,0,0);
         gridView1.setAdapter(adapter1);
+        //点击事件进行页面跳转
+        gridView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(getActivity(),ShopListActivity.class));
+            }
+        });
         return  gridView1;
     }
     //初始化化第一个页面的数据
@@ -185,12 +197,12 @@ public class HomeFragment extends BaseFragment{
         list.add(new GoodBigType(14,"其他",R.drawable.qita));
         return  list;
     }
-    List<ShopInfo> list=new ArrayList<ShopInfo>();
+    List<BusinessList.PublistBean> list=new ArrayList<BusinessList.PublistBean>();
     public void initView(){
         //dialog.dismiss();
-       list.clear();
+
         //int id, int shopImage, String name, String price, String time, String phone, String info, String linkMan, String address, String type
-        list.add(new ShopInfo(1,R.drawable.che,"龙哥大酒店","50元/人","10:00-12:00","15116346673","欢迎光临","黄先生","长沙市望城区","酒店"));
+       // list.add(new ShopInfo(1,R.drawable.che,"龙哥大酒店","50元/人","10:00-12:00","15116346673","欢迎光临","黄先生","长沙市望城区","酒店"));
         adapter=new GoodsAdapter(list,getActivity());
         indexView.setAdapter(adapter);
 
@@ -218,5 +230,26 @@ public class HomeFragment extends BaseFragment{
         }else{
             startActivity(new Intent(getActivity(), LoginActivity.class));
         }
+    }
+    public void initData(){
+        HttpService.getHttpService().getBusinessList(1, 1, 5, "", new LoveHomeCallBack<String>() {
+            @Override
+            public void onSuccess(String result) {
+               // T.showShort(getActivity(),result);
+                BusinessList businessList=JSON.parseObject(result,BusinessList.class);
+                if(businessList.getResults().getCode()!=1){
+                    T.showShort(getActivity(),businessList.getResults().getMsg());
+                }else {
+                    list.clear();
+                    list.addAll(businessList.getPublist());
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                  T.showShort(getActivity(),"访问网络失败");
+            }
+        });
     }
 }

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -111,13 +112,21 @@ public class PublishFragment extends BaseFragment{
                 ListView lv= (ListView) view1.findViewById(R.id.dialog_list);
 
                 //新建一个图片，用来取消选择
-                ImageView imageView=new ImageView(getActivity());
+              /*  ImageView imageView=new ImageView(getActivity());
                 //设置图片
                 imageView.setImageResource(R.drawable.error);
                 //设置图片的距离
                 imageView.setPadding(0,20,0,20);
-               final  ImageView _imageView=imageView;
-                lv.addFooterView(imageView);
+               final  ImageView _imageView=imageView;*/
+                View view2=LayoutInflater.from(getActivity()).inflate(R.layout.publish_dialog_bottom,null);
+                ImageView cancle= (ImageView) view2.findViewById(R.id.button_cancle);
+                cancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                lv.addFooterView(view2);
                 //给listview设置适配器
                 publishCateGrotAdapter=new PublishCateGrotAdapter(getActivity(),publishList);
                 lv.setAdapter(publishCateGrotAdapter);
@@ -152,12 +161,12 @@ public class PublishFragment extends BaseFragment{
                         Window window = dialog.getWindow();
                         dialog.show();
                         //取消按钮的选择
-                        _imageView.setOnClickListener(new View.OnClickListener() {
+                       /* _imageView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 dialog.dismiss();
                             }
-                        });
+                        });*/
                         //设置window显示的位置
                         window.setGravity(Gravity.BOTTOM);
                  //选择子项

@@ -9,21 +9,21 @@ public class Constants {
     //存储是否第一次启动应用程序
     public final static String IS_FIRST="isFirst";
     //首页图片轮播地址
-    public final static String IMG_WEB_URL="http://115.28.137.74:8080/LoveHome/index.html";
+    public final static String IMG_WEB_URL="http://119.29.163.243:8080/LoveHome/index.html";
     //平台声明地址
-    public final static String  PLATFORM_STATEMENT_URL="http://115.28.137.74:8080/LoveHome/PlatformStatement.html";
+    public final static String  PLATFORM_STATEMENT_URL="http://119.29.163.243:8080/LoveHome/PlatformStatement.html";
     //关于爱家乡地址
-    public final static String  ABOUT_LOVE_HOME_URL="http://115.28.137.74:8080/LoveHome/PlatformStatement.html";
+    public final static String  ABOUT_LOVE_HOME_URL="http://119.29.163.243:8080/LoveHome/PlatformStatement.html";
     //详情地址
-    public final static String DETAILS_URL="http://115.28.137.74:8080/LoveHome/details.html";
+    public final static String DETAILS_URL="http://119.29.163.243:8080/LoveHome/details.html";
     //老乡会
-    public final static String OLD_HOMETOWN_URL="http://115.28.137.74:8080/LoveHome/laoxianghui.html";
+    public final static String OLD_HOMETOWN_URL="http://119.29.163.243:8080/LoveHome/laoxianghui.html";
     //发布分类访问地址
-    public final static String PUBLISH_URL="http://115.28.137.74:8080/LoveHome/getpublishlist.do";
+    public final static String PUBLISH_URL="http://119.29.163.243:8080/LoveHome/getpublishlist.do";
     //登录url;
-    public final static  String LOGIN_URL="http://115.28.137.74:8080/LoveHome/login.do";
+    public final static  String LOGIN_URL="http://119.29.163.243:8080/LoveHome/login.do";
     //发布列表url
-    public final static String PUBLISH_LIST_URL="115.28.137.74:8080/LoveHome/getpublishlist.do";
+    public final static String PUBLISH_LIST_URL="119.29.163.243:8080/LoveHome/getpublishlist.do";
     //是否登录在share存放的key值
     public final static String IS_LOGIN="islogin";
     //传递的key值
@@ -45,18 +45,18 @@ public class Constants {
     public final static String APP_ID="1105545838";
     public final static String PLATFORM_STATEMENT="平台申明";
     public final static String SERVICE="服务条款";
-    public final static String SMS_URL="http://115.28.137.74:8080/LoveHome/sms.do";
-    public final static String REGISTER_URL="http://115.28.137.74:8080/LoveHome/register.do";
+    public final static String SMS_URL="http://119.29.163.243:8080/LoveHome/sms.do";
+    public final static String REGISTER_URL="http://119.29.163.243:8080/LoveHome/register.do";
     //修改密码
-    public final  static String UPDATE_PASSWORD="http://115.28.137.74:8080/LoveHome/updatepassword.do";
+    public final  static String UPDATE_PASSWORD="http://119.29.163.243:8080/LoveHome/updatepassword.do";
     //修改用户名
-    public final  static String UPDATE_USERNAME="http://115.28.137.74:8080/LoveHome/updateusername.do";
+    public final  static String UPDATE_USERNAME="http://119.29.163.243:8080/LoveHome/updateusername.do";
     //修改地址
-    public final static String UPDATE_USER_ADDRESS="http://115.28.137.74:8080/LoveHome/updateaddress.do";
+    public final static String UPDATE_USER_ADDRESS="http://119.29.163.243:8080/LoveHome/updateaddress.do";
     //修改联系方式
-    public  final  static String UPDATE_USER_CONSTANT="http://115.28.137.74:8080/LoveHome/updatecontast.do";
+    public  final  static String UPDATE_USER_CONSTANT="http://119.29.163.243:8080/LoveHome/updatecontast.do";
     //忘记密码
-    public final static  String FORGET_PASSWORD="http://115.28.137.74:8080/LoveHome/getpassword.do";
+    public final static  String FORGET_PASSWORD="http://119.29.163.243:8080/LoveHome/getpassword.do";
     //注册的广播接收
     public final static String REGISTER_ACTION="com.lovehome.register";
     //忘记密码的广播接收
@@ -65,4 +65,6 @@ public class Constants {
     public final static String UPDATE_FORGET_ACTION="com.lovehome.forget";
     //数据库名字
     public  final static  String DB_NAME="lovehome.db";
+    //获取商户列表的信息
+    public final static String SHOP_LIST_URL="http://119.29.163.243:8080/LoveHome/getbusinesslist.do";
 }

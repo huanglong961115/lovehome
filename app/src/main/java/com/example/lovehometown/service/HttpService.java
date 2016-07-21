@@ -106,7 +106,7 @@ public class HttpService {
     }
      //获取商家列表
     public void getBusinessList(int type,int page,int pagesize,String childType,LoveHomeCallBack<String> callBack){
-        RequestParams params=new RequestParams();
+        RequestParams params=new RequestParams(Constants.SHOP_LIST_URL);
         params.addQueryStringParameter("type",type+"");
         params.addQueryStringParameter("page",page+"");
         params.addQueryStringParameter("pagesize",pagesize+"");

@@ -3,6 +3,7 @@ package com.example.lovehometown.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +34,7 @@ public class BusinessList implements Parcelable {
      * takeawayEnd :
      * takeawayFee :
      * takeawayStart :
+     * xiangxifenlei : 酒店
      * type : 5
      * workSalary :
      * workTitle :
@@ -125,6 +127,7 @@ public class BusinessList implements Parcelable {
         private String takeawayEnd;
         private String takeawayFee;
         private String takeawayStart;
+        private String xiangxifenlei;
         private String type;
         private String workSalary;
         private String workTitle;
@@ -257,6 +260,14 @@ public class BusinessList implements Parcelable {
             this.takeawayStart = takeawayStart;
         }
 
+        public String getXiangxifenlei() {
+            return xiangxifenlei;
+        }
+
+        public void setXiangxifenlei(String xiangxifenlei) {
+            this.xiangxifenlei = xiangxifenlei;
+        }
+
         public String getType() {
             return type;
         }
@@ -304,6 +315,7 @@ public class BusinessList implements Parcelable {
             dest.writeString(this.takeawayEnd);
             dest.writeString(this.takeawayFee);
             dest.writeString(this.takeawayStart);
+            dest.writeString(this.xiangxifenlei);
             dest.writeString(this.type);
             dest.writeString(this.workSalary);
             dest.writeString(this.workTitle);
@@ -329,12 +341,13 @@ public class BusinessList implements Parcelable {
             this.takeawayEnd = in.readString();
             this.takeawayFee = in.readString();
             this.takeawayStart = in.readString();
+            this.xiangxifenlei = in.readString();
             this.type = in.readString();
             this.workSalary = in.readString();
             this.workTitle = in.readString();
         }
 
-        public static final Parcelable.Creator<PublistBean> CREATOR = new Parcelable.Creator<PublistBean>() {
+        public static final Creator<PublistBean> CREATOR = new Creator<PublistBean>() {
             @Override
             public PublistBean createFromParcel(Parcel source) {
                 return new PublistBean(source);
@@ -354,16 +367,17 @@ public class BusinessList implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(this.publist);
         dest.writeParcelable(this.Results, flags);
+        dest.writeList(this.publist);
     }
 
     public BusinessList() {
     }
 
     protected BusinessList(Parcel in) {
-        this.publist = in.createTypedArrayList(PublistBean.CREATOR);
         this.Results = in.readParcelable(ResultsBean.class.getClassLoader());
+        this.publist = new ArrayList<PublistBean>();
+        in.readList(this.publist, PublistBean.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<BusinessList> CREATOR = new Parcelable.Creator<BusinessList>() {

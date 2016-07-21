@@ -18,6 +18,7 @@ public class DetailsJavaScript {
     }
     @JavascriptInterface
     public String details(){
+        //T.showShort(context,"僵尸叔叔");
         return this.jsonData;
     }
 }

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +23,10 @@ import com.example.lovehometown.R;
 import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomDialog;
+import com.example.lovehometown.customview.CustomProgressDialog;
 import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.javascriptinterface.DetailsJavaScript;
+import com.example.lovehometown.model.BusinessList;
 import com.example.lovehometown.model.ShopInfo;
 import com.example.lovehometown.util.T;
 
@@ -50,6 +53,8 @@ public class DetailsActivity extends BaseActivity {
     ImageView shareView;
     //传过来的数据
     String jsonData;
+    //加载动画效果
+    CustomProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +70,7 @@ public class DetailsActivity extends BaseActivity {
         loveView.setImageResource(R.drawable.love);
         Bundle bundle=getIntent().getExtras();
          jsonData=bundle.getString("jsonData");
-        T.showShort(this,jsonData);
+        //T.showShort(this,jsonData);
         webview.loadUrl(Constants.DETAILS_URL);
         webview.setWebViewClient(new WebViewClient(){
 
@@ -75,7 +80,19 @@ public class DetailsActivity extends BaseActivity {
                 view.loadUrl(url);
                 return true;
             }
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                dialog=new CustomProgressDialog(DetailsActivity.this,"加载中...",R.drawable.load_anim);
+                //dialog.set
+                dialog.show();
+            }
 
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                dialog.dismiss();
+            }
         });
 
         WebSettings webSettings = webview.getSettings();
@@ -93,14 +110,14 @@ public class DetailsActivity extends BaseActivity {
         switch (id){
             case R.id.call:
                 CustomDialog.Builder dialog = new CustomDialog.Builder(DetailsActivity.this,R.layout.dialog);
-                ShopInfo shopInfo= JSON.parseObject(jsonData,ShopInfo.class);
-                final ShopInfo _shopInfo=shopInfo;
-                dialog.setMessage("确定拨打:" + _shopInfo.getPhone());
+                BusinessList.PublistBean shopInfo= JSON.parseObject(jsonData,BusinessList.PublistBean.class);
+                final BusinessList.PublistBean _shopInfo=shopInfo;
+                dialog.setMessage("确定拨打:" + _shopInfo.getBusinessPhone());
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //调用系统拨打电话
-                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + _shopInfo.getPhone()));
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +_shopInfo.getBusinessPhone()));
                         //权限检查
                         //sdk23之后
 

@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.customview.CustomDialog;
+import com.example.lovehometown.model.BusinessList;
 import com.example.lovehometown.model.ShopInfo;
 
 import org.xutils.view.annotation.ViewInject;
@@ -29,9 +30,9 @@ import java.util.List;
 public class GoodsAdapter extends BaseAdapter {
     Context context;
     LayoutInflater layoutInflater;
-    List<ShopInfo> list;
+    List<BusinessList.PublistBean> list;
 
-    public GoodsAdapter(List<ShopInfo> list, Context context) {
+    public GoodsAdapter(List<BusinessList.PublistBean> list, Context context) {
         this.list = list;
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
@@ -88,30 +89,36 @@ public class GoodsAdapter extends BaseAdapter {
         private TextView columnTypeName;
         @ViewInject(R.id.time)
         private TextView time;
+        @ViewInject(R.id.waimai_image)
+        private ImageView waimai_image;
     }
 
     public void initData(int position, ViewHolder viewHolder) {
-        ShopInfo shopInfo = list.get(position);
-        final ShopInfo _shopInfo = shopInfo;
+        BusinessList.PublistBean shopInfo = list.get(position);
+        final BusinessList.PublistBean _shopInfo = shopInfo;
         //设置名字
-        viewHolder.name.setText(shopInfo.getName());
+        viewHolder.name.setText(shopInfo.getBusinessName());
         //价格
-        viewHolder.price.setText(shopInfo.getPrice());
+        viewHolder.price.setText(shopInfo.getBusinessPrice());
         //地址
-        viewHolder.address.setText(shopInfo.getAddress());
-        viewHolder.columnTypeName.setText(shopInfo.getType());
-        viewHolder.time.setText(shopInfo.getTime());
+        viewHolder.address.setText(shopInfo.getBusinessAddress());
+        viewHolder.columnTypeName.setText(shopInfo.getXiangxifenlei());
+        //支持外卖
+        if(shopInfo.getIstakeaway()==1){
+            viewHolder.waimai_image.setVisibility(View.VISIBLE);
+        }
+        viewHolder.time.setText(shopInfo.getBusinessStarttime()+"-"+shopInfo.getBusinessEndtime());
         viewHolder.listPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //弹出拨打电话确认框
                 CustomDialog.Builder dialog = new CustomDialog.Builder(context,R.layout.dialog);
-                dialog.setMessage("确定拨打:" + _shopInfo.getPhone());
+                dialog.setMessage("确定拨打:" + _shopInfo.getBusinessPhone());
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //调用系统拨打电话
-                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + _shopInfo.getPhone()));
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +_shopInfo.getBusinessPhone()));
                         //权限检查
                         //sdk23之后
 
