@@ -68,7 +68,7 @@ public class HttpService {
         params.addQueryStringParameter("password",password);
         x.http().get(params,callBack);
     }
-    //修改名字
+    /*//修改名字
    public void updateUserName(String userPhone,String userName,LoveHomeCallBack<String> callBack) {
        RequestParams params=new RequestParams(Constants.UPDATE_USERNAME);
        params.addQueryStringParameter("userPhone",userPhone);
@@ -81,12 +81,12 @@ public class HttpService {
         params.addQueryStringParameter("userPhone",userPhone);
         params.addQueryStringParameter("userContast",userContast);
         x.http().get(params,callBack);
-    }
+    }*/
     //修改联系地址
-    public void updateAddress(String userPhone,String userAddress,LoveHomeCallBack<String> callBack){
-        RequestParams params=new RequestParams(Constants.UPDATE_USER_ADDRESS);
+    public void updateInfo(String url,String key,String userPhone,String userInfo,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams(url);
         params.addQueryStringParameter("userPhone",userPhone);
-        params.addQueryStringParameter("userAddress",userAddress);
+        params.addQueryStringParameter(key,userInfo);
         x.http().get(params,callBack);
     }
     //修改密码

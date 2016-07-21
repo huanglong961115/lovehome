@@ -106,4 +106,10 @@ public class UserInfoActivity extends BaseActivity {
         //退出动画效果
         overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        initView();
+    }
 }
