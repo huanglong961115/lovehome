@@ -165,4 +165,15 @@ public class DetailsActivity extends BaseActivity {
             startActivity(intent);
         }
     }
+    @Event(R.id.leftView)
+    private void back(View view){
+        DetailsActivity.this.finish();
+        //退出动画效果
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        DetailsActivity.this.finish();
+    }
 }

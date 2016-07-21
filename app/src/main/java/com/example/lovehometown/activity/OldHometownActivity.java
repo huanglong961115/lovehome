@@ -15,6 +15,7 @@ import com.example.lovehometown.javascriptinterface.DetailsJavaScript;
 import com.example.lovehometown.util.T;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
 @ContentView(R.layout.activity_old_hometown)
@@ -52,5 +53,18 @@ public class OldHometownActivity extends BaseActivity {
         webSettings.setJavaScriptEnabled(true);
         //设置无缓存
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+    }
+    @Event(R.id.leftView)
+    private void back(View view){
+       OldHometownActivity.this.finish();
+        //退出动画效果
+        //overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+       OldHometownActivity.this.finish();
+        //退出动画效果
+       // overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
 }

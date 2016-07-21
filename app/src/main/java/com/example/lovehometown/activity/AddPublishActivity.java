@@ -110,7 +110,17 @@ public class AddPublishActivity extends BaseActivity {
                 break;
         }
     }
+    @Event(R.id.leftView)
+    private void back(View view){
+        AddPublishActivity.this.finish();
+        //退出动画效果
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        AddPublishActivity.this.finish();
+    }
 
 
 }

@@ -34,4 +34,17 @@ public class ShopListActivity extends BaseActivity {
                 break;
         }
     }
+    @Event(R.id.leftView)
+    private void back(View view){
+        ShopListActivity.this.finish();
+        //退出动画效果
+        //overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+        ShopListActivity.this.finish();
+        //退出动画效果
+       // overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
 }
