@@ -35,16 +35,18 @@
                         <GridView
                             android:id="@+id/photo_gridview"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:numColumns="3"
                             android:layout_marginLeft="20dip"
                             android:layout_marginTop="10dip"
                             android:horizontalSpacing="30dip"
+                            android:layout_below="@id/camera_addpublish"
                             />
                     </RelativeLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="20dip"
+                        android:layout_marginTop="10dip"
                         android:background="@color/personal_line_color"/>
                     <LinearLayout
                         android:layout_width="match_parent"
