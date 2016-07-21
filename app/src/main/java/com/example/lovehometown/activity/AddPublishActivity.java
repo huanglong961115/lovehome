@@ -17,6 +17,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -46,12 +48,12 @@ public class AddPublishActivity extends BaseActivity {
     private TextView title;
     @ViewInject(R.id.camera_addpublish)
     private ImageView camera;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-   // private GoogleApiClient client;
-
+    @ViewInject(R.id.waimai_addpublish)
+    private LinearLayout waiMaiLayout;
+    @ViewInject(R.id.waimai)
+    private LinearLayout isWaiMai;
+    @ViewInject(R.id.check_addPublish)
+    private CheckBox waimai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -69,6 +71,22 @@ public class AddPublishActivity extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
         String name = bundle.getString("name");
         String type = bundle.getString("type");
+        if(name.equals("美食")){
+            waiMaiLayout.setVisibility(View.VISIBLE);
+        }else{
+            waiMaiLayout.setVisibility(View.GONE);
+        }
+        //添加监听
+        waimai.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    isWaiMai.setVisibility(View.VISIBLE);
+                }else {
+                    isWaiMai.setVisibility(View.GONE);
+                }
+            }
+        });
         title.setText(name + "-" + type);
     }
 
@@ -82,18 +100,26 @@ public class AddPublishActivity extends BaseActivity {
                 contentView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.WRAP_CONTENT));
                 Button takephoto = (Button) contentView.findViewById(R.id.takephoto);
                 Button choosephoto = (Button) contentView.findViewById(R.id.choosephoto);
+                Button cancle= (Button) contentView.findViewById(R.id.canale_camera);
                 builder.setContentView(contentView);
-                PublishDialog dialog2 = builder.create(R.style.dialogStyle);
+                 PublishDialog dialog2 = builder.create(R.style.dialogStyle);
+                final PublishDialog _dialog2=dialog2;
                 takephoto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        _dialog2.dismiss();
                     }
                 });
                 choosephoto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        _dialog2.dismiss();
+                    }
+                });
+                cancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        _dialog2.dismiss();
                     }
                 });
                 Window window=dialog2.getWindow();
@@ -110,6 +136,7 @@ public class AddPublishActivity extends BaseActivity {
                 break;
         }
     }
+
     @Event(R.id.leftView)
     private void back(View view){
         AddPublishActivity.this.finish();

@@ -3,485 +3,534 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include layout="@layout/head"/>
+
+    <include layout="@layout/head" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:orientation="vertical">
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <ImageView
                             android:id="@+id/camera_addpublish"
                             android:layout_width="70dip"
                             android:layout_height="70dip"
-                            android:src="@drawable/photo"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dip"
-                            />
+                            android:src="@drawable/photo" />
+
                         <GridView
                             android:id="@+id/photo_gridview"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:numColumns="3"
+                            android:layout_below="@id/camera_addpublish"
                             android:layout_marginLeft="20dip"
                             android:layout_marginTop="10dip"
                             android:horizontalSpacing="30dip"
-                            android:layout_below="@id/camera_addpublish"
-                            />
+                            android:numColumns="3" />
                     </RelativeLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="20dip"
                         android:layout_marginTop="10dip"
-                        android:background="@color/personal_line_color"/>
+                        android:background="@color/personal_line_color" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
+                        android:layout_marginLeft="10dip"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="@string/shopstore_addpublish"
-                            android:textSize="16sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center_vertical"/>
+                            android:textSize="16sp" />
+
                         <EditText
                             android:id="@+id/storename_addpublish"
                             android:layout_width="250dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dip"
                             android:background="@null"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dip"/>
+                            android:textSize="15sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="340dip"
                         android:layout_height="1dip"
-                        android:background="@color/personal_line_color"
-                        android:layout_marginLeft="10dip" />
+                        android:layout_marginLeft="10dip"
+                        android:background="@color/personal_line_color" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
+                        android:layout_marginLeft="10dip"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:text="@string/businesstime_addpublish"
-                            android:textSize="16sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center_vertical"/>
+                            android:textSize="16sp" />
+
                         <EditText
                             android:id="@+id/starttime1_addpublish"
                             android:layout_width="132dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dip"
                             android:background="@null"
                             android:hint="@string/starttime_addpublish"
-                            android:layout_marginLeft="10dip"
-                            android:textSize="15sp"
-                            />
+                            android:textSize="15sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/gray"
-                            android:text="@string/to_addpublish"
-                            android:textSize="16sp"
                             android:layout_gravity="center_vertical"
-                            />
+                            android:text="@string/to_addpublish"
+                            android:textColor="@color/gray"
+                            android:textSize="16sp" />
+
                         <EditText
                             android:id="@+id/endtime1_addpublish"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dip"
                             android:background="@null"
                             android:hint="@string/endtime_addpublish"
-                            android:layout_marginLeft="10dip"
-                            android:textSize="15sp"/>
+                            android:textSize="15sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="340dip"
                         android:layout_height="1dip"
-                        android:background="@color/personal_line_color"
-                        android:layout_marginLeft="10dip" />
+                        android:layout_marginLeft="10dip"
+                        android:background="@color/personal_line_color" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
+                        android:layout_marginLeft="10dip"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:text="@string/consume_addpublish1"
-                            android:textSize="16sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center_vertical"/>
+                            android:textSize="16sp" />
+
                         <EditText
                             android:id="@+id/money_addpublish"
                             android:layout_width="132dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:background="@null"
-                            android:inputType="number"
-                            android:hint="@string/consume_addpublish2"
                             android:layout_marginLeft="10dip"
-                            android:textSize="15sp"/>
+                            android:background="@null"
+                            android:hint="@string/consume_addpublish2"
+                            android:inputType="number"
+                            android:textSize="15sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/gray"
-                            android:text="@string/yuan_addpublish"
-                            android:textSize="16sp"
                             android:layout_gravity="center_vertical"
-                            />
+                            android:text="@string/yuan_addpublish"
+                            android:textColor="@color/gray"
+                            android:textSize="16sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="340dip"
                         android:layout_height="1dip"
-                        android:background="@color/personal_line_color"
-                        android:layout_marginLeft="10dip" />
+                        android:layout_marginLeft="10dip"
+                        android:background="@color/personal_line_color" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
+                        android:layout_marginLeft="10dip"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="@string/count_unit_addpublish"
-                            android:textSize="16sp"
                             android:textColor="@color/black"
-                            android:layout_gravity="center_vertical"/>
+                            android:textSize="16sp" />
+
                         <EditText
                             android:id="@+id/countunit_addpublish"
                             android:layout_width="270dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:hint="@string/editcount_unit_addpublish"
-                            android:background="@null"
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dip"
-                            />
+                            android:background="@null"
+                            android:hint="@string/editcount_unit_addpublish"
+                            android:textSize="15sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="340dip"
                         android:layout_height="1dip"
-                        android:background="@color/personal_line_color"
-                        android:layout_marginLeft="10dip" />
+                        android:layout_marginLeft="10dip"
+                        android:background="@color/personal_line_color" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
+                        android:layout_marginLeft="10dip"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="@string/address_addpublish"
                             android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:textSize="16sp" />
+
                         <EditText
                             android:id="@+id/address_addpublish"
                             android:layout_width="300dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:hint="@string/editaddress_addpublish"
-                            android:textSize="15sp"
+                            android:layout_marginLeft="10dip"
                             android:background="@null"
-                            android:layout_marginLeft="10dip"/>
+                            android:hint="@string/editaddress_addpublish"
+                            android:textSize="15sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="340dip"
                         android:layout_height="1dip"
-                        android:background="@color/personal_line_color"
-                        android:layout_marginLeft="10dip" />
+                        android:layout_marginLeft="10dip"
+                        android:background="@color/personal_line_color" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
+                        android:layout_marginLeft="10dip"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="@string/contacts_addpublish"
                             android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:textSize="16sp" />
+
                         <EditText
                             android:id="@+id/contacts_addpublish"
                             android:layout_width="280dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:hint="@string/editcontacts_addpublish"
-                            android:textSize="15sp"
-                            android:background="@null"
                             android:layout_marginLeft="10dip"
-                            />
+                            android:background="@null"
+                            android:hint="@string/editcontacts_addpublish"
+                            android:textSize="15sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="340dip"
                         android:layout_height="1dip"
-                        android:background="@color/personal_line_color"
-                        android:layout_marginLeft="10dip" />
+                        android:layout_marginLeft="10dip"
+                        android:background="@color/personal_line_color" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
+                        android:layout_marginLeft="10dip"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="@string/phone_addpublish"
                             android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:textSize="16sp" />
+
                         <EditText
                             android:id="@+id/phone_addpublish"
                             android:layout_width="300dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:hint="@string/editphone_addpublish"
-                            android:background="@null"
-                            android:textSize="15sp"
                             android:layout_marginLeft="10dip"
-                            />
+                            android:background="@null"
+                            android:hint="@string/editphone_addpublish"
+                            android:textSize="15sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="10dip"
                         android:background="@color/personal_line_color" />
+
                     <LinearLayout
                         android:id="@+id/waimai_addpublish"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_centerInParent="true">
-                            <CheckBox
-                                android:id="@+id/check_addPublish"
-                                android:layout_width="28dip"
-                                android:layout_height="28dip"
-                                android:checked="true"
-                                android:button="@drawable/checkbox_bg2"
-                                android:layout_gravity="center_vertical"/>
-                            <TextView
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dip"
+                            android:layout_marginLeft="10dip"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/support_addpublish"
-                                android:textSize="18sp"
-                                android:textColor="#6699ff"
-                                android:layout_marginLeft="10dip"
-                                />
-                        </LinearLayout>
-                    </RelativeLayout>
-                    <LinearLayout
-                        android:id="@+id/waimai"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal">
+
+                                <CheckBox
+                                    android:id="@+id/check_addPublish"
+                                    android:layout_width="28dip"
+                                    android:layout_height="28dip"
+                                    android:layout_gravity="center_vertical"
+                                    android:button="@drawable/checkbox_bg2"
+                                    android:checked="true" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dip"
+                                    android:text="@string/support_addpublish"
+                                    android:textColor="#6699ff"
+                                    android:textSize="18sp" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
                         <LinearLayout
+                            android:id="@+id/waimai"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="340dip"
-                        android:layout_height="1dip"
-                        android:background="@color/personal_line_color"
-                        android:layout_marginLeft="10dip" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/takeout_tome_addpublish"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:layout_gravity="center_vertical"/>
-                        <EditText
-                            android:id="@+id/starttime2_addpublish"
-                            android:layout_width="100dip"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:background="@null"
 
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dip"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/gray"
-                            android:text="@string/to_addpublish"
-                            android:textSize="16sp"
-                            android:layout_gravity="center_vertical"
-                            />
-                        <EditText
-                            android:id="@+id/endtime2_addpublish"
-                            android:layout_width="132dip"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:background="@null"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dip"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="340dip"
-                        android:layout_height="1dip"
-                        android:background="@color/personal_line_color"
-                        android:layout_marginLeft="10dip" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/takeout_area_addpublish"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:layout_gravity="center_vertical"/>
-                        <EditText
-                            android:id="@+id/area_addpublish"
-                            android:layout_width="250dip"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:background="@null"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dip"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="340dip"
-                        android:layout_height="1dip"
-                        android:background="@color/personal_line_color"
-                        android:layout_marginLeft="10dip" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dip"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dip">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/takeout_money_addpublish"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:layout_gravity="center_vertical"/>
-                        <EditText
-                            android:id="@+id/howmuch_addpublish"
-                            android:layout_width="100dip"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:background="@null"
-                            android:inputType="number"
-                            android:textSize="15sp"
-                            android:layout_marginLeft="10dip"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/gray"
-                            android:text="@string/yuan_ci_addpublish"
-                            android:textSize="16sp"
-                            android:layout_gravity="center_vertical"
-                            />
-                        <TextView
-                            android:layout_width="132dip"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            />
-                    </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="340dip"
+                                    android:layout_height="1dip"
+                                    android:layout_marginLeft="10dip"
+                                    android:background="@color/personal_line_color" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dip"
+                                    android:layout_marginLeft="10dip"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:text="@string/takeout_tome_addpublish"
+                                        android:textColor="@color/black"
+                                        android:textSize="16sp" />
+
+                                    <EditText
+                                        android:id="@+id/starttime2_addpublish"
+                                        android:layout_width="100dip"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="10dip"
+
+                                        android:background="@null"
+                                        android:textSize="15sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:text="@string/to_addpublish"
+                                        android:textColor="@color/gray"
+                                        android:textSize="16sp" />
+
+                                    <EditText
+                                        android:id="@+id/endtime2_addpublish"
+                                        android:layout_width="132dip"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="10dip"
+                                        android:background="@null"
+                                        android:textSize="15sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="340dip"
+                                    android:layout_height="1dip"
+                                    android:layout_marginLeft="10dip"
+                                    android:background="@color/personal_line_color" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dip"
+                                    android:layout_marginLeft="10dip"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:text="@string/takeout_area_addpublish"
+                                        android:textColor="@color/black"
+                                        android:textSize="16sp" />
+
+                                    <EditText
+                                        android:id="@+id/area_addpublish"
+                                        android:layout_width="250dip"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="10dip"
+                                        android:background="@null"
+                                        android:textSize="15sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="340dip"
+                                    android:layout_height="1dip"
+                                    android:layout_marginLeft="10dip"
+                                    android:background="@color/personal_line_color" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dip"
+                                    android:layout_marginLeft="10dip"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:text="@string/takeout_money_addpublish"
+                                        android:textColor="@color/black"
+                                        android:textSize="16sp" />
+
+                                    <EditText
+                                        android:id="@+id/howmuch_addpublish"
+                                        android:layout_width="100dip"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="10dip"
+                                        android:background="@null"
+                                        android:inputType="number"
+                                        android:textSize="15sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:text="@string/yuan_ci_addpublish"
+                                        android:textColor="@color/gray"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:layout_width="132dip"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical" />
+                                </LinearLayout>
+                            </LinearLayout>
                         </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="10dip"
+                                android:background="@color/personal_line_color" />
+                        </LinearLayout>
+
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="10dip"
-                        android:background="@color/personal_line_color"
-                         />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="180dip"
-                        >
+                        android:layout_height="180dip">
+
                         <EditText
                             android:id="@+id/details_addpublish"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="@string/editdetails_addpublish"
-                            android:textSize="16sp"
                             android:layout_marginLeft="10dip"
                             android:layout_marginTop="10dip"
                             android:background="@null"
+                            android:hint="@string/editdetails_addpublish"
+                            android:textSize="16sp"
 
                             />
                     </LinearLayout>
-                    </LinearLayout>
                 </LinearLayout>
+
             </ScrollView>
         </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="70dip"
-            android:background="@color/personal_line_color"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:background="@color/personal_line_color">
+
             <Button
                 android:id="@+id/save_addpublish"
                 android:layout_width="160dip"
                 android:layout_height="50dip"
                 android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="10dip"
                 android:background="@drawable/kuang_savedraft"
                 android:text="@string/savedraft_addpublish"
                 android:textColor="@color/theme_color"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                />
+                android:textSize="18sp" />
+
             <Button
                 android:id="@+id/publish_addpublish"
                 android:layout_width="160dip"
                 android:layout_height="50dip"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="10dip"
                 android:background="@drawable/kuang_publish"
                 android:text="@string/publish_addpublish"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                />
+                android:textSize="18sp" />
         </RelativeLayout>
     </RelativeLayout>
 
