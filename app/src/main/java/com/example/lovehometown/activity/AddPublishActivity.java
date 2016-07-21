@@ -1,5 +1,6 @@
 package com.example.lovehometown.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,14 +8,21 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.PhotoGridViewAdapter;
+import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.util.L;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -35,68 +43,99 @@ public class AddPublishActivity extends BaseActivity {
     private TextView title;
     @ViewInject(R.id.camera_addpublish)
     private ImageView camera;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
-    List<Bitmap> photos;
-    GridView gridView;
-    PhotoGridViewAdapter adapter;
-    private File mPhotoFile;
-    private String mPhotoPath;
-    private static final int CAMERA_REQUEST = 1888;//相机请求的接口
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         initView();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+
     private void initView() {
         /*设置可见*/
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);
-        Bundle bundle=getIntent().getExtras();
-        String name=bundle.getString("name");
-        String type=bundle.getString("type");
-        title.setText(name+"-"+type);
-        photos=new ArrayList<Bitmap>();
-        gridView= (GridView) findViewById(R.id.photo_gridview);
+        Bundle bundle = getIntent().getExtras();
+        String name = bundle.getString("name");
+        String type = bundle.getString("type");
+        title.setText(name + "-" + type);
     }
+
     @Event(R.id.camera_addpublish)
-    private void click(View view){
-        int id=view.getId();
-        switch (id){
+    private void click(View view) {
+        int id = view.getId();
+        switch (id) {
             case R.id.camera_addpublish:
-                try{
-                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    mPhotoPath="mnt/sdcard/DCIM/Camera/"+getPhotoFileName();//保存照片的路径
-                    mPhotoFile = new File(mPhotoPath);
-                    if (!mPhotoFile.exists()) {
-                        mPhotoFile.createNewFile();
+                PublishDialog.Builder builder = new PublishDialog.Builder(AddPublishActivity.this);
+                View contentView = LayoutInflater.from(AddPublishActivity.this).inflate(R.layout.dialog_camera, null);
+                Button takephoto = (Button) contentView.findViewById(R.id.takephoto);
+                Button choosephoto = (Button) contentView.findViewById(R.id.choosephoto);
+                builder.setContentView(contentView);
+                PublishDialog dialog2 = builder.create();
+                takephoto.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
                     }
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mPhotoFile));
-                    startActivityForResult(intent, CAMERA_REQUEST);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                });
+                choosephoto.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                dialog2.show();
                 break;
             default:
                 break;
         }
     }
-    private String getPhotoFileName() {
-        Date date = new Date(System.currentTimeMillis());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("'IMG'_yyyyMMdd_HHmmss");
-        return dateFormat.format(date) + ".jpg";
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "AddPublish Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.example.lovehometown.activity/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
     }
-    //重写的onActivityResult方法中可以获取到返回的照片数据
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAMERA_REQUEST) {
-            Bitmap bitmap = BitmapFactory.decodeFile(mPhotoPath, null);//加载手机磁盘上的资源
-            photos.add(bitmap);
-            L.e("hehe", photos.size() + "");
-            adapter = new PhotoGridViewAdapter(AddPublishActivity.this, photos);
-            gridView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-//            photo_camera.setImageBitmap(bitmap);
-        }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "AddPublish Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.example.lovehometown.activity/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
     }
 }
