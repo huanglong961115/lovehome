@@ -69,10 +69,40 @@ public class HttpService {
         x.http().get(params,callBack);
     }
     //修改名字
-   public void updateUserName(String name,LoveHomeCallBack<String> callBack) {
-     RequestParams params=new RequestParams();
+   public void updateUserName(String userPhone,String userName,LoveHomeCallBack<String> callBack) {
+       RequestParams params=new RequestParams(Constants.UPDATE_USERNAME);
+       params.addQueryStringParameter("userPhone",userPhone);
+       params.addQueryStringParameter("userName",userName);
        x.http().get(params,callBack);
    }
-
+    //修改联系方式
+    public void updateConstant(String userPhone,String userContast,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams(Constants.UPDATE_USER_CONSTANT);
+        params.addQueryStringParameter("userPhone",userPhone);
+        params.addQueryStringParameter("userContast",userContast);
+        x.http().get(params,callBack);
+    }
+    //修改联系地址
+    public void updateAddress(String userPhone,String userAddress,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams(Constants.UPDATE_USER_ADDRESS);
+        params.addQueryStringParameter("userPhone",userPhone);
+        params.addQueryStringParameter("userAddress",userAddress);
+        x.http().get(params,callBack);
+    }
+    //修改密码
+    public void updatePassword(String userPhone,String oldPassword,String newPassword,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams(Constants.UPDATE_PASS);
+        params.addQueryStringParameter("userPhone",userPhone);
+        params.addQueryStringParameter("password",oldPassword);
+        params.addQueryStringParameter("password",newPassword);
+        x.http().get(params,callBack);
+    }
+    //忘记密码
+    public void forgetPassword(String userPhone,String code,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams(Constants.FORGET_PASSWORD);
+        params.addQueryStringParameter("userPhone",userPhone);
+        params.addQueryStringParameter("code",code);
+        x.http().get(params,callBack);
+    }
 
 }
