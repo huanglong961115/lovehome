@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LoveHomeTown.iml" filepath="$PROJECT_DIR$/LoveHomeTown.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pulltorefreshlibrary/Pulltorefreshlibrary.iml" filepath="$PROJECT_DIR$/Pulltorefreshlibrary/Pulltorefreshlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lovehome.iml" filepath="$PROJECT_DIR$/lovehome.iml" />
