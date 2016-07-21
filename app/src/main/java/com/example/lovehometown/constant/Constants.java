@@ -61,4 +61,6 @@ public class Constants {
     public final static String REGISTER_ACTION="com.lovehome.register";
     //忘记密码的广播接收
     public final static String FORGET_ACTION="com.lovehome.forget";
+    //忘记密码的广播接收
+    public final static String UPDATE_FORGET_ACTION="com.lovehome.forget";
 }

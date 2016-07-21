@@ -91,10 +91,10 @@ public class HttpService {
     }
     //修改密码
     public void updatePassword(String userPhone,String oldPassword,String newPassword,LoveHomeCallBack<String> callBack){
-        RequestParams params=new RequestParams(Constants.UPDATE_PASS);
+        RequestParams params=new RequestParams(Constants.UPDATE_PASSWORD);
         params.addQueryStringParameter("userPhone",userPhone);
         params.addQueryStringParameter("password",oldPassword);
-        params.addQueryStringParameter("password",newPassword);
+        params.addQueryStringParameter("newpassword",newPassword);
         x.http().get(params,callBack);
     }
     //忘记密码

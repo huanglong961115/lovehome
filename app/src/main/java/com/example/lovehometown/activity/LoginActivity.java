@@ -96,7 +96,12 @@ public class LoginActivity extends BaseActivity{
                //this.finish();
                break;
            case R.id.forwordPassword:
-               startActivity(new Intent(this,ForgetPasswordctivity.class));
+               Intent intent=new Intent();
+               Bundle bundle=new Bundle();
+               bundle.putString("what","login");
+               intent.setClass(this,ForgetPasswordctivity.class);
+               intent.putExtras(bundle);
+               startActivity(intent);
                //this.finish();
                break;
 
@@ -168,7 +173,7 @@ public class LoginActivity extends BaseActivity{
         title.setVisibility(View.VISIBLE);
         title.setText("登录");
         //广播注册
-    LoginBroadCast reciver=new LoginBroadCast();
+       LoginBroadCast reciver=new LoginBroadCast();
      IntentFilter intentFilter = new IntentFilter();
      intentFilter.addAction(Constants.FORGET_ACTION);
      intentFilter.addAction(Constants.REGISTER_ACTION);

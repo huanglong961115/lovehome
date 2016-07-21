@@ -23,6 +23,7 @@ import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomDialog;
 import com.example.lovehometown.model.UserInfo;
+import com.example.lovehometown.util.DataCleanManager;
 import com.example.lovehometown.util.SPUtils;
 import com.example.lovehometown.util.T;
 
@@ -64,6 +65,8 @@ public class MyFragment extends BaseFragment {
     TextView personPhone;
     @ViewInject(R.id.address_my)
     TextView personAddress;
+    @ViewInject(R.id.size)
+    TextView size;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -71,6 +74,7 @@ public class MyFragment extends BaseFragment {
     }
 
     private void initView() {
+
         //获取用户信息
         String userInfo= (String) SPUtils.get(getActivity(),Constants.USER_INFO,"");
         if(userInfo.equals("")){
@@ -106,6 +110,11 @@ public class MyFragment extends BaseFragment {
             personPhone.setText("请点击登录");
             //隐藏
             logoutLayout.setVisibility(View.GONE);
+        }
+        try {
+            size.setText(DataCleanManager.getTotalCacheSize(getActivity()));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -182,6 +191,10 @@ public class MyFragment extends BaseFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                              //清除缓存操作
+                        //删除当前应用下所在文件的文件夹
+                        //清除应用的内部缓存
+                       DataCleanManager.cleanExternalCache(getActivity());
+                        DataCleanManager.cleanInternalCache(getActivity());
                         dialog.dismiss();
                     }
                 });

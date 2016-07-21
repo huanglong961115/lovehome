@@ -389,7 +389,9 @@
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 />
+
             <ImageView
+                android:id="@+id/clean"
                 android:layout_width="20dip"
                 android:layout_height="20dip"
                 android:src="@drawable/img_my_fragment_title_right"
@@ -397,6 +399,13 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dip"
                 />
+            <TextView
+                android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/clean"/>
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/lgout_layout"
