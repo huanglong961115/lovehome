@@ -195,6 +195,8 @@ public class MyFragment extends BaseFragment {
                         //清除应用的内部缓存
                        DataCleanManager.cleanExternalCache(getActivity());
                         DataCleanManager.cleanInternalCache(getActivity());
+                        size.setText("");
+                        T.showShort(getActivity(),"清除成功");
                         dialog.dismiss();
                     }
                 });
