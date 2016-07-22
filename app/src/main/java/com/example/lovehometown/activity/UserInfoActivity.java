@@ -83,7 +83,7 @@ public class UserInfoActivity extends BaseActivity {
         }else{
             //解析
             userBean= JSON.parseObject(userInfo, UserInfo.UserBean.class);
-           userName.setText(userBean.getUsername());
+            userName.setText(userBean.getUsername());
             userAddress.setText(userBean.getUserAddress());
             userContast.setText(userBean.getUserContast());
         }

@@ -105,15 +105,27 @@ public class HttpService {
         x.http().get(params,callBack);
     }
      //获取商家列表
-    public void getBusinessList(int type,int page,int pagesize,String childType,LoveHomeCallBack<String> callBack){
+    public void getBusinessList(int type,int page,int pagesize,LoveHomeCallBack<String> callBack){
         RequestParams params=new RequestParams(Constants.SHOP_LIST_URL);
         params.addQueryStringParameter("type",type+"");
         params.addQueryStringParameter("page",page+"");
         params.addQueryStringParameter("pagesize",pagesize+"");
-        if (!childType.equals("")){
-            params.addQueryStringParameter("childtype",childType);
-        }
         x.http().get(params,callBack);
     }
-
+    //获取商家详细列表
+    public void getChildBusinessList(String  childType,int page,int pagesize,LoveHomeCallBack<String> callBack){
+      RequestParams params=new RequestParams(Constants.CHILD_LIST_URL);
+        params.addQueryStringParameter("childtype",childType);
+        params.addQueryStringParameter("page",page+"");
+        params.addQueryStringParameter("pagesize",pagesize+"");
+        x.http().get(params,callBack);
+    }
+    //查询
+    public void selcetBusinessList(String  name,int page,int pagesize,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams(Constants.SELECT_URL);
+        params.addQueryStringParameter("businessname",name);
+        params.addQueryStringParameter("page",page+"");
+        params.addQueryStringParameter("pagesize",pagesize+"");
+        x.http().get(params,callBack);
+    }
 }

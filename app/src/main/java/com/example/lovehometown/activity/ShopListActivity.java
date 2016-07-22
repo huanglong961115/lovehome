@@ -61,6 +61,11 @@ public class ShopListActivity extends BaseActivity {
     List<BusinessList.PublistBean> data;
     MenuSmallAdapter smallAdapter;
     GoodsAdapter adapter;
+    @ViewInject(R.id.shaop_type)
+    TextView shopType;
+    String shopName="";
+    //根据什么查询 0 默认 1 子类 2 商家查询
+    int what=0;
     //默认type
     int type=1;
     String childType="";
@@ -82,17 +87,18 @@ public class ShopListActivity extends BaseActivity {
     public void initView(){
         Bundle bundle=getIntent().getExtras();
         String name=bundle.getString("typename");
-        int type=bundle.getInt("type");
-        final int _type=type;
+        type=bundle.getInt("type");
+        what=0;
         title.setVisibility(View.VISIBLE);
         title.setText(name);
+        shopType.setText(name);
         back.setVisibility(View.VISIBLE);
         search.setVisibility(View.VISIBLE);
         data=new ArrayList<BusinessList.PublistBean>();
         adapter=new GoodsAdapter(data,this);
         listView.setAdapter(adapter);
 
-        initData(type);
+        initData();
         listView.setMode(PullToRefreshBase.Mode.BOTH);
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
@@ -106,7 +112,7 @@ public class ShopListActivity extends BaseActivity {
 
                 refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在刷新...");//请求数据过程中显示的文本提示
                 refreshView.getLoadingLayoutProxy().setReleaseLabel("松开可加载...");//数据刷新完的文本提示
-                initData(_type);
+                initData();
                 //getdata();
                 //page++;
             }
@@ -123,48 +129,56 @@ public class ShopListActivity extends BaseActivity {
                 refreshView.getLoadingLayoutProxy().setReleaseLabel("松开加载更多");//数据刷新完的文本提示
                 //HttpService.getInstance().getquestionlist();
                 ++page;
-                initData(_type);
+                initData();
                 //getdata();
 
             }
         });
 
     }
-    public void initData(int type){
-        HttpService.getHttpService().getBusinessList(type, page, pageSize, "", new LoveHomeCallBack<String>() {
-            @Override
-            public void onSuccess(String result) {
-               // T.showShort(ShopListActivity.this,result);
-                BusinessList businessList= JSON.parseObject(result,BusinessList.class);
-                if(businessList.getResults().getCode()!=1){
-                    T.showShort(ShopListActivity.this,businessList.getResults().getMsg());
-                    return;
-                }else {
-                    //T.showShort(ShopListActivity.this,result);
-                    if(businessList.getPublist()==null||businessList.getPublist().size()==0){
-                        T.showShort(ShopListActivity.this,"没有新数据，将不会显示新的数据");
-                        //return;
-                    }else{
-                        List<BusinessList.PublistBean> list=businessList.getPublist();
-                        if(ispushup) {
-                            data.clear();
-                        }
-                        data.addAll(list);
-                        adapter.notifyDataSetChanged();
-                    }
-                }
-                //完成刷新
-                listView.onRefreshComplete();
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-                T.showShort(ShopListActivity.this,"访问网络失败");
-                //完成刷新
-                listView.onRefreshComplete();
-            }
-        });
+    public void initData(){
+        if(what==0) {
+            HttpService.getHttpService().getBusinessList(type, page, pageSize, callBack);
+        }else if(what==1){
+            HttpService.getHttpService().getChildBusinessList(childType,page,pageSize,callBack);
+        }else if(what==2){
+            HttpService.getHttpService().selcetBusinessList(shopName,page,pageSize,callBack);
+        }
     }
+    //访问网络的方法
+    LoveHomeCallBack<String> callBack=new LoveHomeCallBack<String>() {
+        @Override
+        public void onSuccess(String result) {
+            // T.showShort(ShopListActivity.this,result);
+            BusinessList businessList= JSON.parseObject(result,BusinessList.class);
+            if(businessList.getResults().getCode()!=1){
+                T.showShort(ShopListActivity.this,businessList.getResults().getMsg());
+                return;
+            }else {
+                //T.showShort(ShopListActivity.this,result);
+                if(businessList.getPublist()==null||businessList.getPublist().size()==0){
+                    T.showShort(ShopListActivity.this,"没有新数据，将不会显示新的数据");
+                    //return;
+                }else{
+                    List<BusinessList.PublistBean> list=businessList.getPublist();
+                    if(ispushup) {
+                        data.clear();
+                    }
+                    data.addAll(list);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+            //完成刷新
+            listView.onRefreshComplete();
+        }
+
+        @Override
+        public void onError(Throwable ex, boolean isOnCallback) {
+            T.showShort(ShopListActivity.this,"访问网络失败");
+            //完成刷新
+            listView.onRefreshComplete();
+        }
+    };
     @Event(value = R.id.good_listview,type = AdapterView.OnItemClickListener.class)
     private void detail(AdapterView<?> parent, View view, int position, long id){
         Intent intent=new Intent();
@@ -191,7 +205,17 @@ public class ShopListActivity extends BaseActivity {
         //退出动画效果
         //overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
-
+    //查询方法
+    @Event(R.id.search_input)
+    private void search(View view){
+        title.setVisibility(View.GONE);
+       searchView.setVisibility(View.VISIBLE);
+        shopName=searchView.getText().toString().trim();
+        if(!shopName.equals("")){
+            what=2;
+            initData();
+        }
+    }
     @Override
     public void onBackPressed() {
         ShopListActivity.this.finish();
@@ -228,19 +252,14 @@ public class ShopListActivity extends BaseActivity {
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                T.showShort(ShopListActivity.this,"哈哈哈");
+                //T.showShort(ShopListActivity.this,"哈哈哈");
                 initMenuData(data2.get(position).getId());
                 //Log.e("TAG","position"+position+"--"+maps.get(data2.get(position)).toString());
                 //lv2.setAdapter(new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_expandable_list_item_1,maps.get(data.get(position))));
             }
         });
-        lv2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(MainActivity.this,position+"",Toast.LENGTH_SHORT).show();
-            }
-        });
         PopupWindow p=new PopupWindow(v, LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT,true);
+        final PopupWindow _p=p;
         p.setFocusable(true);
         p.setOutsideTouchable(true);
         v.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
@@ -254,6 +273,22 @@ public class ShopListActivity extends BaseActivity {
         //TextView b= (TextView) findViewById(R.id.v);
         // v.getLocationOnScreen(location);
         p.showAsDropDown(layOutShop);
+        lv2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                T.showShort(ShopListActivity.this,publistBeen.get(position).getReleaseList().getPublishName());
+                what=1;
+                childType=publistBeen.get(position).getReleaseList().getPublishTypename();
+                title.setVisibility(View.VISIBLE);
+                searchView.setVisibility(View.GONE);
+                title.setText(publistBeen.get(position).getReleaseList().getPublishName());
+                shopType.setText(publistBeen.get(position).getReleaseList().getPublishName());
+                initData();
+                _p.dismiss();
+                //Toast.makeText(MainActivity.this,position+"",Toast.LENGTH_SHORT).show();
+            }
+        });
+
         // p.showAtLocation(v,Gravity.NO_GRAVITY, (location[0] + v.getWidth() / 2) - popupWidth / 2, location[1] - popupHeight);
     }
     //
@@ -261,7 +296,7 @@ public class ShopListActivity extends BaseActivity {
       HttpService.getHttpService().getPublishList(type, new LoveHomeCallBack<String>() {
           @Override
           public void onSuccess(String result) {
-              T.showShort(ShopListActivity.this,result+"cccc");
+              //T.showShort(ShopListActivity.this,result+"cccc");
               PublishList publishList=JSON.parseObject(result,PublishList.class);
               if(publishList.getResults().getCode()!=1){
                   T.showShort(ShopListActivity.this,"获取详细分类失败");

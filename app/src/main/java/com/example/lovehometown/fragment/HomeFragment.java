@@ -240,7 +240,7 @@ public class HomeFragment extends BaseFragment{
         }
     }
     public void initData(){
-        HttpService.getHttpService().getBusinessList(1, 1, 5, "", new LoveHomeCallBack<String>() {
+        HttpService.getHttpService().getBusinessList(1, 1, 5, new LoveHomeCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                // T.showShort(getActivity(),result);

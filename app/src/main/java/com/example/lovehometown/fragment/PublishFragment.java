@@ -149,6 +149,7 @@ public class PublishFragment extends BaseFragment{
                         PublishList publish=JSON.parseObject(result,PublishList.class);
                         if(publish.getResults().getCode()!=1){
                             T.showShort(getActivity(),publish.getResults().getMsg());
+                            progressDialog.dismiss();
                             return;
                         }
                         //T.showShort(getActivity(),publish.getPublist().size()+"hhh");
