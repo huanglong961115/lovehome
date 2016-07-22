@@ -37,7 +37,7 @@
                             android:layout_marginTop="10dip"
                             android:src="@drawable/photo" />
 
-                        <GridView
+                        <com.example.lovehometown.customview.CustomGridView
                             android:id="@+id/photo_gridview"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
