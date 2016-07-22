@@ -74,4 +74,6 @@ public class Constants {
     public final static  String CHILD_LIST_URL=LOVE_HOME+"getchildbusinesslist.do";
     //查询接口查询详细
     public final static  String SELECT_URL=LOVE_HOME+"selectbusiness.do";
+    //发布接口
+    public final static  String ADD_BUSINESS="addbusiness.do";
 }

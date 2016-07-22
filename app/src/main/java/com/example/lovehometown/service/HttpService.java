@@ -3,6 +3,7 @@ package com.example.lovehometown.service;
 import com.example.lovehometown.R;
 import com.example.lovehometown.callback.LoveHomeCallBack;
 import com.example.lovehometown.constant.Constants;
+import com.example.lovehometown.vo.Publish;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -126,6 +127,12 @@ public class HttpService {
         params.addQueryStringParameter("businessname",name);
         params.addQueryStringParameter("page",page+"");
         params.addQueryStringParameter("pagesize",pagesize+"");
+        x.http().get(params,callBack);
+    }
+    //发布
+    public void publish(Publish publish,LoveHomeCallBack<String> callBack){
+        RequestParams params=new RequestParams();
+        //params.addQueryStringParameter("",publish.get);
         x.http().get(params,callBack);
     }
 }

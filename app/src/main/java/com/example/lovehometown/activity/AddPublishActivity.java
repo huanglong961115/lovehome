@@ -36,16 +36,20 @@ import android.widget.Toast;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.PhotoGridViewAdapter;
+import com.example.lovehometown.common.Login;
+import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.util.CameraUtils;
 import com.example.lovehometown.util.L;
+import com.example.lovehometown.util.T;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -71,9 +75,32 @@ public class AddPublishActivity extends BaseActivity {
     private EditText beginTime;
     @ViewInject(R.id.endtime1_addpublish)
     private EditText endTime;
+    @ViewInject(R.id.storename_addpublish)
+    EditText shopName;
+    @ViewInject(R.id.money_addpublish)
+    EditText everyMoney;
+    @ViewInject(R.id.countunit_addpublish)
+    EditText count;
+    @ViewInject(R.id.address_addpublish)
+    EditText address;
+    @ViewInject(R.id.contacts_addpublish)
+    EditText linkMan;
+    @ViewInject(R.id.phone_addpublish)
+    EditText phone;
+    @ViewInject(R.id.details_addpublish)
+    EditText details;
+    @ViewInject(R.id.starttime2_addpublish)
+    EditText waimaistTime;
+    @ViewInject(R.id.endtime2_addpublish)
+    EditText waimaienTime;
+    @ViewInject(R.id.area_addpublish)
+    EditText waimaiarea;
+    @ViewInject(R.id.howmuch_addpublish)
+    EditText waimiaMoney;
 
     @ViewInject(R.id.photo_gridview)
     private CustomGridView gridView;
+    boolean isWaimai=false;
     private static final int SELECT_PICTURE = 1;
     private static final int SELECT_CAMER = 2;
     Context mContext;
@@ -95,7 +122,7 @@ public class AddPublishActivity extends BaseActivity {
         title.setVisibility(View.VISIBLE);
         Bundle bundle = getIntent().getExtras();
         String name = bundle.getString("name");
-        String type = bundle.getString("type");
+        final String type = bundle.getString("type");
         if(name.equals("美食")){
             waiMaiLayout.setVisibility(View.VISIBLE);
         }else{
@@ -106,8 +133,10 @@ public class AddPublishActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+                    isWaimai=true;
                     isWaiMai.setVisibility(View.VISIBLE);
                 }else {
+                    isWaimai=false;
                     isWaiMai.setVisibility(View.GONE);
                 }
             }
@@ -176,9 +205,83 @@ public class AddPublishActivity extends BaseActivity {
     }
   @Event(value={R.id.publish_addpublish,R.id.save_addpublish})
    private void publishOrDraft(View view){
-      switch (view.getId()){
+      boolean isLogin= Login.getInstance().isLogin(AddPublishActivity.this);
+      //已经登录
+      if(isLogin){
+          //获取商家名称
+          String name=shopName.getText().toString();
+          //获取开始时间
+          String begin=beginTime.getText().toString();
+          //获取结束时间
+          String end=endTime.getText().toString();
+          //
+          String enrvey=everyMoney.getText().toString();
+          //计量单位
+          String counts=count.getText().toString();
+          String adress=address.getText().toString();
+          String constants=linkMan.getText().toString();
+          String tel=phone.getText().toString();
+          String reg="^\\s*$";
+          if(name.matches(reg)){
+              T.showShort(AddPublishActivity.this,"商家名称不能为空");
+              return;
+          }else if(begin.matches(reg)){
+              T.showShort(AddPublishActivity.this,"开始时间不能为空");
+              return;
+          }
+          //验证结束时间和开始时间
+          else if(end.matches(reg)){
+              T.showShort(AddPublishActivity.this,"结束时间不能为空");
+              return;
+          }
+          SimpleDateFormat format=new SimpleDateFormat("hh:mm");
+          try {
+              Date date1=format.parse(begin);
+              Date date2=format.parse(end);
+              if(date2.before(date1)){
+                  T.showShort(AddPublishActivity.this,"结束时间必须大于开始时间");
+                  return;
+              }
+          } catch (ParseException e) {
+              e.printStackTrace();
+          }
 
+          if(enrvey.matches(reg)){
+              T.showShort(AddPublishActivity.this,"人均消费不能为空");
+              return;
+          }else if(counts.matches(reg)){
+              T.showShort(AddPublishActivity.this,"计量单位不能为空");
+              return;
+          }else if(adress.matches(reg)){
+              T.showShort(AddPublishActivity.this,"地址不能为空");
+              return;
+          }else if(constants.matches(reg)){
+              T.showShort(AddPublishActivity.this,"联系人不能为空");
+              return;
+          }
+          //验证电话号码
+          String phoneReg=" ((\\d{11})|^((\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1})|(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1}))$)";
+          if(!tel.matches(phoneReg)){
+              T.showShort(AddPublishActivity.this,"电话号码不能为空");
+              return;
+          }
+          //获取
+          switch (view.getId()){
+              case R.id.publish_addpublish:
+                  break;
+              case R.id.save_addpublish:
+
+                  break;
+          }
+      }else{
+          Intent intent=new Intent();
+          Bundle bundle=new Bundle();
+          bundle.putString(Constants.NAME,Constants.PUBLISH);
+          intent.putExtras(bundle);
+          intent.setClass(AddPublishActivity.this,LoginActivity.class);
+          startActivity(intent);
       }
+
    }
 
     @Event(R.id.camera_addpublish)
