@@ -24,7 +24,7 @@ public class Constants {
     //发布分类访问地址
     public final static String PUBLISH_URL=LOVE_HOME+"getpublishlist.do";
     //登录url;
-    public final static  String LOGIN_URL=LOVE_HOME+"LoveHome/login.do";
+    public final static  String LOGIN_URL=LOVE_HOME+"login.do";
     //发布列表url
     public final static String PUBLISH_LIST_URL=LOVE_HOME+"getpublishlist.do";
     //是否登录在share存放的key值
@@ -74,4 +74,6 @@ public class Constants {
     public final static  String CHILD_LIST_URL=LOVE_HOME+"getchildbusinesslist.do";
     //查询接口查询详细
     public final static  String SELECT_URL=LOVE_HOME+"selectbusiness.do";
+    //发布接口
+    public final static  String ADD_BUSINESS="addbusiness.do";
 }
