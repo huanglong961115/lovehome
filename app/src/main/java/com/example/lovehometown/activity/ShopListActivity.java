@@ -212,6 +212,7 @@ public class ShopListActivity extends BaseActivity {
        searchView.setVisibility(View.VISIBLE);
         shopName=searchView.getText().toString().trim();
         if(!shopName.equals("")){
+            data.clear();
             what=2;
             initData();
         }
