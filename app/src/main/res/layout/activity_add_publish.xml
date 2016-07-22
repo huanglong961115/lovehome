@@ -40,7 +40,7 @@
                         <GridView
                             android:id="@+id/photo_gridview"
                             android:layout_width="fill_parent"
-                            android:layout_height="200dip"
+                            android:layout_height="wrap_content"
                             android:horizontalSpacing="7dp"
                             android:listSelector="@null"
                             android:numColumns="3"

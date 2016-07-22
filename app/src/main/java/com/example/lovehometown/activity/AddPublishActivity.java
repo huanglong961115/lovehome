@@ -239,20 +239,6 @@ public class AddPublishActivity extends BaseActivity {
             switch (requestCode) {
                 //从相册选择
                 case SELECT_PICTURE:
-//                    Uri vUri = data.getData();
-//                    // 将图片内容解析成字节数组
-//                    String[] proj = { MediaStore.Images.Media.DATA };
-//                    Cursor cursor = managedQuery(vUri, proj, null, null, null);
-//                    int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//                    cursor.moveToFirst();
-//                    String path1 = cursor.getString(column_index);
-//                    Bitmap bm = CameraUtils.getxtsldraw(mContext, path1);
-//                    path = CameraUtils.creatfile(mContext, bm, "usermodify");
-//                    if (null != bm && !"".equals(bm)) {
-//                        imgList.add(bm);
-//                    }
-//                    adapter.notifyDataSetChanged();
-
                     Bitmap bitmap = null;
                     ContentResolver resolver = getContentResolver();
                     Uri uri = data.getData();
@@ -273,7 +259,6 @@ public class AddPublishActivity extends BaseActivity {
                 case SELECT_CAMER:
                     Bitmap bm1 = CameraUtils.getxtsldraw(mContext, out.getAbsolutePath());
                     path = CameraUtils.creatfile(mContext, bm1, "usermodify");
-
                     if (null != bm1 && !"".equals(bm1)) {
                         imgList.add(bm1);
                     }
