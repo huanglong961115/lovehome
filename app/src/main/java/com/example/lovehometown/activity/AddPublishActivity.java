@@ -34,16 +34,25 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.PhotoGridViewAdapter;
+import com.example.lovehometown.callback.LoveHomeCallBack;
 import com.example.lovehometown.common.Login;
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.PublishDialog;
+import com.example.lovehometown.model.BusinessList;
+import com.example.lovehometown.model.PublishResults;
+import com.example.lovehometown.service.DBService;
+import com.example.lovehometown.service.HttpService;
 import com.example.lovehometown.util.CameraUtils;
 import com.example.lovehometown.util.L;
 import com.example.lovehometown.util.T;
+import com.example.lovehometown.util.Uri2url;
+import com.example.lovehometown.vo.Publish;
 
+import org.xutils.ex.DbException;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -55,6 +64,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @ContentView(R.layout.activity_add_publish)
 public class AddPublishActivity extends BaseActivity {
@@ -100,12 +111,19 @@ public class AddPublishActivity extends BaseActivity {
 
     @ViewInject(R.id.photo_gridview)
     private CustomGridView gridView;
-    boolean isWaimai=false;
+    //是否支持外卖
+   int isWaimai=0;
     private static final int SELECT_PICTURE = 1;
     private static final int SELECT_CAMER = 2;
     Context mContext;
     String path = "";
+    //图片地址
+    List<String> list=new ArrayList<>();
+    String childType;
     PhotoGridViewAdapter adapter;
+    String bigTypename;
+    String typename;
+    String type;
     List<Bitmap> imgList = new ArrayList<Bitmap>();
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -121,9 +139,10 @@ public class AddPublishActivity extends BaseActivity {
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);
         Bundle bundle = getIntent().getExtras();
-        String name = bundle.getString("name");
-        final String type = bundle.getString("type");
-        if(name.equals("美食")){
+        bigTypename = bundle.getString("name");
+         type = bundle.getString("type");
+        childType=bundle.getString("childtype");
+        if(bigTypename.equals("美食")){
             waiMaiLayout.setVisibility(View.VISIBLE);
         }else{
             waiMaiLayout.setVisibility(View.GONE);
@@ -133,15 +152,15 @@ public class AddPublishActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    isWaimai=true;
+                    isWaimai=1;
                     isWaiMai.setVisibility(View.VISIBLE);
                 }else {
-                    isWaimai=false;
+                    isWaimai=0;
                     isWaiMai.setVisibility(View.GONE);
                 }
             }
         });
-        title.setText(name + "-" + type);
+        title.setText(bigTypename + "-" + childType);
         beginTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -195,6 +214,62 @@ public class AddPublishActivity extends BaseActivity {
                     }, hourOfDay, minute, true).show();
                 }
                 }
+
+        });
+        waimaistTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    Calendar c = Calendar.getInstance();
+                    int hourOfDay = c.get(Calendar.HOUR_OF_DAY);
+                    int minute = c.get(Calendar.MINUTE);
+                    new TimePickerDialog(AddPublishActivity.this, new TimePickerDialog.OnTimeSetListener() {
+
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            // TODO Auto-generated method stub
+                            String hour=hourOfDay+"";
+                            if(hourOfDay<10){
+                                hour="0"+hourOfDay;
+                            }
+                            String min=minute+"";
+                            if(minute<10){
+                                min="0" +minute;
+                            }
+                            endTime.setText(hour + ":" + min);
+                            // Toast.makeText(AddPublishActivity.this, hourOfDay + ":" + minute, Toast.LENGTH_LONG).show();
+                        }
+                    }, hourOfDay, minute, true).show();
+                }
+            }
+
+        });
+        waimaistTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    Calendar c = Calendar.getInstance();
+                    int hourOfDay = c.get(Calendar.HOUR_OF_DAY);
+                    int minute = c.get(Calendar.MINUTE);
+                    new TimePickerDialog(AddPublishActivity.this, new TimePickerDialog.OnTimeSetListener() {
+
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            // TODO Auto-generated method stub
+                            String hour=hourOfDay+"";
+                            if(hourOfDay<10){
+                                hour="0"+hourOfDay;
+                            }
+                            String min=minute+"";
+                            if(minute<10){
+                                min="0" +minute;
+                            }
+                            endTime.setText(hour + ":" + min);
+                            // Toast.makeText(AddPublishActivity.this, hourOfDay + ":" + minute, Toast.LENGTH_LONG).show();
+                        }
+                    }, hourOfDay, minute, true).show();
+                }
+            }
 
         });
 //        //拍照
@@ -260,18 +335,76 @@ public class AddPublishActivity extends BaseActivity {
               return;
           }
           //验证电话号码
-          String phoneReg=" ((\\d{11})|^((\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})|(\\d{4}|\\d{3})-(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1})|(\\d{7,8})-(\\d{4}|\\d{3}|\\d{2}|\\d{1}))$)";
-          if(!tel.matches(phoneReg)){
+
+          String phoneReg="";
+          Pattern p = Pattern.compile(phoneReg);
+          Matcher m = p.matcher(tel);
+          if(tel.matches(reg)){
               T.showShort(AddPublishActivity.this,"电话号码不能为空");
               return;
           }
+          Publish publish=new Publish();
+          publish.setBusinessAddress(adress);
+          publish.setBusinessDetails(details.getText().toString());
+          publish.setBusinessEndtime(end);
+         publish.setBusinessMement(counts);
+          publish.setBusinessLinkman(constants);
+        publish.setBusinessName(name);
+         publish.setBusinessPhone(tel);
+        publish.setBusinessPrice(enrvey);
+         publish.setBusinessStarttime(begin);
+         publish.setChildType(childType);
+          publish.setIstakeaway(isWaimai);
+         publish.setPublishImg(JSON.toJSONString(list));
+          publish.setBigTypeName(bigTypename);
+         if(isWaimai==1){
+             publish.setTakeawayEnd(waimaienTime.getText().toString());
+             publish.setTakeawayFee(waimiaMoney.getText().toString());
+             //publish.sett
+             publish.setTakeawayStart(waimaistTime.getText().toString());
+
+         }
+          publish.setXiangxifenlei(typename);
+          publish.setType(type);
+
+
+
+
           //获取
           switch (view.getId()){
               case R.id.publish_addpublish:
+                  //1.发布
+                  publish.setPublishorLove(1);
+                  try {
+                     DBService.getInstance().collect(publish);
+                    T.showShort(AddPublishActivity.this,"发布成功");
+                } catch (DbException e) {
+                      e.printStackTrace();
+                }
                   break;
               case R.id.save_addpublish:
+                  publish.setPublishorLove(0);
+                  HttpService.getHttpService().publish(publish, new LoveHomeCallBack<String>() {
+                      @Override
+                      public void onSuccess(String result) {
+                          PublishResults results=JSON.parseObject(result,PublishResults.class);
+                          T.showShort(AddPublishActivity.this,results.getResults().getMsg());
+                      }
 
+                      @Override
+                      public void onError(Throwable ex, boolean isOnCallback) {
+                            T.showShort(AddPublishActivity.this,"网络连接失败");
+                      }
+                  });
+                  try {
+                      DBService.getInstance().collect(publish);
+                      T.showShort(AddPublishActivity.this,"保存成功");
+                  } catch (DbException e) {
+                      e.printStackTrace();
+                  }
                   break;
+                //0.草稿
+
           }
       }else{
           Intent intent=new Intent();
@@ -363,6 +496,7 @@ public class AddPublishActivity extends BaseActivity {
                             bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                             imgList.add(bitmap);
                             L.e("size2",imgList.size()+"");
+                            list.add(Uri2url.getRealFilePath(AddPublishActivity.this,uri));
                             adapter.notifyDataSetChanged();
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -379,6 +513,7 @@ public class AddPublishActivity extends BaseActivity {
                         imgList.add(bm1);
                     }
                     L.e("size",imgList.size()+"");
+                    list.add(out.getAbsolutePath());
                     adapter.notifyDataSetChanged();
                     break;
                 default:
