@@ -12,7 +12,7 @@ import org.xutils.db.annotation.Table;
 @Table(name = "t_publish")
 public class Publish implements Parcelable {
     @Column(name="loveid", isId=true,autoGen = true)
-    private String loveId;
+    private int loveId;
     @Column(name="usermobile")
     private String userMobile;
     @Column(name="publishorlove")
@@ -70,11 +70,11 @@ public class Publish implements Parcelable {
 
     private String bigTypeName;
 
-    public String getLoveId() {
+    public int getLoveId() {
         return loveId;
     }
 
-    public void setLoveId(String loveId) {
+    public void setLoveId(int loveId) {
         this.loveId = loveId;
     }
 
@@ -263,7 +263,7 @@ public class Publish implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.loveId);
+        dest.writeInt(this.loveId);
         dest.writeString(this.userMobile);
         dest.writeInt(this.publishorLove);
         dest.writeString(this.businessAddress);
@@ -290,7 +290,7 @@ public class Publish implements Parcelable {
     }
 
     protected Publish(Parcel in) {
-        this.loveId = in.readString();
+        this.loveId = in.readInt();
         this.userMobile = in.readString();
         this.publishorLove = in.readInt();
         this.businessAddress = in.readString();

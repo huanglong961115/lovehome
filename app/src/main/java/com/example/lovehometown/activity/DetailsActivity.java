@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
@@ -31,11 +32,19 @@ import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.javascriptinterface.DetailsJavaScript;
 import com.example.lovehometown.model.BusinessList;
 import com.example.lovehometown.model.ShopInfo;
+import com.example.lovehometown.model.UserInfo;
+import com.example.lovehometown.service.DBService;
+import com.example.lovehometown.util.L;
+import com.example.lovehometown.util.SPUtils;
 import com.example.lovehometown.util.T;
+import com.example.lovehometown.vo.Love;
 
+import org.xutils.ex.DbException;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
+
+import java.util.List;
 
 @ContentView(R.layout.activity_details)
 public class DetailsActivity extends BaseActivity {
@@ -189,8 +198,47 @@ public class DetailsActivity extends BaseActivity {
     }
     @Event(R.id.rightView2)
     private void love(View view){
-        boolean isLogin=Login.getInstance().equals(DetailsActivity.this);
+        boolean isLogin=Login.getInstance().isLogin(DetailsActivity.this);
         if(isLogin){
+            String userInfo= (String) SPUtils.get(DetailsActivity.this,Constants.USER_INFO,"");
+            if (userInfo.equals("")){
+            }else{
+                UserInfo.UserBean userBean=JSON.parseObject(userInfo, UserInfo.UserBean.class);
+                BusinessList.PublistBean shopInfo= JSON.parseObject(jsonData,BusinessList.PublistBean.class);
+                Love love=new Love();
+                love.setBusinessName(shopInfo.getBusinessName());
+                love.setBusinessAddress(shopInfo.getBusinessAddress());
+                love.setBusinessDetails(shopInfo.getBusinessDetails());
+                love.setBusinessLinkman(shopInfo.getBusinessLinkman());
+                love.setBusinessMement(shopInfo.getBusinessMement());
+                love.setBusinessStarttime(shopInfo.getBusinessStarttime());
+                love.setBusinessEndtime(shopInfo.getBusinessEndtime());
+                love.setBusinessPhone(shopInfo.getBusinessPhone());
+                love.setBusinessPrice(shopInfo.getBusinessPrice());
+                love.setChildType(shopInfo.getChildType());
+                love.setIstakeaway(shopInfo.getIstakeaway());
+                love.setPublishImg(shopInfo.getPublishImg());
+                love.setPublishorLove(1);
+                love.setType(shopInfo.getType());
+                love.setWorkTitle(shopInfo.getWorkTitle());
+                love.setWorkSalary(shopInfo.getWorkSalary());
+                love.setTakeawayStart(shopInfo.getTakeawayStart());
+                love.setTakeawayEnd(shopInfo.getTakeawayEnd());
+                love.setTakeawayFee(shopInfo.getTakeawayFee());
+                love.setUserMobile(userBean.getPhoneNuber());
+                try {
+                    List<Love> l= DBService.getInstance().isLove(love.getUserMobile(),love.getBusinessName());
+                    if (l!=null &&  l.size()>0){
+                        Toast.makeText(this, "您已经收藏过了", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    DBService.getInstance().collect(love);
+                    Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
+
+                } catch (DbException e) {
+                    e.printStackTrace();
+                }
+            }
 
         }else{
             Intent intent=new Intent();

@@ -44,24 +44,34 @@ public class DBService {
                     }
                 });
     }
+    //查询是否收藏
+    public List<Love> isLove(String mobile,String businessname)throws DbException{
+        DbManager db  = x.getDb(daoConfig);
+        List<Love> list= db.selector(Love.class).where("usermobile","=",mobile).and("businessname","=",businessname).findAll();
+        return list;
+    }
     //收藏
     public void collect(Love tlove) throws DbException {
         DbManager db  = x.getDb(daoConfig);
-        db.save(tlove);
+        List<Love> l= isLove(tlove.getUserMobile(),tlove.getBusinessName());
+        if (l==null ||l.size()==0){
+            db.save(tlove);
+        }
 
     }
     //取消收藏
-    public void delete(Love tlove) throws DbException {
+    public void delete(int loveId) throws DbException {
         DbManager db  = x.getDb(daoConfig);
-        db.delete(tlove);
+        db.deleteById(Love.class,loveId);
     }
     //查询所有收藏的数据
-    public void selectLove()throws DbException{
+    public List<Love> selectLove(String mobile)throws DbException{
         DbManager db  = x.getDb(daoConfig);
-        db.selector(Love.class);
+        List<Love> list= db.selector(Love.class).where("usermobile","=",mobile).findAll();
+        return list;
     }
     //发布
-    public void collect(Publish publish) throws DbException {
+    public void collectPublish(Publish publish) throws DbException {
         DbManager db  = x.getDb(daoConfig);
         db.saveOrUpdate(publish);
 
@@ -72,9 +82,13 @@ public class DBService {
         db.delete(publish);
     }
     //查询发布信息
-    public List<Publish> selectPublish()throws DbException{
+    public List<Publish> selectPublish(String mobile,int publishorlove)throws DbException{
         DbManager db  = x.getDb(daoConfig);
-        return  db.selector(Publish.class).findAll();
+        return  db.selector(Publish.class).where("usermobile","=",mobile).and("publishorlove","=",publishorlove).findAll();
+    }
+    //修改
+    public void updatePublish(int publishId)throws DbException{
+
     }
 
 }

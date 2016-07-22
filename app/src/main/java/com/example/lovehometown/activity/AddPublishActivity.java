@@ -377,7 +377,7 @@ public class AddPublishActivity extends BaseActivity {
                   //1.发布
                   publish.setPublishorLove(1);
                   try {
-                     DBService.getInstance().collect(publish);
+                     DBService.getInstance().collectPublish(publish);
                     T.showShort(AddPublishActivity.this,"发布成功");
                 } catch (DbException e) {
                       e.printStackTrace();
@@ -398,7 +398,7 @@ public class AddPublishActivity extends BaseActivity {
                       }
                   });
                   try {
-                      DBService.getInstance().collect(publish);
+                      DBService.getInstance().collectPublish(publish);
                       T.showShort(AddPublishActivity.this,"保存成功");
                   } catch (DbException e) {
                       e.printStackTrace();

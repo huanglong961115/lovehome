@@ -13,11 +13,11 @@ import org.xutils.db.annotation.Table;
 @Table(name="tlove")
 public class Love implements Parcelable {
     @Column(name="loveid", isId=true,autoGen = true)
-    private String loveId;
+    private int loveId;
     @Column(name="usermobile")
     private String userMobile;
     @Column(name="publishorlove")
-    private String publishorLove;
+    private int publishorLove;
     @Column(name="businessaddress")
     private String businessAddress;
     @Column(name="businessdetails")
@@ -59,11 +59,11 @@ public class Love implements Parcelable {
     @Column(name="worktitle")
     private String workTitle;
 
-    public String getLoveId() {
+    public int getLoveId() {
         return loveId;
     }
 
-    public void setLoveId(String loveId) {
+    public void setLoveId(int loveId) {
         this.loveId = loveId;
     }
 
@@ -75,11 +75,11 @@ public class Love implements Parcelable {
         this.userMobile = userMobile;
     }
 
-    public String getPublishorLove() {
+    public int getPublishorLove() {
         return publishorLove;
     }
 
-    public void setPublishorLove(String publishorLove) {
+    public void setPublishorLove(int publishorLove) {
         this.publishorLove = publishorLove;
     }
 
@@ -253,9 +253,9 @@ public class Love implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.loveId);
+        dest.writeInt(this.loveId);
         dest.writeString(this.userMobile);
-        dest.writeString(this.publishorLove);
+        dest.writeInt(this.publishorLove);
         dest.writeString(this.businessAddress);
         dest.writeString(this.businessDetails);
         dest.writeString(this.businessEndtime);
@@ -279,9 +279,9 @@ public class Love implements Parcelable {
     }
 
     protected Love(Parcel in) {
-        this.loveId = in.readString();
+        this.loveId = in.readInt();
         this.userMobile = in.readString();
-        this.publishorLove = in.readString();
+        this.publishorLove = in.readInt();
         this.businessAddress = in.readString();
         this.businessDetails = in.readString();
         this.businessEndtime = in.readString();
