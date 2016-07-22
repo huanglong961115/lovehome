@@ -14,8 +14,11 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -55,11 +58,13 @@ public class DetailsActivity extends BaseActivity {
     String jsonData;
     //加载动画效果
     CustomProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
     }
+
     private void initView(){
         img.setVisibility(View.VISIBLE);
         title.setVisibility(View.VISIBLE);
@@ -146,6 +151,20 @@ public class DetailsActivity extends BaseActivity {
             case R.id.jubao:
                 PublishDialog.Builder builder = new PublishDialog.Builder(DetailsActivity.this);
                 View contentView= LayoutInflater.from(DetailsActivity.this).inflate(R.layout.dialog_jubao,null);
+                RadioButton qiTa= (RadioButton) contentView.findViewById(R.id.qita);
+                EditText buchong= (EditText) contentView.findViewById(R.id.buchong);
+                final EditText _buchong=buchong;
+                qiTa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked){
+                            _buchong.setVisibility(View.VISIBLE);
+                        }else{
+                            _buchong.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
                 TextView confirm= (TextView) contentView.findViewById(R.id.confirm);
                 TextView negaitv= (TextView) contentView.findViewById(R.id.negitvButton);
 
