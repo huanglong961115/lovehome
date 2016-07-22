@@ -3,6 +3,7 @@ package com.example.lovehometown.activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.lovehometown.R;
@@ -31,6 +33,8 @@ import com.example.lovehometown.model.UserInfo;
 import com.example.lovehometown.util.CameraUtils;
 import com.example.lovehometown.util.L;
 import com.example.lovehometown.util.SPUtils;
+import com.example.lovehometown.util.T;
+import com.example.lovehometown.util.Uri2url;
 import com.meg7.widget.CircleImageView;
 
 import org.xutils.image.ImageOptions;
@@ -211,10 +215,14 @@ public class UserInfoActivity extends BaseActivity {
                     Bitmap bitmap = null;
                     ContentResolver resolver = getContentResolver();
                     Uri uri = data.getData();
+
                     if (uri != null) {
                         try {
                             bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                             imgUserinfo.setImageBitmap(bitmap);
+                            userBean.setHeadImg(Uri2url.getRealFilePath(this,uri));
+                            String datas=JSON.toJSONString(userBean);
+                            SPUtils.put(UserInfoActivity.this,Constants.USER_INFO,datas);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -228,6 +236,10 @@ public class UserInfoActivity extends BaseActivity {
                     path = CameraUtils.creatfile(UserInfoActivity.this, bm1, "usermodify");
                     if (null != bm1 && !"".equals(bm1)) {
                         imgUserinfo.setImageBitmap(bm1);
+                        //T.showShort(UserInfoActivity.this,out.getAbsolutePath());
+                        userBean.setHeadImg(out.getAbsolutePath());
+                        String datas=JSON.toJSONString(userBean);
+                        SPUtils.put(UserInfoActivity.this,Constants.USER_INFO,datas);
                     }
                     break;
                 default:
@@ -236,6 +248,8 @@ public class UserInfoActivity extends BaseActivity {
 
         }
     }
+
+
     /**
      * 选择本地图片
      */

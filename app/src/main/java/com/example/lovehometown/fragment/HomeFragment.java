@@ -227,7 +227,14 @@ public class HomeFragment extends BaseFragment{
     }
     @Event(R.id.serach_text)
     private void serach(View view){
-        startActivity(new Intent(getActivity(), ShopListActivity.class));
+        Intent intent=new Intent();
+
+        Bundle bundle=new Bundle();
+        bundle.putInt("type",1);
+        bundle.putString("typename","美食");
+        intent.putExtras(bundle);
+        intent.setClass(getActivity(),ShopListActivity.class);
+        startActivity(intent);
     }
     @Event(R.id.message)
     private void message(View view){

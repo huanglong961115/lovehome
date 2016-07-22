@@ -206,12 +206,13 @@ public class ShopListActivity extends BaseActivity {
         //overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
     //查询方法
-    @Event(R.id.search_input)
+    @Event(R.id.rightView2)
     private void search(View view){
         title.setVisibility(View.GONE);
        searchView.setVisibility(View.VISIBLE);
         shopName=searchView.getText().toString().trim();
         if(!shopName.equals("")){
+            data.clear();
             what=2;
             initData();
         }

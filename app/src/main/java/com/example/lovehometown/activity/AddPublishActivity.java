@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.PhotoGridViewAdapter;
+import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.util.CameraUtils;
 import com.example.lovehometown.util.L;
@@ -72,7 +73,7 @@ public class AddPublishActivity extends BaseActivity {
     private EditText endTime;
 
     @ViewInject(R.id.photo_gridview)
-    private GridView gridView;
+    private CustomGridView gridView;
     private static final int SELECT_PICTURE = 1;
     private static final int SELECT_CAMER = 2;
     Context mContext;

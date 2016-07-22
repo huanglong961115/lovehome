@@ -109,7 +109,7 @@ public class PublishFragment extends BaseFragment{
                  String name=typeList.get(position).getName();
                 progressDialog=new CustomProgressDialog(getActivity(),"加载中...",R.drawable.load_anim);
                 //设置不能取消
-                progressDialog.setCancelable(false);
+                //progressDialog.setCancelable(false);
                 progressDialog.show();
                 final String _name=name;
                //得到dialog内容的布局

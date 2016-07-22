@@ -26,6 +26,7 @@ import com.example.lovehometown.model.UserInfo;
 import com.example.lovehometown.util.DataCleanManager;
 import com.example.lovehometown.util.SPUtils;
 import com.example.lovehometown.util.T;
+import com.meg7.widget.CircleImageView;
 
 import org.xutils.common.util.DensityUtil;
 import org.xutils.image.ImageOptions;
@@ -58,7 +59,7 @@ public class MyFragment extends BaseFragment {
     @ViewInject(R.id.lgout_layout)
     RelativeLayout logoutLayout;
     @ViewInject(R.id.personal_img)
-    ImageView personImg;
+    CircleImageView personImg;
     @ViewInject(R.id.username_my)
     TextView personUserName;
     @ViewInject(R.id.phone_my)
@@ -83,7 +84,7 @@ public class MyFragment extends BaseFragment {
             //设置圆角图片
             ImageOptions imageOptions=new ImageOptions.Builder()
                     //.setSize(DensityUtil.dip2px(120), DensityUtil.dip2px(120))
-                     .setRadius(DensityUtil.dip2px(50))
+                     //.setRadius(DensityUtil.dip2px(50))
                     // 如果ImageView的大小不是定义为wrap_content, 不要crop.
                     //.setCrop(true) // 很多时候设置了合适的scaleType也不需要它.
                     // 加载中或错误图片的ScaleType
