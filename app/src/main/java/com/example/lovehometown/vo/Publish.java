@@ -4,10 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
 
 /**
  * Created by Administrator on 2016/7/22.
  */
+@Table(name = "t_publish")
 public class Publish implements Parcelable {
     @Column(name="loveid", isId=true,autoGen = true)
     private String loveId;
@@ -55,6 +57,18 @@ public class Publish implements Parcelable {
     private String workSalary;
     @Column(name="worktitle")
     private String workTitle;
+
+    public String getBigTypeName() {
+        return bigTypeName;
+    }
+
+    public void setBigTypeName(String bigTypeName) {
+        this.bigTypeName = bigTypeName;
+    }
+
+    @Column(name = "bigtypename")
+
+    private String bigTypeName;
 
     public String getLoveId() {
         return loveId;
@@ -272,6 +286,7 @@ public class Publish implements Parcelable {
         dest.writeString(this.type);
         dest.writeString(this.workSalary);
         dest.writeString(this.workTitle);
+        dest.writeString(this.bigTypeName);
     }
 
     protected Publish(Parcel in) {
@@ -298,9 +313,10 @@ public class Publish implements Parcelable {
         this.type = in.readString();
         this.workSalary = in.readString();
         this.workTitle = in.readString();
+        this.bigTypeName = in.readString();
     }
 
-    public static final Parcelable.Creator<Publish> CREATOR = new Parcelable.Creator<Publish>() {
+    public static final Creator<Publish> CREATOR = new Creator<Publish>() {
         @Override
         public Publish createFromParcel(Parcel source) {
             return new Publish(source);
@@ -311,4 +327,34 @@ public class Publish implements Parcelable {
             return new Publish[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Publish{" +
+                "loveId='" + loveId + '\'' +
+                ", userMobile='" + userMobile + '\'' +
+                ", publishorLove=" + publishorLove +
+                ", businessAddress='" + businessAddress + '\'' +
+                ", businessDetails='" + businessDetails + '\'' +
+                ", businessEndtime='" + businessEndtime + '\'' +
+                ", businessId=" + businessId +
+                ", businessLinkman='" + businessLinkman + '\'' +
+                ", businessMement='" + businessMement + '\'' +
+                ", businessName='" + businessName + '\'' +
+                ", businessPhone='" + businessPhone + '\'' +
+                ", businessPrice='" + businessPrice + '\'' +
+                ", businessStarttime='" + businessStarttime + '\'' +
+                ", childType='" + childType + '\'' +
+                ", istakeaway=" + istakeaway +
+                ", publishImg='" + publishImg + '\'' +
+                ", takeawayEnd='" + takeawayEnd + '\'' +
+                ", takeawayFee='" + takeawayFee + '\'' +
+                ", takeawayStart='" + takeawayStart + '\'' +
+                ", xiangxifenlei='" + xiangxifenlei + '\'' +
+                ", type='" + type + '\'' +
+                ", workSalary='" + workSalary + '\'' +
+                ", workTitle='" + workTitle + '\'' +
+                ", bigTypeName='" + bigTypeName + '\'' +
+                '}';
+    }
 }

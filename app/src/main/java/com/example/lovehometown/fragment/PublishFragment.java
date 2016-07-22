@@ -196,7 +196,8 @@ public class PublishFragment extends BaseFragment{
                        Intent intent=new Intent();
                        Bundle bundle=new Bundle();
                        bundle.putString("name",_name);
-                       bundle.putString("type",publishList.get(position).getReleaseList().getPublishName());
+                       bundle.putString("type",publishList.get(position).getReleaseList().getPublishTypename());
+                       bundle.putString("childtype",publishList.get(position).getReleaseList().getPublishName());
                        intent.putExtras(bundle);
                        intent.setClass(getActivity(), AddPublishActivity.class);
                        startActivity(intent);

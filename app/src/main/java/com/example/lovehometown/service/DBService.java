@@ -11,6 +11,8 @@ import org.xutils.DbManager;
 import org.xutils.ex.DbException;
 import org.xutils.x;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/7/16.
  */
@@ -28,7 +30,7 @@ public class DBService {
     private DBService() {
         daoConfig = new DbManager.DaoConfig()
                 .setDbName(Constants.DB_NAME)
-               // .setDbDir(Environment.getExternalStorageDirectory())
+                .setDbDir(Environment.getExternalStorageDirectory())
                 .setDbVersion(1)
                 .setDbOpenListener(new DbManager.DbOpenListener() {
                     @Override
@@ -61,7 +63,7 @@ public class DBService {
     //发布
     public void collect(Publish publish) throws DbException {
         DbManager db  = x.getDb(daoConfig);
-        db.update(publish);
+        db.saveOrUpdate(publish);
 
     }
     //取消发布
@@ -70,9 +72,9 @@ public class DBService {
         db.delete(publish);
     }
     //查询发布信息
-    public void selectPublish()throws DbException{
+    public List<Publish> selectPublish()throws DbException{
         DbManager db  = x.getDb(daoConfig);
-        db.selector(Publish.class);
+        return  db.selector(Publish.class).findAll();
     }
 
 }

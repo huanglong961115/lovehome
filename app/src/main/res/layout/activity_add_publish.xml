@@ -291,6 +291,7 @@
                             android:id="@+id/phone_addpublish"
                             android:layout_width="300dip"
                             android:layout_height="wrap_content"
+                            android:inputType="number"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dip"
                             android:background="@null"

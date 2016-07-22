@@ -67,7 +67,7 @@ public class Constants {
     //忘记密码的广播接收
     public final static String UPDATE_FORGET_ACTION="com.lovehome.forget";
     //数据库名字
-    public  final static  String DB_NAME="lovehome.db";
+    public  final static  String DB_NAME="lovehometown.db";
     //获取商户列表的信息
     public final static String SHOP_LIST_URL=LOVE_HOME+"getbusinesslist.do";
     //获取详细列表

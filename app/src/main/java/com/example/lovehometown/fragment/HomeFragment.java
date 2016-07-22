@@ -232,6 +232,7 @@ public class HomeFragment extends BaseFragment{
         Bundle bundle=new Bundle();
         bundle.putInt("type",1);
         bundle.putString("typename","美食");
+
         intent.putExtras(bundle);
         intent.setClass(getActivity(),ShopListActivity.class);
         startActivity(intent);
