@@ -9,7 +9,7 @@
             android:layout_height="100dip"
             android:background="@color/theme_color"
             android:layout_marginTop="1dip">
-            <ImageView
+            <com.meg7.widget.CircleImageView
                 android:id="@+id/userinfo_img"
                 android:layout_width="80dip"
                 android:layout_height="80dip"

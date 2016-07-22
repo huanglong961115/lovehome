@@ -31,10 +31,13 @@ import com.example.lovehometown.model.UserInfo;
 import com.example.lovehometown.util.CameraUtils;
 import com.example.lovehometown.util.L;
 import com.example.lovehometown.util.SPUtils;
+import com.meg7.widget.CircleImageView;
 
+import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,7 +62,7 @@ public class UserInfoActivity extends BaseActivity {
     TextView userContast;
     UserInfo.UserBean userBean;
     @ViewInject(R.id.userinfo_img)
-    ImageView img_userinfo;
+    CircleImageView imgUserinfo;
 
     private static final int SELECT_PICTURE = 1;
     private static final int SELECT_CAMER = 2;
@@ -86,6 +89,19 @@ public class UserInfoActivity extends BaseActivity {
             userName.setText(userBean.getUsername());
             userAddress.setText(userBean.getUserAddress());
             userContast.setText(userBean.getUserContast());
+            ImageOptions imageOptions = new ImageOptions.Builder()
+
+                    // 如果ImageView的大小不是定义为wrap_content, 不要crop.
+                    .setCrop(true) // 很多时候设置了合适的scaleType也不需要它.
+                    // 加载中或错误图片的ScaleType
+                    //.setPlaceholderScaleType(ImageView.ScaleType.MATRIX)
+                    .setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+                    .setLoadingDrawableId(R.drawable.defualt)
+                    .setFailureDrawableId(R.drawable.defualt)
+                    .build();
+            x.image().bind(imgUserinfo,userBean.getHeadImg(),imageOptions);
+            //x.image().
+
         }
 
     }
@@ -176,7 +192,7 @@ public class UserInfoActivity extends BaseActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        initView();
+       // initView();
     }
 
 
@@ -198,7 +214,7 @@ public class UserInfoActivity extends BaseActivity {
                     if (uri != null) {
                         try {
                             bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                            img_userinfo.setImageBitmap(bitmap);
+                            imgUserinfo.setImageBitmap(bitmap);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -211,7 +227,7 @@ public class UserInfoActivity extends BaseActivity {
                     Bitmap bm1 = CameraUtils.getxtsldraw(UserInfoActivity.this, out.getAbsolutePath());
                     path = CameraUtils.creatfile(UserInfoActivity.this, bm1, "usermodify");
                     if (null != bm1 && !"".equals(bm1)) {
-                        img_userinfo.setImageBitmap(bm1);
+                        imgUserinfo.setImageBitmap(bm1);
                     }
                     break;
                 default:

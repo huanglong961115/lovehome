@@ -161,6 +161,7 @@ public class LoginActivity extends BaseActivity{
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
+                dialog.dismiss();
                 T.showShort(LoginActivity.this,"网络连接失败,请检查网络设置");
             }
         });
