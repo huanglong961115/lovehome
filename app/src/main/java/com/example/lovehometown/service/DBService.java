@@ -4,6 +4,8 @@ import android.os.Environment;
 
 import com.example.lovehometown.constant.Constants;
 import com.example.lovehometown.model.BusinessList;
+import com.example.lovehometown.vo.Love;
+import com.example.lovehometown.vo.Publish;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
@@ -41,17 +43,36 @@ public class DBService {
                 });
     }
     //收藏
-    public void collect(BusinessList.PublistBean publistBean) throws DbException {
+    public void collect(Love tlove) throws DbException {
         DbManager db  = x.getDb(daoConfig);
-        db.save(publistBean);
+        db.save(tlove);
 
     }
     //取消收藏
-    public void delete(BusinessList.PublistBean publistBean) throws DbException {
+    public void delete(Love tlove) throws DbException {
         DbManager db  = x.getDb(daoConfig);
-        db.delete(publistBean);
+        db.delete(tlove);
     }
-    //查询所有收藏的
+    //查询所有收藏的数据
+    public void selectLove()throws DbException{
+        DbManager db  = x.getDb(daoConfig);
+        db.selector(Love.class);
+    }
+    //发布
+    public void collect(Publish publish) throws DbException {
+        DbManager db  = x.getDb(daoConfig);
+        db.update(publish);
 
+    }
+    //取消发布
+    public void deletePublish(Publish publish) throws DbException {
+        DbManager db  = x.getDb(daoConfig);
+        db.delete(publish);
+    }
+    //查询发布信息
+    public void selectPublish()throws DbException{
+        DbManager db  = x.getDb(daoConfig);
+        db.selector(Publish.class);
+    }
 
 }
