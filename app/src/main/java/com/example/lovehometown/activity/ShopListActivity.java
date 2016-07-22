@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+
 import com.example.lovehometown.R;
 import com.example.lovehometown.adapter.GoodsAdapter;
 import com.example.lovehometown.callback.LoveHomeCallBack;
@@ -34,7 +35,7 @@ import java.util.List;
 @ContentView(R.layout.activity_shop_list)
 public class ShopListActivity extends BaseActivity {
     @ViewInject(R.id.layout_shop)
-     private LinearLayout allshop;
+     private LinearLayout layOutShop;
     @ViewInject(R.id.title)
     TextView title;
     @ViewInject(R.id.leftView)
@@ -54,6 +55,10 @@ public class ShopListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+    }
+    @Event(R.id.layout_shop)
+    private void showMenu(View view){
+      T.showShort(ShopListActivity.this,"hhhh");
     }
     public void initView(){
         Bundle bundle=getIntent().getExtras();

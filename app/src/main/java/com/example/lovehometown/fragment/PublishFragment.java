@@ -29,6 +29,7 @@ import com.example.lovehometown.adapter.PictureViewAdapter;
 import com.example.lovehometown.adapter.PublishCateGrotAdapter;
 import com.example.lovehometown.callback.LoveHomeCallBack;
 import com.example.lovehometown.customview.CustomDialog;
+import com.example.lovehometown.customview.CustomProgressDialog;
 import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.model.GoodBigType;
 import com.example.lovehometown.model.PublishList;
@@ -78,6 +79,7 @@ public class PublishFragment extends BaseFragment{
     }
     PublishCateGrotAdapter publishCateGrotAdapter;
     PublishDialog dialog;
+    CustomProgressDialog progressDialog;
     public void initView(){
 
         title.setVisibility(View.VISIBLE);
@@ -105,6 +107,10 @@ public class PublishFragment extends BaseFragment{
                 }
                 //
                  String name=typeList.get(position).getName();
+                progressDialog=new CustomProgressDialog(getActivity(),"加载中...",R.drawable.load_anim);
+                //设置不能取消
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 final String _name=name;
                //得到dialog内容的布局
                 View view1=LayoutInflater.from(getActivity()).inflate(R.layout.publish_dialog_list,null);
@@ -169,6 +175,7 @@ public class PublishFragment extends BaseFragment{
                         });*/
                         //设置window显示的位置
                         window.setGravity(Gravity.BOTTOM);
+                        progressDialog.dismiss();
                  //选择子项
                     }
 
@@ -176,6 +183,7 @@ public class PublishFragment extends BaseFragment{
                     public void onError(Throwable ex, boolean isOnCallback) {
 //                        L.e("TAG",ex.getMessage());
                           T.showShort(getActivity(),"连接网络失败,请检查你的网络设置");
+                        progressDialog.dismiss();
                     }
                 });
                 //选择某一项
