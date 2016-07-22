@@ -6,7 +6,7 @@ package com.example.lovehometown.constant;
 public class Constants {
     //服务器地址
     //http://119.29.163.243/
-    public final  static String LOVE_HOME="http://172.16.46.61:8080/LoveHome/";
+    public final  static String LOVE_HOME="http://192.168.155.1:8080/LoveHome/";
     //shareprefences文件名称
      public final static String LOVE_HOME_SHARE="lovehome";
     //存储是否第一次启动应用程序
