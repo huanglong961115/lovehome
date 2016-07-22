@@ -52,7 +52,7 @@ public class DBService {
         DbManager db  = x.getDb(daoConfig);
         db.delete(tlove);
     }
-    //查询所有收藏的
+    //查询所有收藏的数据
     public void select(Love tlove)throws DbException{
         DbManager db  = x.getDb(daoConfig);
         db.delete(tlove);

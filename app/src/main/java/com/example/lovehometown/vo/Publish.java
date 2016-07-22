@@ -240,9 +240,7 @@ public class Publish implements Parcelable {
         this.workTitle = workTitle;
     }
 
-    public Publish() {
-        super();
-    }
+    public Publish() { super();}
 
     @Override
     public int describeContents() {

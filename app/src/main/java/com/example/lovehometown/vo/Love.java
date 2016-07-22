@@ -243,9 +243,7 @@ public class Love implements Parcelable {
         this.workTitle = workTitle;
     }
 
-    public Love() {
-        super();
-    }
+    public Love() {  super();  }
 
 
     @Override

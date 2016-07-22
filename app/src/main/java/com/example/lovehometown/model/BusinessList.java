@@ -323,8 +323,7 @@ public class BusinessList implements Parcelable {
             dest.writeString(this.workTitle);
         }
 
-        public PublistBean() {
-        }
+        public PublistBean() { }
 
         protected PublistBean(Parcel in) {
             this.businessAddress = in.readString();
