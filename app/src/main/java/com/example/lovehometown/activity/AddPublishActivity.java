@@ -126,10 +126,14 @@ public class AddPublishActivity extends BaseActivity {
                         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                             // TODO Auto-generated method stub
                             String min=minute+"";
+                            String hour=hourOfDay+"";
+                            if(hourOfDay<10){
+                                hour="0"+hourOfDay;
+                            }
                             if(minute<10){
                                min="0" +minute;
                             }
-                            beginTime.setText(hourOfDay + ":" + min);
+                            beginTime.setText(hour + ":" + min);
                            // Toast.makeText(AddPublishActivity.this, hourOfDay + ":" + minute, Toast.LENGTH_LONG).show();
                         }
                     }, hourOfDay, minute, true).show();
@@ -148,11 +152,15 @@ public class AddPublishActivity extends BaseActivity {
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                             // TODO Auto-generated method stub
+                            String hour=hourOfDay+"";
+                            if(hourOfDay<10){
+                                hour="0"+hourOfDay;
+                            }
                             String min=minute+"";
                             if(minute<10){
                                 min="0" +minute;
                             }
-                            endTime.setText(hourOfDay + ":" + min);
+                            endTime.setText(hour + ":" + min);
                             // Toast.makeText(AddPublishActivity.this, hourOfDay + ":" + minute, Toast.LENGTH_LONG).show();
                         }
                     }, hourOfDay, minute, true).show();
@@ -166,8 +174,12 @@ public class AddPublishActivity extends BaseActivity {
         gridView.setAdapter(adapter);
 
     }
+  @Event(value={R.id.publish_addpublish,R.id.save_addpublish})
+   private void publishOrDraft(View view){
+      switch (view.getId()){
 
-
+      }
+   }
 
     @Event(R.id.camera_addpublish)
     private void click(View view) {
