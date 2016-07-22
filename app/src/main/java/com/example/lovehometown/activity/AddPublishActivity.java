@@ -339,6 +339,7 @@ public class AddPublishActivity extends BaseActivity {
           String phoneReg="";
           Pattern p = Pattern.compile(phoneReg);
           Matcher m = p.matcher(tel);
+          //验证电话迪号码是否为空
           if(tel.matches(reg)){
               T.showShort(AddPublishActivity.this,"电话号码不能为空");
               return;
