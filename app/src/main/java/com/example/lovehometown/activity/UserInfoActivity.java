@@ -196,6 +196,7 @@ public class UserInfoActivity extends BaseActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+        //重新初始化
         initView();
     }
 
