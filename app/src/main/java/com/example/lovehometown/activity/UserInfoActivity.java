@@ -196,7 +196,7 @@ public class UserInfoActivity extends BaseActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-       // initView();
+        initView();
     }
 
 
