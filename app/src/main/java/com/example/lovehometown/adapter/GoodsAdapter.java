@@ -19,6 +19,7 @@ import com.example.lovehometown.customview.CustomDialog;
 import com.example.lovehometown.model.BusinessList;
 import com.example.lovehometown.model.ShopInfo;
 
+import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -31,11 +32,21 @@ public class GoodsAdapter extends BaseAdapter {
     Context context;
     LayoutInflater layoutInflater;
     List<BusinessList.PublistBean> list;
-
+    ImageOptions imageOptions;
     public GoodsAdapter(List<BusinessList.PublistBean> list, Context context) {
         this.list = list;
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
+        this.imageOptions = new ImageOptions.Builder()
+
+                // 如果ImageView的大小不是定义为wrap_content, 不要crop.
+                .setCrop(true) // 很多时候设置了合适的scaleType也不需要它.
+                // 加载中或错误图片的ScaleType
+                //.setPlaceholderScaleType(ImageView.ScaleType.MATRIX)
+                .setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+                .setLoadingDrawableId(R.drawable.defualt)
+                .setFailureDrawableId(R.drawable.defualt)
+                .build();
     }
 
     @Override
@@ -103,6 +114,7 @@ public class GoodsAdapter extends BaseAdapter {
         //地址
         viewHolder.address.setText(shopInfo.getBusinessAddress());
         viewHolder.columnTypeName.setText(shopInfo.getXiangxifenlei());
+        x.image().bind(viewHolder.shopImage,shopInfo.getPublishImg(),imageOptions);
         //支持外卖
         if(shopInfo.getIstakeaway()==1){
             viewHolder.waimai_image.setVisibility(View.VISIBLE);

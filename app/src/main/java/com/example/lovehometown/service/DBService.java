@@ -76,6 +76,12 @@ public class DBService {
         db.saveOrUpdate(publish);
 
     }
+    //草稿
+    public void drafPublish(Publish publish) throws DbException {
+        DbManager db  = x.getDb(daoConfig);
+        db.saveOrUpdate(publish);
+
+    }
     //取消发布
     public void deletePublish(int publishId) throws DbException {
         DbManager db  = x.getDb(daoConfig);

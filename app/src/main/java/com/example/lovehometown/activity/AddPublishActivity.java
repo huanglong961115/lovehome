@@ -418,9 +418,11 @@ public class AddPublishActivity extends BaseActivity {
           }
           //验证电话号码
 
-          String phoneReg="";
-          Pattern p = Pattern.compile(phoneReg);
-          Matcher m = p.matcher(tel);
+         // String phoneReg="";
+         // Pattern regex = Pattern.compile("^(((13[0-9])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8})|(0\\d{2}-\\d{8})|(0\\d{3}-\\d{7})$");
+          //Matcher matcher = regex.matcher(tel);
+          //Pattern p = Pattern.compile(phoneReg);
+         // Matcher m = p.matcher(tel);
           //验证电话迪号码是否为空
           if(tel.matches(reg)){
               T.showShort(AddPublishActivity.this,"电话号码不能为空");
@@ -479,19 +481,21 @@ public class AddPublishActivity extends BaseActivity {
                      //T.showShort(AddPublishActivity.this, (DBService.getInstance().selectPublish(userBean.getPhoneNuber(),1).toString()));
                     T.showShort(AddPublishActivity.this,"发布成功");
                 } catch (DbException e) {
-                      T.showShort(AddPublishActivity.this,e.getMessage());
+                      //T.showShort(AddPublishActivity.this,e.getMessage());
                       e.printStackTrace();
                 }
+                  AddPublishActivity.this.finish();
                   break;
               case R.id.save_addpublish:
                   publish.setPublishorLove(0);
                  /* */
                   try {
-                      DBService.getInstance().collectPublish(publish);
+                      DBService.getInstance().drafPublish(publish);
                       T.showShort(AddPublishActivity.this,"保存成功");
                   } catch (DbException e) {
                       e.printStackTrace();
                   }
+                  AddPublishActivity.this.finish();
                   break;
                 //0.草稿
 
@@ -629,7 +633,7 @@ public class AddPublishActivity extends BaseActivity {
      */
     public void toGetCameraImage() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE, null);
-        String photoname = "a.jpg";
+        String photoname = System.currentTimeMillis()+"a.jpg";
         out = new File(getSDPath(), photoname);
         Uri uri = Uri.fromFile(out);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
