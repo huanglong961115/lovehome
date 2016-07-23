@@ -146,6 +146,7 @@ public class LoginActivity extends BaseActivity{
                     T.showShort(LoginActivity.this,"登录失败,用户名或者密码错误");
                     return;
                 }else{
+                    T.showShort(LoginActivity.this,"登录成功");
                     dialog.dismiss();
                     //
                     UserInfo.UserBean user= userInfo.getUser();

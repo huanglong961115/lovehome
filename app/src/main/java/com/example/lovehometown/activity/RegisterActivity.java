@@ -181,7 +181,7 @@ public class RegisterActivity extends BaseActivity {
                 }
                 //register
                 //发送广播
-
+               T.showShort(RegisterActivity.this,"注册成功,进入登录界面");
                 Intent intent=new Intent(Constants.REGISTER_ACTION);
                 sendBroadcast(intent);
                Bundle bundle = new Bundle();
@@ -192,6 +192,7 @@ public class RegisterActivity extends BaseActivity {
                 startActivity(intent2);
                 //startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
                 //结束掉当前Activity
+
                 RegisterActivity.this.finish();
             }
 
