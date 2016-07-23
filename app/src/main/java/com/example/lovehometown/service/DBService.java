@@ -31,7 +31,7 @@ public class DBService {
         daoConfig = new DbManager.DaoConfig()
                 .setDbName(Constants.DB_NAME)
                 .setDbDir(Environment.getExternalStorageDirectory())
-                .setDbVersion(1)
+                .setDbVersion(3)
                 .setDbOpenListener(new DbManager.DbOpenListener() {
                     @Override
                     public void onDbOpened(DbManager db) {
@@ -77,18 +77,24 @@ public class DBService {
 
     }
     //取消发布
-    public void deletePublish(Publish publish) throws DbException {
+    public void deletePublish(int publishId) throws DbException {
         DbManager db  = x.getDb(daoConfig);
-        db.delete(publish);
+        db.deleteById(Publish.class,publishId);
     }
     //查询发布信息
     public List<Publish> selectPublish(String mobile,int publishorlove)throws DbException{
         DbManager db  = x.getDb(daoConfig);
         return  db.selector(Publish.class).where("usermobile","=",mobile).and("publishorlove","=",publishorlove).findAll();
     }
-    //修改
-    public void updatePublish(int publishId)throws DbException{
-
+    //显示单条数据
+    public  List<Publish> showPublish(int publishId)throws DbException{
+        DbManager db=x.getDb(daoConfig);
+        return db.selector(Publish.class).where("loveid","=",publishId).findAll();
+    }
+    //修改编辑
+    public void updatePublish(int publishId,Publish publish)throws DbException{
+        DbManager db=x.getDb(daoConfig);
+        Publish publish1= (Publish) showPublish(publishId);
     }
 
 }

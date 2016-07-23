@@ -293,6 +293,7 @@
             android:layout_height="1dip"
             android:background="@color/personal_line_color"/>
         <RelativeLayout
+            android:id="@+id/share_app"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             >

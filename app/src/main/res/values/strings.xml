@@ -96,7 +96,7 @@
     <string name="savedraft_addpublish">保存草稿</string>
     <string name="publish_addpublish">立即发布</string>
     <string name="fuhao_mycollection">¥</string>
-    <string name="unit_mycollection">/桌起</string>
+    <string name="unit_mycollection">起</string>
     <string name="share_mycollection">分享</string>
     <string name="delete_mycollection">删除</string>
     <string name="publish_mymessage">您发布的[</string>

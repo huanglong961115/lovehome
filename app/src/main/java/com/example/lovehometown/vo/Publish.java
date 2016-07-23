@@ -11,7 +11,7 @@ import org.xutils.db.annotation.Table;
  */
 @Table(name = "t_publish")
 public class Publish implements Parcelable {
-    @Column(name="loveid", isId=true,autoGen = true)
+    @Column(name="publishid", isId=true,autoGen = true)
     private int loveId;
     @Column(name="usermobile")
     private String userMobile;

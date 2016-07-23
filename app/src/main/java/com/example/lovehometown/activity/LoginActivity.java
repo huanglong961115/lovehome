@@ -151,7 +151,7 @@ public class LoginActivity extends BaseActivity{
                     UserInfo.UserBean user= userInfo.getUser();
                     //转换为json字符串,存入share
                     String data=JSON.toJSONString(user);
-                    T.showShort(LoginActivity.this,data);
+                    //T.showShort(LoginActivity.this,data);
                     saveInfo(data);
                     loginSuccess();
 

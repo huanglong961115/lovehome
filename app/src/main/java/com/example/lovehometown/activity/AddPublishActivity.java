@@ -13,6 +13,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -44,10 +45,12 @@ import com.example.lovehometown.customview.CustomGridView;
 import com.example.lovehometown.customview.PublishDialog;
 import com.example.lovehometown.model.BusinessList;
 import com.example.lovehometown.model.PublishResults;
+import com.example.lovehometown.model.UserInfo;
 import com.example.lovehometown.service.DBService;
 import com.example.lovehometown.service.HttpService;
 import com.example.lovehometown.util.CameraUtils;
 import com.example.lovehometown.util.L;
+import com.example.lovehometown.util.SPUtils;
 import com.example.lovehometown.util.T;
 import com.example.lovehometown.util.Uri2url;
 import com.example.lovehometown.vo.Publish;
@@ -56,8 +59,13 @@ import org.xutils.ex.DbException;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -124,10 +132,17 @@ public class AddPublishActivity extends BaseActivity {
     String bigTypename;
     String typename;
     String type;
+    Publish publish=new Publish();
     List<Bitmap> imgList = new ArrayList<Bitmap>();
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        if(shopName.equals("")||shopName==null){
+            //获取传过来的bundle
+            Bundle bundle=getIntent().getExtras();
+            //获取传过来的具体值
+
+    }
         initView();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -135,17 +150,84 @@ public class AddPublishActivity extends BaseActivity {
     }
 
     private void initView() {
-        /*设置可见*/
-        img.setVisibility(View.VISIBLE);
-        title.setVisibility(View.VISIBLE);
+        adapter = new PhotoGridViewAdapter(AddPublishActivity.this,imgList);
+        gridView.setAdapter(adapter);
         Bundle bundle = getIntent().getExtras();
-        bigTypename = bundle.getString("name");
-         type = bundle.getString("type");
-        childType=bundle.getString("childtype");
-        if(bigTypename.equals("美食")){
-            waiMaiLayout.setVisibility(View.VISIBLE);
-        }else{
-            waiMaiLayout.setVisibility(View.GONE);
+        int mag=bundle.getInt("msg");
+        if(mag==1){
+            Publish publish=bundle.getParcelable("publish");
+           this.publish.setLoveId(publish.getLoveId());
+            shopName.setText(publish.getBusinessName());
+            beginTime.setText(publish.getBusinessStarttime());
+            endTime.setText(publish.getBusinessEndtime());
+            everyMoney.setText(publish.getBusinessPrice());
+            count.setText(publish.getBusinessMement());
+            linkMan.setText(publish.getBusinessLinkman());
+            phone.setText(publish.getBusinessPhone());
+            address.setText(publish.getBusinessAddress());
+            details.setText(publish.getBusinessDetails());
+            img.setVisibility(View.VISIBLE);
+            title.setVisibility(View.VISIBLE);
+            bigTypename=publish.getBigTypeName();
+            type=publish.getType();
+            childType=publish.getChildType();
+            typename=publish.getXiangxifenlei();
+            isWaimai=publish.getIstakeaway();
+            try {
+                List<String> list1 = JSON.parseArray(publish.getPublishImg(), String.class);
+                Log.e("tag",publish.getPublishImg());
+                for (String key : list1) {
+                    /*URL url = new URL(key);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    T.showShort(AddPublishActivity.this,url.getPath());
+                    conn.setConnectTimeout(5000);
+                    int max = conn.getContentLength();
+                    InputStream is = conn.getInputStream();
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    int len;*/
+
+                   /* while ((len = is.read(buffer)) != -1) {
+                        baos.write(buffer, 0, len);
+                    }
+                    byte[] result = baos.toByteArray();
+                   Bitmap bitmap=  BitmapFactory.decodeByteArray(result, 0, result.length);*/
+                    Bitmap bitmap=CameraUtils.getxtsldraw(this,key);
+                    list.add(key);
+                    imgList.add(bitmap);
+                    //T.showShort(AddPublishActivity.this,imgList.size());
+                    adapter.notifyDataSetChanged();
+                }
+                }catch(Exception e){
+                    e.printStackTrace();
+
+
+            }
+        if (isWaimai==1){
+                ;
+
+                waiMaiLayout.setVisibility(View.VISIBLE);
+                waimaiarea.setText("3");
+                waimai.setChecked(true);
+                waimaistTime.setText(publish.getTakeawayStart());
+                waimaienTime.setText(publish.getTakeawayEnd());
+                waimiaMoney.setText(publish.getTakeawayFee());
+            }else{
+                waiMaiLayout.setVisibility(View.GONE);
+            }
+           // return;
+        }else {
+        /*设置可见*/
+            img.setVisibility(View.VISIBLE);
+            title.setVisibility(View.VISIBLE);
+            bigTypename = bundle.getString("name");
+            type = bundle.getString("type");
+            childType = bundle.getString("childtype");
+            if (bigTypename.equals("美食")) {
+                waiMaiLayout.setVisibility(View.VISIBLE);
+            } else {
+                waiMaiLayout.setVisibility(View.GONE);
+            }
         }
         //添加监听
         waimai.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -274,10 +356,10 @@ public class AddPublishActivity extends BaseActivity {
         });
 //        //拍照
         mContext = this;
-        adapter = new PhotoGridViewAdapter(AddPublishActivity.this,imgList);
-        gridView.setAdapter(adapter);
+
 
     }
+
   @Event(value={R.id.publish_addpublish,R.id.save_addpublish})
    private void publishOrDraft(View view){
       boolean isLogin= Login.getInstance().isLogin(AddPublishActivity.this);
@@ -344,7 +426,10 @@ public class AddPublishActivity extends BaseActivity {
               T.showShort(AddPublishActivity.this,"电话号码不能为空");
               return;
           }
-          Publish publish=new Publish();
+          //publish=new Publish();
+          String userInfo= (String) SPUtils.get(AddPublishActivity.this,Constants.USER_INFO,"");
+          UserInfo.UserBean userBean= JSON.parseObject(userInfo, UserInfo.UserBean.class);
+          publish.setUserMobile(userBean.getPhoneNuber());
           publish.setBusinessAddress(adress);
           publish.setBusinessDetails(details.getText().toString());
           publish.setBusinessEndtime(end);
@@ -377,26 +462,30 @@ public class AddPublishActivity extends BaseActivity {
                   //1.发布
                   publish.setPublishorLove(1);
                   try {
+                      HttpService.getHttpService().publish(publish, new LoveHomeCallBack<String>() {
+                          @Override
+                          public void onSuccess(String result) {
+                              PublishResults results=JSON.parseObject(result,PublishResults.class);
+                              T.showShort(AddPublishActivity.this,results.getResults().getMsg());
+
+                          }
+
+                          @Override
+                          public void onError(Throwable ex, boolean isOnCallback) {
+                              //T.showShort(AddPublishActivity.this,"网络连接失败");
+                          }
+                      });
                      DBService.getInstance().collectPublish(publish);
+                     //T.showShort(AddPublishActivity.this, (DBService.getInstance().selectPublish(userBean.getPhoneNuber(),1).toString()));
                     T.showShort(AddPublishActivity.this,"发布成功");
                 } catch (DbException e) {
+                      T.showShort(AddPublishActivity.this,e.getMessage());
                       e.printStackTrace();
                 }
                   break;
               case R.id.save_addpublish:
                   publish.setPublishorLove(0);
-                  HttpService.getHttpService().publish(publish, new LoveHomeCallBack<String>() {
-                      @Override
-                      public void onSuccess(String result) {
-                          PublishResults results=JSON.parseObject(result,PublishResults.class);
-                          T.showShort(AddPublishActivity.this,results.getResults().getMsg());
-                      }
-
-                      @Override
-                      public void onError(Throwable ex, boolean isOnCallback) {
-                            T.showShort(AddPublishActivity.this,"网络连接失败");
-                      }
-                  });
+                 /* */
                   try {
                       DBService.getInstance().collectPublish(publish);
                       T.showShort(AddPublishActivity.this,"保存成功");
@@ -498,6 +587,7 @@ public class AddPublishActivity extends BaseActivity {
                             imgList.add(bitmap);
                             L.e("size2",imgList.size()+"");
                             list.add(Uri2url.getRealFilePath(AddPublishActivity.this,uri));
+                            Log.e("TAG",list.size()+"");
                             adapter.notifyDataSetChanged();
                         } catch (IOException e) {
                             e.printStackTrace();

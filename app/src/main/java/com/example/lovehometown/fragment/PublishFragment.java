@@ -49,7 +49,7 @@ import java.util.List;
 @ContentView(R.layout.publish_layout)
 public class PublishFragment extends BaseFragment{
     @ViewInject(R.id.publish_gridView)
-   GridView publishGridView;
+    GridView publishGridView;
     @ViewInject(R.id.title)
     TextView title;
     List<PublishList.PublistBean> publishList=new ArrayList<PublishList.PublistBean>();
@@ -196,6 +196,7 @@ public class PublishFragment extends BaseFragment{
                        Intent intent=new Intent();
                        Bundle bundle=new Bundle();
                        bundle.putString("name",_name);
+                       bundle.putInt("msg",0);
                        bundle.putString("type",publishList.get(position).getReleaseList().getPublishTypename());
                        bundle.putString("childtype",publishList.get(position).getReleaseList().getPublishName());
                        intent.putExtras(bundle);

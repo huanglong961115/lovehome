@@ -133,6 +133,25 @@ public class HttpService {
     public void publish(Publish publish,LoveHomeCallBack<String> callBack){
         RequestParams params=new RequestParams();
         //params.addQueryStringParameter("",publish.get);
+        params.addQueryStringParameter("businessname",publish.getBusinessName());
+        params.addQueryStringParameter("businessprice",publish.getBusinessPrice());
+        params.addQueryStringParameter("businessmement,",publish.getBusinessMement());
+        params.addQueryStringParameter("businessaddress",publish.getBusinessAddress());
+        params.addQueryStringParameter("businesslinkman",publish.getBusinessLinkman());
+        params.addQueryStringParameter("businessphone",publish.getBusinessPhone());
+        params.addQueryStringParameter("businessdetails",publish.getBusinessDetails());
+        params.addQueryStringParameter("businessstarttime",publish.getBusinessStarttime());
+        params.addQueryStringParameter("businessendtime",publish.getBusinessEndtime());
+        params.addQueryStringParameter("takeawaystart",publish.getTakeawayStart());
+        params.addQueryStringParameter("takeawayend",publish.getTakeawayEnd());
+        params.addQueryStringParameter("takeawayfee",publish.getTakeawayFee());
+        params.addQueryStringParameter("worktitle",publish.getWorkTitle());
+        params.addQueryStringParameter("worksalary",publish.getWorkSalary());
+        params.addQueryStringParameter("publishimg",publish.getPublishImg());
+        params.addQueryStringParameter("type",publish.getType());
+        params.addQueryStringParameter("childtype",publish.getChildType());
+        params.addQueryStringParameter("istakeaway",publish.getIstakeaway()+"");
+        params.addQueryStringParameter("xiangxifenlei",publish.getXiangxifenlei());
         x.http().get(params,callBack);
     }
 }

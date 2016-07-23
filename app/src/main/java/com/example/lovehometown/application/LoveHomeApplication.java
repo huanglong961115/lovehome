@@ -2,6 +2,8 @@ package com.example.lovehometown.application;
 
 import android.app.Application;
 
+import com.example.lovehometown.util.L;
+
 import org.xutils.BuildConfig;
 import org.xutils.x;
 
@@ -14,6 +16,7 @@ public class LoveHomeApplication extends Application{
         super.onCreate();
         x.Ext.init(this);
         x.Ext.setDebug(BuildConfig.DEBUG); // 是否输出debug日志, 开启debug会影响性能.
+        L.isDebug=false;
 
 
     }

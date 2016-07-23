@@ -6,7 +6,7 @@ package com.example.lovehometown.constant;
 public class Constants {
     //服务器地址
     //http://119.29.163.243/
-    public final  static String LOVE_HOME="http://192.168.155.1:8080/LoveHome/";
+    public final  static String LOVE_HOME="http://115.28.137.74:8080/LoveHome/";
     //shareprefences文件名称
      public final static String LOVE_HOME_SHARE="lovehome";
     //存储是否第一次启动应用程序
@@ -67,7 +67,7 @@ public class Constants {
     //忘记密码的广播接收
     public final static String UPDATE_FORGET_ACTION="com.lovehome.forget";
     //数据库名字
-    public  final static  String DB_NAME="lovehometown.db";
+    public  final static  String DB_NAME="lovehometown1.db";
     //获取商户列表的信息
     public final static String SHOP_LIST_URL=LOVE_HOME+"getbusinesslist.do";
     //获取详细列表
@@ -75,5 +75,7 @@ public class Constants {
     //查询接口查询详细
     public final static  String SELECT_URL=LOVE_HOME+"selectbusiness.do";
     //发布接口
-    public final static  String ADD_BUSINESS="addbusiness.do";
+    public final static  String ADD_BUSINESS=LOVE_HOME+"addbusiness.do";
+    //分享界面
+    public final static  String APP_SHARE_URL=LOVE_HOME+"appshare.html";
 }

@@ -49,7 +49,7 @@ public class GuideActivity extends BaseActivity {
                      list.get(position).setOnClickListener(new View.OnClickListener() {
                          @Override
                          public void onClick(View v) {
-                             T.showShort(GuideActivity.this,"点击了我");
+                             //T.showShort(GuideActivity.this,"点击了我");
                              startActivity(new Intent(GuideActivity.this,StartActivity.class));
                              GuideActivity.this.finish();
                          }
