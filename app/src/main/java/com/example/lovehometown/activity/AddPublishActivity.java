@@ -511,6 +511,7 @@ public class AddPublishActivity extends BaseActivity {
                             @Override
                             public void success(String s) {
                                 Log.e("TAG", s);
+
                                 /*有待完善*/
                                 //T.showShort(AddPublishActivity.this, (DBService.getInstance().selectPublish(userBean.getPhoneNuber(),1).toString()));
                             }
