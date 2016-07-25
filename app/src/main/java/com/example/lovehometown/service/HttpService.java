@@ -147,6 +147,7 @@ public class HttpService {
         params.addQueryStringParameter("takeawayfee",publish.getTakeawayFee());
         params.addQueryStringParameter("worktitle",publish.getWorkTitle());
         params.addQueryStringParameter("worksalary",publish.getWorkSalary());
+        /*标识是否有图片上传*/
         params.addQueryStringParameter("publishimg",publish.getPublishImg());
         params.addQueryStringParameter("type",publish.getType());
         params.addQueryStringParameter("childtype",publish.getChildType());

@@ -26,7 +26,7 @@ public class Constants {
     //登录url;
     public final static  String LOGIN_URL=LOVE_HOME+"login.do";
     //发布列表url
-    public final static String PUBLISH_LIST_URL=LOVE_HOME+"getpublishlist.do";
+    public final static String PUBLISH_LIST_URL=LOVE_HOME+"publish.do";
     //是否登录在share存放的key值
     public final static String IS_LOGIN="islogin";
     //传递的key值

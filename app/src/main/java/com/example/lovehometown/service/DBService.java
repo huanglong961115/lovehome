@@ -31,7 +31,7 @@ public class DBService {
         daoConfig = new DbManager.DaoConfig()
                 .setDbName(Constants.DB_NAME)
                 .setDbDir(Environment.getExternalStorageDirectory())
-                .setDbVersion(3)
+                .setDbVersion(4)
                 .setDbOpenListener(new DbManager.DbOpenListener() {
                     @Override
                     public void onDbOpened(DbManager db) {
